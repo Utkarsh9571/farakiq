@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darvin — Stop wasting your money</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14171A;
+    --ink-soft:#1D2124;
+    --paper:#E4E7DE;
+    --paper-dim:#D8DBCF;
+    --waste:#FF4A34;
+    --value:#1F6F54;
+    --text-light:#EDEAE0;
+    --text-light-dim:#A6A9A0;
+    --text-dark:#16181A;
+    --text-dark-dim:#5B5F55;
+    --rule:#33373A;
+    --rule-paper:#B9BCAF;
+    --radius:2px;
+    --max:1100px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--text-light);
+    font-family:'Space Grotesk', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(20,23,26,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--rule);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:72px;
+  }
+  .brand{
+    font-weight:700;
+    font-size:1.15rem;
+    letter-spacing:0.02em;
+    text-decoration:none;
+  }
+  .nav-links{
+    display:flex;
+    gap:32px;
+    align-items:center;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .nav-links a{
+    text-decoration:none;
+    font-size:0.95rem;
+    color:var(--text-light-dim);
+    transition:color 0.15s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{color:var(--text-light);}
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 22px;
+    border-radius:var(--radius);
+    font-size:0.95rem;
+    font-weight:600;
+    text-decoration:none;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn:focus-visible{outline:2px solid var(--text-light); outline-offset:3px;}
+  .btn-primary{
+    background:var(--waste);
+    color:#14171A;
+  }
+  .btn-primary:hover{transform:translateY(-1px); background:#ff5c48;}
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--rule);
+    color:var(--text-light);
+  }
+  .btn-ghost:hover{border-color:var(--text-light-dim);}
+
+  .nav-cta{display:inline-flex;}
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:1px solid var(--rule);
+    color:var(--text-light);
+    padding:8px 12px;
+    border-radius:var(--radius);
+    font-size:1rem;
+    cursor:pointer;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 72px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.6vw, 4.1rem);
+    line-height:1.06;
+    font-weight:700;
+    letter-spacing:-0.01em;
+    margin:0 0 28px;
+    max-width:15ch;
+  }
+  .hero p.sub{
+    font-size:1.15rem;
+    color:var(--text-light-dim);
+    max-width:52ch;
+    margin:0 0 36px;
+  }
+  .hero-ctas{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+  }
+
+  /* ---------- RECEIPTS ---------- */
+  .receipts{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:36px;
+    margin-top:88px;
+    align-items:start;
+  }
+  .receipt{
+    background:var(--paper);
+    color:var(--text-dark);
+    padding:30px 26px 22px;
+    position:relative;
+    opacity:0;
+    transform:translateY(14px);
+    animation:riseIn 0.6s ease forwards;
+  }
+  .receipt.b{animation-delay:0.12s;}
+  @keyframes riseIn{
+    to{opacity:1; transform:translateY(0);}
+  }
+  .receipt::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:-9px;
+    height:18px;
+    background-image:
+      linear-gradient(-45deg, var(--ink) 6px, transparent 0),
+      linear-gradient(45deg, var(--ink) 6px, transparent 0);
+    background-position:left bottom;
+    background-repeat:repeat-x;
+    background-size:16px 18px;
+  }
+  .receipt-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    color:var(--text-dark-dim);
+    margin-bottom:2px;
+  }
+  .receipt-heading{
+    font-weight:700;
+    font-size:1.3rem;
+    margin:0 0 18px;
+  }
+  .receipt-line{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.86rem;
+    padding:9px 0;
+    border-bottom:1px dashed var(--rule-paper);
+  }
+  .receipt-line:last-of-type{border-bottom:none;}
+  .receipt-line .label{color:var(--text-dark-dim);}
+  .receipt-line .val{font-weight:500; text-align:right;}
+
+  .stamp{
+    margin-top:22px;
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    padding:8px 14px;
+    border:2px solid currentColor;
+    transform:rotate(-3deg);
+  }
+  .stamp.waste{color:var(--waste);}
+  .stamp.value{color:var(--value);}
+
+  .receipt-caption{
+    text-align:center;
+    color:var(--text-light-dim);
+    font-size:0.92rem;
+    margin-top:26px;
+  }
+
+  /* ---------- CALCULATOR ---------- */
+  .calc{
+    margin-top:64px;
+    padding-top:56px;
+    border-top:1px solid var(--rule);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:36px;
+    align-items:start;
+  }
+  .calc-title{
+    font-size:1.3rem;
+    font-weight:600;
+    margin-bottom:24px;
+  }
+  .calc-field{
+    display:block;
+    margin-bottom:22px;
+  }
+  .calc-field span{
+    display:block;
+    font-size:0.88rem;
+    color:var(--text-light-dim);
+    margin-bottom:8px;
+  }
+  .calc-field input[type="number"]{
+    width:100%;
+    background:var(--ink-soft);
+    border:1px solid var(--rule);
+    color:var(--text-light);
+    padding:12px 14px;
+    font-size:1rem;
+    border-radius:var(--radius);
+  }
+  .calc-field input[type="number"]:focus-visible{outline:2px solid var(--waste); outline-offset:2px;}
+  .calc-field input[type="range"]{
+    width:100%;
+    accent-color:var(--waste);
+    cursor:pointer;
+  }
+  .calc-note{
+    font-size:0.82rem;
+    color:var(--text-light-dim);
+    margin:0;
+  }
+  .calc-output{margin:0;}
+  .calc-output::after{display:none;}
+
+  @media (max-width: 860px){
+    .calc{grid-template-columns:1fr;}
+  }
+
+  .roi-outputs{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:20px;
+    align-items:center;
+  }
+  .roi-receipt{margin:0;}
+  .roi-receipt::after{display:none;}
+  .roi-arrow{
+    font-size:1.5rem;
+    color:var(--text-light-dim);
+    text-align:center;
+  }
+  @media (max-width: 860px){
+    .roi-outputs{grid-template-columns:1fr;}
+    .roi-arrow{transform:rotate(90deg); padding:4px 0;}
+  }
+
+  /* ---------- LEDGER TOGGLE ---------- */
+  .ledger-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    background:none;
+    border:none;
+    padding:0;
+    cursor:pointer;
+    color:inherit;
+    text-align:left;
+    margin-bottom:18px;
+  }
+  .ledger-toggle:focus-visible{outline:2px solid var(--text-light); outline-offset:4px;}
+  .ledger-toggle h3{margin:0;}
+  .ledger-toggle .plus{
+    font-size:1.1rem;
+    color:var(--text-light-dim);
+    transition:transform 0.2s ease;
+    flex-shrink:0;
+  }
+  .ledger-toggle[aria-expanded="true"] .plus{transform:rotate(45deg); color:var(--waste);}
+  .ledger-detail{
+    overflow:hidden;
+    max-height:0;
+    transition:max-height 0.3s ease;
+  }
+  .ledger-detail > p{
+    margin:0;
+    color:var(--text-light-dim);
+    font-size:0.88rem;
+    padding-top:14px;
+  }
+  .ledger-group.open .ledger-detail{max-height:200px;}
+
+  /* ---------- SECTION SHARED ---------- */
+  section{
+    padding:96px 0;
+    border-top:1px solid var(--rule);
+  }
+  .section-head{
+    max-width:60ch;
+    margin-bottom:52px;
+  }
+  .section-head h2{
+    font-size:clamp(1.8rem, 3.4vw, 2.5rem);
+    font-weight:700;
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .section-head p{
+    color:var(--text-light-dim);
+    font-size:1.05rem;
+    margin:0;
+  }
+
+  /* ---------- SERVICES (LEDGER) ---------- */
+  .ledger{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:0;
+    border-top:1px solid var(--rule);
+  }
+  .ledger-group{
+    padding:30px 26px;
+    border-bottom:1px solid var(--rule);
+    border-right:1px solid var(--rule);
+  }
+  .ledger-group:last-child{border-right:none;}
+  .ledger-group h3{
+    font-size:1.15rem;
+    font-weight:600;
+    margin:0 0 18px;
+  }
+  .ledger-group ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .ledger-group li{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.9rem;
+    color:var(--text-light-dim);
+    padding:10px 0;
+    border-top:1px dashed var(--rule);
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .ledger-group li:first-of-type{border-top:none;}
+  .ledger-group li span.tag{
+    color:var(--text-light-dim);
+    font-size:0.72rem;
+    align-self:center;
+  }
+
+  /* ---------- PICK LIST (interactive service builder) ---------- */
+  .pick-list{list-style:none; margin:0; padding:0;}
+  .pick-list li{border-top:1px dashed var(--rule); padding:0;}
+  .pick-list li:first-of-type{border-top:none;}
+  .pick-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    width:100%;
+    background:none;
+    border:none;
+    color:var(--text-light-dim);
+    padding:12px 4px;
+    cursor:pointer;
+    font-family:inherit;
+    text-align:left;
+    transition:color 0.15s ease;
+  }
+  .pick-item:hover, .pick-item:focus-visible{color:var(--text-light);}
+  .pick-item:focus-visible{outline:2px solid var(--text-light); outline-offset:2px;}
+  .pick-box{
+    flex-shrink:0;
+    width:16px;
+    height:16px;
+    border:1px solid var(--rule-paper, var(--rule));
+    border-color:var(--text-light-dim);
+    position:relative;
+  }
+  .pick-item.selected .pick-box{
+    background:var(--value);
+    border-color:var(--value);
+  }
+  .pick-item.selected .pick-box::after{
+    content:"";
+    position:absolute;
+    left:4px; top:1px;
+    width:4px; height:8px;
+    border:solid var(--ink);
+    border-width:0 2px 2px 0;
+    transform:rotate(45deg);
+  }
+  .pick-name{
+    flex:1;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.9rem;
+  }
+  .pick-item.selected .pick-name{color:var(--text-light);}
+  .pick-price{
+    font-size:0.82rem;
+    color:var(--text-light-dim);
+    flex-shrink:0;
+  }
+  .pick-item.selected .pick-price{color:var(--value);}
+
+  /* ---------- BUNDLE SUMMARY ---------- */
+  .bundle{
+    margin-top:56px;
+    padding-top:48px;
+    border-top:1px solid var(--rule);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:36px;
+    align-items:start;
+  }
+  .bundle-title{
+    font-size:1.15rem;
+    font-weight:600;
+    margin-bottom:16px;
+  }
+  .bundle-empty{
+    color:var(--text-light-dim);
+    font-size:0.9rem;
+  }
+  .bundle-items{list-style:none; margin:0; padding:0;}
+  .bundle-items li{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.88rem;
+    color:var(--text-light-dim);
+    padding:8px 0;
+    border-top:1px dashed var(--rule);
+  }
+  .bundle-items li:first-child{border-top:none;}
+  .bundle-receipt{margin:0;}
+  .bundle-cta{
+    margin-top:18px;
+    width:100%;
+    justify-content:center;
+  }
+
+  @media (max-width: 860px){
+    .bundle{grid-template-columns:1fr;}
+  }
+
+  /* ---------- PRICING ---------- */
+  .pricing-tiers{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    margin-bottom:24px;
+  }
+  .tier{
+    border:1px solid var(--rule);
+    padding:28px 24px;
+  }
+  .tier.featured{
+    border-color:var(--waste);
+    background:var(--ink-soft);
+  }
+  .tier-name{
+    font-size:0.95rem;
+    font-weight:600;
+    margin-bottom:12px;
+    color:var(--text-light-dim);
+  }
+  .tier.featured .tier-name{color:var(--waste);}
+  .tier-price{
+    font-size:1.5rem;
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .tier-price span{
+    font-size:0.85rem;
+    color:var(--text-light-dim);
+    font-weight:400;
+  }
+  .tier-desc{
+    font-size:0.9rem;
+    color:var(--text-light-dim);
+    margin:0 0 18px;
+  }
+  .tier-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .tier-list li{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    padding:8px 0;
+    border-top:1px dashed var(--rule);
+    color:var(--text-light-dim);
+  }
+  .tier-list li:first-child{border-top:none;}
+  .tier-list li strong{color:var(--text-light);}
+
+  .tier-note{
+    font-size:0.85rem;
+    color:var(--text-light-dim);
+    max-width:70ch;
+    margin:0 0 56px;
+  }
+  .tier-note strong{
+    color:var(--text-light);
+    font-weight:600;
+  }
+
+  .compare{
+    border-top:1px solid var(--rule);
+    padding-top:8px;
+  }
+  .compare-head, .compare-row{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid var(--rule);
+    align-items:center;
+  }
+  .compare-head{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    color:var(--text-light-dim);
+    font-weight:500;
+  }
+  .compare-head .highlight, .compare-row .highlight{color:var(--value); font-weight:600;}
+  .compare-row{font-size:0.88rem;}
+  .compare-row .mono{font-family:'IBM Plex Mono', monospace; font-size:0.82rem;}
+  .compare-label{color:var(--text-light-dim);}
+
+  @media (max-width: 860px){
+    .pricing-tiers{grid-template-columns:1fr;}
+    .compare-head, .compare-row{
+      grid-template-columns:1fr;
+      gap:4px;
+      padding:16px 0;
+    }
+    .compare-head{display:none;}
+    .compare-row span::before{
+      content:attr(data-label);
+      display:block;
+      font-family:'IBM Plex Mono', monospace;
+      font-size:0.72rem;
+      color:var(--text-light-dim);
+      margin-bottom:2px;
+    }
+  }
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:36px;
+  }
+  .step{
+    padding-top:18px;
+    border-top:1px solid var(--rule);
+  }
+  .step .num{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--waste);
+    font-size:0.85rem;
+    margin-bottom:14px;
+    display:block;
+  }
+  .step h3{
+    font-size:1.15rem;
+    font-weight:600;
+    margin:0 0 10px;
+  }
+  .step p{
+    color:var(--text-light-dim);
+    font-size:0.96rem;
+    margin:0;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:56px;
+    align-items:start;
+  }
+  .about-grid h2{
+    font-size:clamp(1.8rem, 3.2vw, 2.3rem);
+    font-weight:700;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .about-body p{
+    color:var(--text-light-dim);
+    font-size:1.05rem;
+    margin:0 0 20px;
+  }
+  .skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:22px;
+  }
+  .skill{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    padding:7px 12px;
+    border:1px solid var(--rule);
+    color:var(--text-light-dim);
+  }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    text-align:left;
+    padding:100px 0;
+  }
+  .final-cta h2{
+    font-size:clamp(2rem, 4.6vw, 3.2rem);
+    font-weight:700;
+    max-width:16ch;
+    margin:0 0 32px;
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--rule);
+    padding:36px 0;
+  }
+  .footer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .footer-row p{
+    margin:0;
+    color:var(--text-light-dim);
+    font-size:0.88rem;
+  }
+  .footer-links{
+    display:flex;
+    gap:20px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .footer-links a{
+    text-decoration:none;
+    color:var(--text-light-dim);
+    font-size:0.88rem;
+  }
+  .footer-links a:hover{color:var(--text-light);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .receipts{grid-template-columns:1fr; gap:44px;}
+    .ledger{grid-template-columns:1fr;}
+    .ledger-group{border-right:none;}
+    .steps{grid-template-columns:1fr; gap:28px;}
+    .about-grid{grid-template-columns:1fr; gap:24px;}
+  }
+
+  @media (max-width: 640px){
+    .nav-links, .nav-cta{display:none;}
+    .menu-toggle{display:inline-block;}
+    nav.wrap.open ~ .mobile-panel{display:flex;}
+    .mobile-panel{
+      display:none;
+      flex-direction:column;
+      gap:2px;
+      padding:12px 28px 20px;
+      border-top:1px solid var(--rule);
+    }
+    .mobile-panel a{
+      padding:12px 0;
+      text-decoration:none;
+      color:var(--text-light-dim);
+      border-bottom:1px solid var(--rule);
+      font-size:0.98rem;
+    }
+    .hero{padding:56px 0 48px;}
+    section{padding:64px 0;}
+    .final-cta{padding:72px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap" id="mainNav">
+    <a href="#top" class="brand">DARVIN</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#roi">ROI</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary nav-cta">Book a call</a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobilePanel">Menu</button>
+  </nav>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#services">Services</a>
+    <a href="#roi">ROI</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#approach">Approach</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" style="border-top:none;">
+    <div class="wrap">
+      <h1>Are you ready to stop wasting your money?</h1>
+      <p class="sub">I'm Darvin Gaur. I run paid ads, build organic growth and the website behind it — so founders stop paying agencies for reports they don't read and results they can't trace.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Book a free ad audit</a>
+        <a href="#services" class="btn btn-ghost">See what I do</a>
+      </div>
+
+      <div class="receipts">
+        <div class="receipt a">
+          <div class="receipt-title">RECEIPT NO. 001</div>
+          <div class="receipt-heading">The agency bill</div>
+          <div class="receipt-line"><span class="label">Monthly retainer</span><span class="val">₹40,000–₹80,000</span></div>
+          <div class="receipt-line"><span class="label">Reports you don't read</span><span class="val">Included</span></div>
+          <div class="receipt-line"><span class="label">New account manager, every 6 months</span><span class="val">Included</span></div>
+          <div class="receipt-line"><span class="label">Clear answer on what's working</span><span class="val">Not included</span></div>
+          <span class="stamp waste">TOTAL VALUE: UNCLEAR</span>
+        </div>
+        <div class="receipt b">
+          <div class="receipt-title">RECEIPT NO. 002</div>
+          <div class="receipt-heading">Working with Darvin</div>
+          <div class="receipt-line"><span class="label">Monthly retainer</span><span class="val">You keep it</span></div>
+          <div class="receipt-line"><span class="label">Reports you actually understand</span><span class="val">Included</span></div>
+          <div class="receipt-line"><span class="label">One person who knows your business</span><span class="val">Me</span></div>
+          <div class="receipt-line"><span class="label">Clear answer on what's working</span><span class="val">Every week</span></div>
+          <span class="stamp value">TOTAL VALUE: TRACEABLE</span>
+        </div>
+      </div>
+      <p class="receipt-caption">This isn't a knock on every agency — it's why I built this differently.</p>
+    </div>
+  </section>
+
+  <section id="roi">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Where you are vs. where you could be</h2>
+        <p>Put in your real numbers. This isn't a promise — it's what a modest, honest improvement in lead volume does to your revenue.</p>
+      </div>
+
+      <div class="calc roi-calc">
+        <div class="calc-inputs">
+          <label class="calc-field">
+            <span>Monthly ad spend (₹)</span>
+            <input type="number" id="roiSpend" class="mono" value="150000" min="0" step="5000">
+          </label>
+          <label class="calc-field">
+            <span>Leads generated per month</span>
+            <input type="number" id="roiLeads" class="mono" value="40" min="1" step="1">
+          </label>
+          <label class="calc-field">
+            <span>Close rate <span id="roiCloseVal">15</span>%</span>
+            <input type="range" id="roiClose" min="1" max="60" value="15">
+          </label>
+          <label class="calc-field">
+            <span>Average deal value (₹)</span>
+            <input type="number" id="roiDeal" class="mono" value="20000" min="0" step="1000">
+          </label>
+          <label class="calc-field">
+            <span>Expected lift in leads working together <span id="roiLiftVal">25</span>%</span>
+            <input type="range" id="roiLift" min="0" max="60" value="25">
+          </label>
+          <p class="calc-note">The lift percentage is an adjustable, honest estimate — not a guarantee. Set it to whatever you'd consider a fair, believable improvement.</p>
+        </div>
+
+        <div class="roi-outputs">
+          <div class="receipt roi-receipt">
+            <div class="receipt-title">RECEIPT NO. 004</div>
+            <div class="receipt-heading">Where you are now</div>
+            <div class="receipt-line"><span class="label">Leads / month</span><span class="val mono" id="roiOutLeadsNow">40</span></div>
+            <div class="receipt-line"><span class="label">Cost per lead</span><span class="val mono" id="roiOutCPLNow">₹3,750</span></div>
+            <div class="receipt-line"><span class="label">Deals closed</span><span class="val mono" id="roiOutDealsNow">6</span></div>
+            <div class="receipt-line"><span class="label">Revenue</span><span class="val mono" id="roiOutRevNow">₹1,20,000</span></div>
+            <span class="stamp waste" id="roiStampNow">ROI: -20%</span>
+          </div>
+          <div class="roi-arrow mono">→</div>
+          <div class="receipt roi-receipt">
+            <div class="receipt-title">RECEIPT NO. 005</div>
+            <div class="receipt-heading">Where you could be</div>
+            <div class="receipt-line"><span class="label">Leads / month</span><span class="val mono" id="roiOutLeadsAfter">50</span></div>
+            <div class="receipt-line"><span class="label">Cost per lead</span><span class="val mono" id="roiOutCPLAfter">₹3,000</span></div>
+            <div class="receipt-line"><span class="label">Deals closed</span><span class="val mono" id="roiOutDealsAfter">7</span></div>
+            <div class="receipt-line"><span class="label">Revenue</span><span class="val mono" id="roiOutRevAfter">₹1,50,000</span></div>
+            <span class="stamp value" id="roiStampAfter">ROI: 0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What I actually do</h2>
+        <p>Three parts of growth that are usually sold separately, by three different vendors. I run them together so nothing falls through the cracks. Tap what you need — the receipt below totals it up.</p>
+      </div>
+      <div class="ledger">
+        <div class="ledger-group">
+          <button class="ledger-toggle" aria-expanded="false">
+            <h3>Paid ads</h3>
+            <span class="plus mono">+</span>
+          </button>
+          <ul class="pick-list">
+            <li><button class="pick-item" data-name="PPC &amp; Google Ads" data-price="12000"><span class="pick-box"></span><span class="pick-name">PPC &amp; Google Ads</span><span class="pick-price mono">₹12,000</span></button></li>
+            <li><button class="pick-item" data-name="LinkedIn Ads" data-price="15000"><span class="pick-box"></span><span class="pick-name">LinkedIn Ads</span><span class="pick-price mono">₹15,000</span></button></li>
+            <li><button class="pick-item" data-name="Meta Ads" data-price="12000"><span class="pick-box"></span><span class="pick-name">Meta Ads</span><span class="pick-price mono">₹12,000</span></button></li>
+          </ul>
+          <div class="ledger-detail">
+            <p>Campaign structure, keyword and audience targeting, creative testing, budget pacing, and a weekly read on cost per lead and cost per sale — not just impressions and clicks.</p>
+          </div>
+        </div>
+        <div class="ledger-group">
+          <button class="ledger-toggle" aria-expanded="false">
+            <h3>Organic growth</h3>
+            <span class="plus mono">+</span>
+          </button>
+          <ul class="pick-list">
+            <li><button class="pick-item" data-name="SEO" data-price="15000"><span class="pick-box"></span><span class="pick-name">SEO</span><span class="pick-price mono">₹15,000</span></button></li>
+            <li><button class="pick-item" data-name="AEO" data-price="10000"><span class="pick-box"></span><span class="pick-name">AEO <span class="tag">Answer Engine Opt.</span></span><span class="pick-price mono">₹10,000</span></button></li>
+            <li><button class="pick-item" data-name="GEO" data-price="10000"><span class="pick-box"></span><span class="pick-name">GEO <span class="tag">Generative Engine Opt.</span></span><span class="pick-price mono">₹10,000</span></button></li>
+          </ul>
+          <div class="ledger-detail">
+            <p>On-page and technical SEO, content that ranks, and positioning your site to be surfaced correctly by AI answer engines and generative search — the newest layer most agencies aren't set up to handle yet.</p>
+          </div>
+        </div>
+        <div class="ledger-group">
+          <button class="ledger-toggle" aria-expanded="false">
+            <h3>Development</h3>
+            <span class="plus mono">+</span>
+          </button>
+          <ul class="pick-list">
+            <li><button class="pick-item" data-name="Website Development" data-price="0" data-onetime="From ₹25,000"><span class="pick-box"></span><span class="pick-name">Website Development</span><span class="pick-price mono">From ₹25,000</span></button></li>
+            <li><button class="pick-item" data-name="Customised Website" data-price="0" data-onetime="From ₹60,000"><span class="pick-box"></span><span class="pick-name">Customised Website</span><span class="pick-price mono">From ₹60,000</span></button></li>
+            <li><button class="pick-item" data-name="Landing Page" data-price="0" data-onetime="₹5,999"><span class="pick-box"></span><span class="pick-name">Landing Page</span><span class="pick-price mono">₹5,999</span></button></li>
+            <li><button class="pick-item" data-name="Application Development" data-price="0" data-onetime="Custom quote"><span class="pick-box"></span><span class="pick-name">Application Development</span><span class="pick-price mono">Custom quote</span></button></li>
+          </ul>
+          <div class="ledger-detail">
+            <p>A site built to convert the traffic you're paying for, not just to look good. Website Development covers a clean, functional build on a proven structure — Customised Website is fully designed around your brand from scratch. Landing Page is a focused, single-page build made to convert one specific campaign or offer. Application development for when your growth needs more than a website.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bundle">
+        <div class="bundle-list">
+          <div class="bundle-title">Your bundle</div>
+          <p class="bundle-empty" id="bundleEmpty">Nothing selected yet — tap any service above.</p>
+          <ul class="bundle-items" id="bundleItems"></ul>
+        </div>
+        <div class="receipt bundle-receipt">
+          <div class="receipt-title">RECEIPT NO. 006</div>
+          <div class="receipt-heading">Estimated monthly total</div>
+          <div class="receipt-line"><span class="label">Selected services</span><span class="val mono" id="bundleCount">0</span></div>
+          <div class="receipt-line"><span class="label">Estimated monthly fee</span><span class="val mono" id="bundleTotal">₹0</span></div>
+          <div class="receipt-line"><span class="label">One-time items</span><span class="val mono" id="bundleOnetime">None selected</span></div>
+          <a href="#contact" class="btn btn-primary bundle-cta">Get an exact quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What it actually costs</h2>
+        <p>Agencies price in office rent, junior staff and a sales team. I don't carry that overhead — so the fee reflects the work, not the machine behind it. Flat fee, always. Never a percentage of your ad spend.</p>
+      </div>
+
+      <div class="pricing-tiers">
+        <div class="tier">
+          <div class="tier-name">Starter</div>
+          <div class="tier-price mono">₹20,000<span>/mo</span></div>
+          <p class="tier-desc">One ad platform, plus basic SEO. Good for testing the waters before going wider.</p>
+          <ul class="tier-list">
+            <li>Google Ads <strong>or</strong> Meta Ads</li>
+            <li>Basic on-page SEO</li>
+            <li>Monthly report, plain language</li>
+          </ul>
+        </div>
+        <div class="tier featured">
+          <div class="tier-name">Growth</div>
+          <div class="tier-price mono">₹35,000<span>/mo</span></div>
+          <p class="tier-desc">The most common fit — multiple ad channels working with organic instead of against it.</p>
+          <ul class="tier-list">
+            <li>Google Ads + Meta Ads</li>
+            <li>SEO + AEO</li>
+            <li>Weekly numbers, not monthly surprises</li>
+          </ul>
+        </div>
+        <div class="tier">
+          <div class="tier-name">Partner</div>
+          <div class="tier-price mono">₹50,000<span>/mo</span></div>
+          <p class="tier-desc">Every channel, one person, one strategy. For founders ready to stop patchworking vendors.</p>
+          <ul class="tier-list">
+            <li>Google + Meta + LinkedIn Ads</li>
+            <li>SEO + AEO + GEO</li>
+            <li>Ongoing site improvements</li>
+          </ul>
+        </div>
+      </div>
+      <p class="tier-note"><strong>Website builds and app development are quoted separately as one-time projects — website from ₹25,000, apps scoped individually.</strong></p>
+
+      <div class="compare">
+        <div class="compare-head">
+          <span></span>
+          <span>Agency</span>
+          <span>Typical freelancer</span>
+          <span class="highlight">Darvin</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-label" data-label="">Monthly fee (multi-channel)</span>
+          <span class="mono" data-label="Agency">₹75,000–2,00,000+</span>
+          <span class="mono" data-label="Typical freelancer">₹15,000–50,000</span>
+          <span class="mono highlight" data-label="Darvin">₹20,000–50,000</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-label" data-label="">Who does the work</span>
+          <span data-label="Agency">Often a junior, assigned</span>
+          <span data-label="Typical freelancer">Usually one person</span>
+          <span class="highlight" data-label="Darvin">Me, directly</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-label" data-label="">Ad spend fee model</span>
+          <span data-label="Agency">Often % of spend</span>
+          <span data-label="Typical freelancer">Varies</span>
+          <span class="highlight" data-label="Darvin">Flat fee, always</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-label" data-label="">Point of contact</span>
+          <span data-label="Agency">Rotates over time</span>
+          <span data-label="Typical freelancer">Stable</span>
+          <span class="highlight" data-label="Darvin">Stable</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-label" data-label="">Backup if unavailable</span>
+          <span data-label="Agency">Team coverage</span>
+          <span data-label="Typical freelancer">None</span>
+          <span class="highlight" data-label="Darvin">Documented process, response-time commitment</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How this actually works</h2>
+        <p>No 40-page onboarding deck. Three steps, in this order, every time.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="num mono">01</span>
+          <h3>Audit</h3>
+          <p>I go through your current spend, site and rankings and tell you honestly what's working and what's burning cash.</p>
+        </div>
+        <div class="step">
+          <span class="num mono">02</span>
+          <h3>Strategy</h3>
+          <p>We agree on one plan across ads, organic and your website — not three disconnected vendors pulling in different directions.</p>
+        </div>
+        <div class="step">
+          <span class="num mono">03</span>
+          <h3>Execution</h3>
+          <p>I run it, you see it. Weekly numbers, no jargon, no disappearing for a month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <h2>Why one person instead of a team of strangers</h2>
+      <div class="about-body">
+        <p>Most agencies hand you off to whoever's free that week. I work with a small number of founders at a time, across Meta, Google, LinkedIn, SEO, AEO, GEO and the website itself — because growth breaks when these are handled by five people who never talk to each other.</p>
+        <p>If something isn't working, you'll hear it from me directly — not buried in a slide with a green arrow pointing up.</p>
+        <div class="skills">
+          <span class="skill">Google Ads</span>
+          <span class="skill">Meta Ads</span>
+          <span class="skill">LinkedIn Ads</span>
+          <span class="skill">SEO</span>
+          <span class="skill">AEO</span>
+          <span class="skill">GEO</span>
+          <span class="skill">Website Dev</span>
+          <span class="skill">App Dev</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="border-bottom:1px solid var(--rule);">
+    <div class="wrap final-cta">
+      <h2>Stop wasting your money. Start tracing it.</h2>
+      <div class="hero-ctas">
+        <a href="mailto:hello@darvin.co" class="btn btn-primary">Book a free ad audit</a>
+        <a href="#services" class="btn btn-ghost">Back to services</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <p>Darvin Gaur — Growth, not guesswork.</p>
+    <ul class="footer-links">
+      <li><a href="mailto:hello@darvin.co">hello@darvin.co</a></li>
+      <li><a href="#top">Jaipur, India</a></li>
+    </ul>
+    <p>&copy; 2026 Darvin</p>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mainNav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+
+  function formatINR(num){
+    return '₹' + Math.round(num).toLocaleString('en-IN');
+  }
+
+  // ---- ROI calculator ----
+  const roiSpend = document.getElementById('roiSpend');
+  const roiLeads = document.getElementById('roiLeads');
+  const roiClose = document.getElementById('roiClose');
+  const roiCloseVal = document.getElementById('roiCloseVal');
+  const roiDeal = document.getElementById('roiDeal');
+  const roiLift = document.getElementById('roiLift');
+  const roiLiftVal = document.getElementById('roiLiftVal');
+
+  const roiOutLeadsNow = document.getElementById('roiOutLeadsNow');
+  const roiOutCPLNow = document.getElementById('roiOutCPLNow');
+  const roiOutDealsNow = document.getElementById('roiOutDealsNow');
+  const roiOutRevNow = document.getElementById('roiOutRevNow');
+  const roiStampNow = document.getElementById('roiStampNow');
+
+  const roiOutLeadsAfter = document.getElementById('roiOutLeadsAfter');
+  const roiOutCPLAfter = document.getElementById('roiOutCPLAfter');
+  const roiOutDealsAfter = document.getElementById('roiOutDealsAfter');
+  const roiOutRevAfter = document.getElementById('roiOutRevAfter');
+  const roiStampAfter = document.getElementById('roiStampAfter');
+
+  function updateRoi(){
+    const spend = Math.max(0, Number(roiSpend.value) || 0);
+    const leads = Math.max(0.0001, Number(roiLeads.value) || 0);
+    const closePct = Number(roiClose.value);
+    const deal = Math.max(0, Number(roiDeal.value) || 0);
+    const liftPct = Number(roiLift.value);
+
+    roiCloseVal.textContent = closePct;
+    roiLiftVal.textContent = liftPct;
+
+    // Now
+    const dealsNow = leads * (closePct / 100);
+    const revNow = dealsNow * deal;
+    const cplNow = spend / leads;
+    const roiNow = spend > 0 ? ((revNow - spend) / spend) * 100 : 0;
+
+    // Projected
+    const leadsAfter = leads * (1 + liftPct / 100);
+    const dealsAfter = leadsAfter * (closePct / 100);
+    const revAfter = dealsAfter * deal;
+    const cplAfter = spend / leadsAfter;
+    const roiAfter = spend > 0 ? ((revAfter - spend) / spend) * 100 : 0;
+
+    roiOutLeadsNow.textContent = leads.toFixed(0);
+    roiOutCPLNow.textContent = formatINR(cplNow);
+    roiOutDealsNow.textContent = dealsNow.toFixed(1);
+    roiOutRevNow.textContent = formatINR(revNow);
+    roiStampNow.textContent = 'ROI: ' + roiNow.toFixed(0) + '%';
+
+    roiOutLeadsAfter.textContent = leadsAfter.toFixed(0);
+    roiOutCPLAfter.textContent = formatINR(cplAfter);
+    roiOutDealsAfter.textContent = dealsAfter.toFixed(1);
+    roiOutRevAfter.textContent = formatINR(revAfter);
+    roiStampAfter.textContent = 'ROI: ' + roiAfter.toFixed(0) + '%';
+  }
+
+  [roiSpend, roiLeads, roiClose, roiDeal, roiLift].forEach(el => {
+    el.addEventListener('input', updateRoi);
+  });
+  updateRoi();
+
+  // ---- Expandable service ledger ----
+  document.querySelectorAll('.ledger-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = btn.closest('.ledger-group');
+      const isOpen = group.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen);
+    });
+  });
+
+  // ---- Build-your-own bundle ----
+  const bundleEmpty = document.getElementById('bundleEmpty');
+  const bundleItemsEl = document.getElementById('bundleItems');
+  const bundleCount = document.getElementById('bundleCount');
+  const bundleTotal = document.getElementById('bundleTotal');
+  const bundleOnetime = document.getElementById('bundleOnetime');
+
+  function updateBundle(){
+    const selected = Array.from(document.querySelectorAll('.pick-item.selected'));
+    bundleCount.textContent = selected.length;
+
+    if(selected.length === 0){
+      bundleEmpty.style.display = 'block';
+      bundleItemsEl.innerHTML = '';
+    } else {
+      bundleEmpty.style.display = 'none';
+      bundleItemsEl.innerHTML = selected.map(item => {
+        const price = Number(item.dataset.price);
+        const priceLabel = price > 0 ? formatINR(price) : (item.dataset.onetime || 'One-time');
+        return `<li>${item.dataset.name.replace(/<[^>]+>/g,'')} — ${priceLabel}</li>`;
+      }).join('');
+    }
+
+    const monthlyTotal = selected.reduce((sum, item) => sum + Number(item.dataset.price), 0);
+    bundleTotal.textContent = formatINR(monthlyTotal);
+
+    const onetimeItems = selected.filter(item => Number(item.dataset.price) === 0);
+    bundleOnetime.textContent = onetimeItems.length
+      ? onetimeItems.map(i => i.dataset.name.replace(/<[^>]+>/g,'')).join(', ')
+      : 'None selected';
+  }
+
+  document.querySelectorAll('.pick-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('selected');
+      updateBundle();
+    });
+  });
+  updateBundle();
+</script>
+
+</body>
+</html>
