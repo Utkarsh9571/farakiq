@@ -55,3 +55,4 @@ Thumbs.db
 # Scratch and temporary artifact logs
 scratch/
 .system_generated/
+node_modules
