@@ -11,18 +11,30 @@ export interface ServiceItem {
 
 export interface ServiceCategory {
   id: string;
+  number: string;
   title: string;
   badge: string;
+  tagline: string;
   description: string;
+  accentColor: string;
+  accentBg: string;
+  supportingTech: string[];
+  primaryRoute: string;
   items: ServiceItem[];
 }
 
 export const SERVICES_DATA: ServiceCategory[] = [
   {
     id: "tech-dev",
+    number: "01",
     title: "Development & AI Systems",
-    badge: "ENGINEERING VERTICAL",
-    description: "Modern business websites, browser web applications, intelligent AI chatbots, and automated workflows engineered to eliminate repetitive manual work and connect your software tools.",
+    badge: "01 // ENGINEERING",
+    tagline: "Build the systems behind your business.",
+    description: "We engineer custom web platforms, conversion-ready company websites, 24/7 AI customer assistants, and automated operations that eliminate repetitive work and connect your software.",
+    accentColor: "var(--waste)",
+    accentBg: "rgba(255, 74, 52, 0.04)",
+    supportingTech: ["Next.js", "React", "TypeScript", "Node.js", "n8n", "REST APIs", "PostgreSQL", "MongoDB", "LLMs"],
+    primaryRoute: "/services/web-development",
     items: [
       {
         id: "landing-pages",
@@ -91,9 +103,15 @@ export const SERVICES_DATA: ServiceCategory[] = [
   },
   {
     id: "paid-ads",
-    title: "Paid Advertising & Performance",
-    badge: "GROWTH VERTICAL",
-    description: "Campaign structure, keyword and audience targeting, creative testing, budget pacing, and weekly reads on cost-per-lead and cost-per-sale across major ad networks.",
+    number: "02",
+    title: "Paid Growth & Performance",
+    badge: "02 // PERFORMANCE",
+    tagline: "Put your business in front of buyers.",
+    description: "We put your business in front of customers who are actively searching for what you sell — with rigorous tracking, rapid creative testing, and transparent weekly numbers.",
+    accentColor: "var(--accent-emerald)",
+    accentBg: "rgba(16, 185, 129, 0.04)",
+    supportingTech: ["Google Ads", "Meta Ads", "LinkedIn Ads", "Conversions API (CAPI)", "GA4", "Tag Manager"],
+    primaryRoute: "/services/google-ads",
     items: [
       {
         id: "ppc-google",
@@ -105,6 +123,15 @@ export const SERVICES_DATA: ServiceCategory[] = [
         tag: "Paid Search",
       },
       {
+        id: "meta-ads",
+        name: "Meta Ads (FB & IG)",
+        price: 12000,
+        priceDisplay: "₹12,000 / mo",
+        billingType: "monthly",
+        shortDesc: "Direct-response Facebook & Instagram campaigns driven by structured creative and angle testing.",
+        tag: "Social Ads",
+      },
+      {
         id: "linkedin-ads",
         name: "LinkedIn Ads",
         price: 15000,
@@ -113,22 +140,19 @@ export const SERVICES_DATA: ServiceCategory[] = [
         shortDesc: "Target decision-makers and high-value B2B accounts to generate qualified commercial consultations.",
         tag: "B2B Ads",
       },
-      {
-        id: "meta-ads",
-        name: "Meta Ads",
-        price: 12000,
-        priceDisplay: "₹12,000 / mo",
-        billingType: "monthly",
-        shortDesc: "Direct-response Facebook & Instagram campaigns driven by structured creative and angle testing.",
-        tag: "Social Ads",
-      },
     ],
   },
   {
     id: "organic-growth",
-    title: "Organic Growth & AI Search (AEO/GEO)",
-    badge: "SEARCH VERTICAL",
-    description: "On-page and technical SEO, content that ranks, and positioning your brand to be surfaced correctly by AI answer engines and generative search networks.",
+    number: "03",
+    title: "Organic Search & Discovery",
+    badge: "03 // DISCOVERY",
+    tagline: "Own the search results that compound.",
+    description: "Make your business effortless to find — both in Google's organic results and across the modern AI answer engines (ChatGPT, Perplexity) your customers use every day.",
+    accentColor: "var(--accent-cyan)",
+    accentBg: "rgba(0, 229, 255, 0.04)",
+    supportingTech: ["Technical SEO", "Schema.org Graph", "AEO / Perplexity", "Generative Search", "Core Web Vitals"],
+    primaryRoute: "/services/seo",
     items: [
       {
         id: "seo",

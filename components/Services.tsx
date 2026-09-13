@@ -15,7 +15,10 @@ const SERVICE_ROUTE_MAP: Record<string, { href: string; label: string }> = {
   "internal-tools": { href: "/services/web-development", label: "Internal Tools" },
   "ppc-google": { href: "/services/google-ads", label: "Google Ads" },
   "meta-ads": { href: "/services/meta-ads", label: "Meta Ads" },
+  "linkedin-ads": { href: "/services/google-ads", label: "LinkedIn Ads" },
   "seo": { href: "/services/seo", label: "SEO / AEO" },
+  "aeo": { href: "/services/seo", label: "AEO" },
+  "geo": { href: "/services/seo", label: "GEO" },
 };
 
 function formatINR(num: number): string {
@@ -23,21 +26,7 @@ function formatINR(num: number): string {
 }
 
 export default function Services() {
-  const [activeTabId, setActiveTabId] = useState<string>("all");
-  const [openGroups, setOpenGroups] = useState<Record<number, boolean>>({});
   const [selectedServices, setSelectedServices] = useState<Record<string, ServiceItem>>({});
-
-  const filteredCategories: ServiceCategory[] = SERVICES_DATA.filter((cat) => {
-    if (activeTabId === "all") return true;
-    return cat.id === activeTabId;
-  });
-
-  const toggleGroup = (index: number) => {
-    setOpenGroups((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
-  };
 
   const toggleService = (item: ServiceItem) => {
     setSelectedServices((prev) => {
@@ -61,84 +50,91 @@ export default function Services() {
   return (
     <section id="services">
       <div className="wrap">
+        {/* Section Header */}
         <motion.div
           className="section-head"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
+          style={{ maxWidth: "76ch" }}
         >
           <div className="badge-tech">
             <span className="dot" />
-            <span>MULTIDISCIPLINARY SERVICE CAPABILITIES</span>
+            <span>THREE DISCIPLINES // ONE GROWTH SYSTEM</span>
           </div>
-          <h2>What FARAKIQ Actually Builds &amp; Grows</h2>
-          <p>
-            Three interconnected growth pillars: Web &amp; AI Engineering, Performance Advertising, and Organic Search Optimization. Select what you need — the scope ledger separates one-time builds from monthly retainers.
+
+          <h2 className="verticals-display-title">
+            BUILD THE SYSTEM.<br />
+            DRIVE THE DEMAND.<br />
+            OWN THE DISCOVERY.
+          </h2>
+
+          <p style={{ fontSize: "1.08rem", lineHeight: 1.6, color: "var(--text-light-dim)" }}>
+            Most agencies either write code without knowing how to acquire customers, or run ads into poorly engineered websites. FARAKIQ combines software engineering, performance marketing, and organic search under one accountable partnership.
           </p>
         </motion.div>
 
-        {/* Service Vertical Tabs */}
-        <div style={{ display: "flex", gap: "10px", marginBottom: "32px", flexWrap: "wrap" }}>
-          {[
-            { id: "all", label: "All Capability Pillars" },
-            { id: "tech-dev", label: "Development & AI Systems" },
-            { id: "paid-ads", label: "Paid Ads & Performance" },
-            { id: "organic-growth", label: "Organic Search (SEO/AEO)" },
-          ].map((tab) => (
-            <motion.button
-              key={tab.id}
-              className={`btn ${activeTabId === tab.id ? "btn-primary" : "btn-ghost"}`}
-              style={{ fontSize: "0.85rem", padding: "8px 16px" }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => setActiveTabId(tab.id)}
-            >
-              {tab.label}
-            </motion.button>
-          ))}
-        </div>
-
-        {/* Ledger Category Accordions */}
-        <div className="ledger">
-          <AnimatePresence mode="popLayout">
-            {filteredCategories.map((cat, catIdx) => {
-              const isOpen = !!openGroups[catIdx];
-              return (
-                <motion.div
-                  key={cat.id}
-                  layout
-                  className={`ledger-group ${isOpen ? "open" : ""}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.35, delay: catIdx * 0.08, ease: "easeOut" }}
-                >
-                  <div style={{ marginBottom: "10px" }}>
-                    <span className="mono" style={{ fontSize: "0.72rem", color: "var(--waste)", letterSpacing: "0.04em", fontWeight: 600 }}>
-                      {cat.badge}
-                    </span>
+        {/* Three Verticals Showcase Panels */}
+        <div className="verticals-grid">
+          {SERVICES_DATA.map((vertical: ServiceCategory, vIdx: number) => {
+            return (
+              <motion.div
+                key={vertical.id}
+                className="vertical-card"
+                style={
+                  {
+                    "--card-accent": vertical.accentColor,
+                    backgroundColor: vertical.accentBg,
+                  } as React.CSSProperties
+                }
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: vIdx * 0.1, ease: "easeOut" }}
+              >
+                {/* Vertical Card Header */}
+                <div className="vertical-card-header">
+                  <div
+                    className="vertical-badge"
+                    style={{ color: vertical.accentColor, borderColor: vertical.accentColor }}
+                  >
+                    <span>{vertical.badge}</span>
                   </div>
 
-                  <button
-                    className="ledger-toggle"
-                    aria-expanded={isOpen}
-                    onClick={() => toggleGroup(catIdx)}
-                  >
-                    <h3>{cat.title}</h3>
-                    <span className="plus mono">+</span>
-                  </button>
+                  <h3 className="vertical-title">{vertical.title}</h3>
+                  <div className="vertical-tagline" style={{ color: vertical.accentColor }}>
+                    &ldquo;{vertical.tagline}&rdquo;
+                  </div>
+
+                  <p className="vertical-desc">{vertical.description}</p>
+                </div>
+
+                {/* Capabilities Inside Vertical */}
+                <div className="vertical-items-section">
+                  <span className="vertical-items-heading">
+                    Capabilities &amp; Starting Anchors
+                  </span>
 
                   <ul className="pick-list">
-                    {cat.items.map((item) => {
+                    {vertical.items.map((item) => {
                       const isSelected = !!selectedServices[item.id];
                       const routeInfo = SERVICE_ROUTE_MAP[item.id];
                       return (
-                        <li key={item.id} style={{ display: "flex", gap: "8px", alignItems: "flex-start", minWidth: 0, padding: "8px 0" }}>
+                        <li
+                          key={item.id}
+                          style={{
+                            display: "flex",
+                            gap: "8px",
+                            alignItems: "flex-start",
+                            minWidth: 0,
+                            padding: "8px 0",
+                          }}
+                        >
                           <button
                             className={`pick-item ${isSelected ? "selected" : ""}`}
                             onClick={() => toggleService(item)}
+                            title={`Click to toggle ${item.name} in custom scope estimate`}
                             style={{
                               flex: 1,
                               minWidth: 0,
@@ -153,34 +149,49 @@ export default function Services() {
                           >
                             <span className="pick-box" style={{ marginTop: "4px" }}></span>
                             <span className="pick-info" style={{ flex: 1, minWidth: 0 }}>
-                              <span className="pick-name" style={{ display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap", fontSize: "0.9rem", fontWeight: 600, color: isSelected ? "var(--text-light)" : "var(--text-light)" }}>
+                              <span
+                                className="pick-name"
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  gap: "6px",
+                                  flexWrap: "wrap",
+                                  fontSize: "0.88rem",
+                                  fontWeight: 600,
+                                  color: "var(--text-light)",
+                                }}
+                              >
                                 {item.name}
-                                {item.tag && <span className="tag" style={{ fontSize: "0.68rem" }}>{item.tag}</span>}
+                                {item.tag && (
+                                  <span className="tag" style={{ fontSize: "0.68rem" }}>
+                                    {item.tag}
+                                  </span>
+                                )}
                               </span>
                               {item.shortDesc && (
-                                <span
-                                  className="pick-desc"
-                                  style={{
-                                    display: "block",
-                                    fontSize: "0.76rem",
-                                    color: "var(--text-light-dim)",
-                                    lineHeight: 1.35,
-                                    marginTop: "3px",
-                                  }}
-                                >
-                                  {item.shortDesc}
-                                </span>
+                                <span className="pick-desc">{item.shortDesc}</span>
                               )}
                             </span>
-                            <span className="pick-pricing-col" style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", flexShrink: 0, marginLeft: "6px" }}>
-                              <span className="pick-price mono" style={{ fontSize: "0.82rem", fontWeight: 600, color: isSelected ? "var(--value)" : "var(--text-light)" }}>
+
+                            <span className="pick-pricing-col">
+                              <span
+                                className="pick-price mono"
+                                style={{
+                                  fontSize: "0.8rem",
+                                  fontWeight: 600,
+                                  color: isSelected ? "var(--value)" : "var(--text-light)",
+                                }}
+                              >
                                 {item.priceDisplay}
                               </span>
                               <span
                                 className="mono"
                                 style={{
                                   fontSize: "0.66rem",
-                                  color: item.billingType === "project" ? "var(--value)" : "var(--accent-cyan)",
+                                  color:
+                                    item.billingType === "project"
+                                      ? "var(--value)"
+                                      : "var(--accent-cyan)",
                                   letterSpacing: "0.02em",
                                   marginTop: "2px",
                                 }}
@@ -189,79 +200,135 @@ export default function Services() {
                               </span>
                             </span>
                           </button>
+
                           {routeInfo && (
                             <Link
                               href={routeInfo.href}
                               className="btn btn-ghost"
                               title={`Explore dedicated ${item.name} page`}
                               style={{
-                                fontSize: "0.72rem",
-                                padding: "6px 8px",
-                                minHeight: "34px",
+                                fontSize: "0.7rem",
+                                padding: "5px 7px",
+                                minHeight: "32px",
                                 display: "inline-flex",
                                 alignItems: "center",
                                 justifyContent: "center",
                                 borderColor: "var(--rule)",
                                 textDecoration: "none",
                                 flexShrink: 0,
-                                marginTop: "2px",
+                                marginTop: "3px",
                               }}
                             >
-                              <span className="mono" style={{ color: "var(--waste)" }}>Details ↗</span>
+                              <span className="mono" style={{ color: vertical.accentColor }}>
+                                Details ↗
+                              </span>
                             </Link>
                           )}
                         </li>
                       );
                     })}
                   </ul>
+                </div>
 
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        className="ledger-detail"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.25, ease: "easeInOut" }}
-                        style={{ overflow: "hidden" }}
-                      >
-                        <p>{cat.description}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
+                {/* Vertical Footer */}
+                <div className="vertical-footer">
+                  <span className="vertical-items-heading" style={{ marginBottom: "8px" }}>
+                    Supporting Stack
+                  </span>
+                  <div className="vertical-tech-pills">
+                    {vertical.supportingTech.map((tech) => (
+                      <span key={tech} className="vertical-tech-pill">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <Link
+                    href={vertical.primaryRoute}
+                    className="btn btn-ghost vertical-explore-btn"
+                    style={{ borderColor: "var(--rule)", textDecoration: "none" }}
+                  >
+                    <span>Explore {vertical.number} Deep Dive →</span>
+                  </Link>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Custom Bundle Scope Calculator */}
+        {/* Interactive Custom Engagement Scope Estimator */}
         <motion.div
           className="bundle"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, ease: "easeOut" }}
+          style={{ marginTop: "64px" }}
         >
           <div className="bundle-list">
-            <div className="bundle-title">Your Custom FARAKIQ Scope</div>
+            <div className="badge-tech" style={{ marginBottom: "12px" }}>
+              <span className="dot" style={{ background: "var(--value)", boxShadow: "0 0 8px var(--value)" }} />
+              <span>CUSTOM ENGAGEMENT BUILDER</span>
+            </div>
+            <div className="bundle-title">Your Selected FARAKIQ Deliverables</div>
             {selectedList.length === 0 ? (
-              <p className="bundle-empty">Nothing selected yet — tap any service item above to calculate a custom engagement estimate.</p>
+              <p className="bundle-empty">
+                Tap any capability item across the three verticals above to calculate an estimated engagement scope.
+              </p>
             ) : (
               <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                 {projectItems.length > 0 && (
                   <div>
-                    <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "8px" }}>
-                      <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--value)" }} />
-                      <span className="mono" style={{ fontSize: "0.72rem", color: "var(--value)", letterSpacing: "0.04em", fontWeight: 600 }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "6px",
+                        marginBottom: "8px",
+                      }}
+                    >
+                      <span
+                        style={{
+                          width: "6px",
+                          height: "6px",
+                          borderRadius: "50%",
+                          background: "var(--value)",
+                        }}
+                      />
+                      <span
+                        className="mono"
+                        style={{
+                          fontSize: "0.72rem",
+                          color: "var(--value)",
+                          letterSpacing: "0.04em",
+                          fontWeight: 600,
+                        }}
+                      >
                         ONE-TIME PROJECT BUILDS ({projectItems.length})
                       </span>
                     </div>
                     <ul className="bundle-items">
                       {projectItems.map((item) => (
-                        <li key={item.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
+                        <li
+                          key={item.id}
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            gap: "8px",
+                          }}
+                        >
                           <span style={{ fontSize: "0.85rem" }}>{item.name}</span>
-                          <span className="mono" style={{ color: "var(--value)", flexShrink: 0, fontSize: "0.82rem" }}>{item.priceDisplay}</span>
+                          <span
+                            className="mono"
+                            style={{
+                              color: "var(--value)",
+                              flexShrink: 0,
+                              fontSize: "0.82rem",
+                            }}
+                          >
+                            {item.priceDisplay}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -270,17 +337,56 @@ export default function Services() {
 
                 {monthlyItems.length > 0 && (
                   <div>
-                    <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "8px" }}>
-                      <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--accent-cyan)" }} />
-                      <span className="mono" style={{ fontSize: "0.72rem", color: "var(--accent-cyan)", letterSpacing: "0.04em", fontWeight: 600 }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "6px",
+                        marginBottom: "8px",
+                      }}
+                    >
+                      <span
+                        style={{
+                          width: "6px",
+                          height: "6px",
+                          borderRadius: "50%",
+                          background: "var(--accent-cyan)",
+                        }}
+                      />
+                      <span
+                        className="mono"
+                        style={{
+                          fontSize: "0.72rem",
+                          color: "var(--accent-cyan)",
+                          letterSpacing: "0.04em",
+                          fontWeight: 600,
+                        }}
+                      >
                         MONTHLY GROWTH RETAINERS ({monthlyItems.length})
                       </span>
                     </div>
                     <ul className="bundle-items">
                       {monthlyItems.map((item) => (
-                        <li key={item.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
+                        <li
+                          key={item.id}
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            gap: "8px",
+                          }}
+                        >
                           <span style={{ fontSize: "0.85rem" }}>{item.name}</span>
-                          <span className="mono" style={{ color: "var(--accent-cyan)", flexShrink: 0, fontSize: "0.82rem" }}>{item.priceDisplay}</span>
+                          <span
+                            className="mono"
+                            style={{
+                              color: "var(--accent-cyan)",
+                              flexShrink: 0,
+                              fontSize: "0.82rem",
+                            }}
+                          >
+                            {item.priceDisplay}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -291,7 +397,7 @@ export default function Services() {
           </div>
 
           <div className="receipt bundle-receipt">
-            <div className="receipt-title">FARAKIQ SCOPE NO. 006</div>
+            <div className="receipt-title">FARAKIQ SCOPE NO. 007</div>
             <div className="receipt-heading">Estimated engagement scope</div>
             <div className="receipt-line">
               <span className="label">Selected capability items</span>
@@ -299,7 +405,13 @@ export default function Services() {
             </div>
             <div className="receipt-line">
               <span className="label">One-time project estimate</span>
-              <span className="val mono" style={{ color: projectItems.length ? "var(--value)" : "var(--text-light-dim)", fontWeight: 600 }}>
+              <span
+                className="val mono"
+                style={{
+                  color: projectItems.length ? "var(--value)" : "var(--text-light-dim)",
+                  fontWeight: 600,
+                }}
+              >
                 {projectItems.length === 0
                   ? "None selected"
                   : projectMinTotal > 0
@@ -309,13 +421,35 @@ export default function Services() {
             </div>
             <div className="receipt-line">
               <span className="label">Estimated monthly retainer</span>
-              <span className="val mono" style={{ color: monthlyItems.length ? "var(--accent-cyan)" : "var(--text-light-dim)", fontWeight: 600 }}>
+              <span
+                className="val mono"
+                style={{
+                  color: monthlyItems.length ? "var(--accent-cyan)" : "var(--text-light-dim)",
+                  fontWeight: 600,
+                }}
+              >
                 {monthlyItems.length === 0 ? "None selected" : `${formatINR(monthlyTotal)} / mo`}
               </span>
             </div>
-            <div className="receipt-line" style={{ borderTop: "1px dashed var(--rule-paper)", paddingTop: "10px", marginTop: "8px" }}>
-              <span className="label" style={{ fontSize: "0.74rem", color: "var(--text-light-dim)", fontStyle: "italic", lineHeight: 1.35 }}>
-                * Development builds are scoped once per deliverable. Ongoing marketing, ads &amp; SEO are billed monthly.
+            <div
+              className="receipt-line"
+              style={{
+                borderTop: "1px dashed var(--rule-paper)",
+                paddingTop: "10px",
+                marginTop: "8px",
+              }}
+            >
+              <span
+                className="label"
+                style={{
+                  fontSize: "0.74rem",
+                  color: "var(--text-light-dim)",
+                  fontStyle: "italic",
+                  lineHeight: 1.35,
+                }}
+              >
+                * Development builds are scoped once per deliverable. Ongoing marketing, ads &amp;
+                SEO are billed monthly.
               </span>
             </div>
             <a href="#contact" className="btn btn-primary bundle-cta">

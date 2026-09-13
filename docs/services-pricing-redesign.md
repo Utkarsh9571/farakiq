@@ -1,36 +1,38 @@
 # FARAKIQ Services & Pricing Architecture Redesign
 
 ## Executive Summary
-This document records the architectural and commercial repositioning of the **Development & Engineering** side of the FARAKIQ website.
+This document records the architectural and commercial repositioning of the **Services & Pricing** sections of the FARAKIQ website.
 
-The goal was to transform FARAKIQ's development offering from an internal developer-centric technology inventory into an outcome-oriented, customer-first commercial catalog that non-technical business owners can immediately understand within 5–10 seconds.
-
----
-
-## 1. Problem Diagnosis (Previous State)
-
-### The "Developer-First" Anti-Pattern
-Previously, FARAKIQ presented its development and AI capabilities using technical implementation terminology:
-- *Website Development*
-- *Customised Web App*
-- *Custom Application*
-- *AI & Chatbot Integration*
-- *n8n Workflow Automation*
-- *REST API & Webhooks*
-
-Repeated technical tags such as `"Full-Stack"` were plastered across multiple items, signaling developer skills rather than customer outcomes.
-
-### The Pricing Confusion
-Non-technical clients do not purchase "full-stack development" or "n8n nodes" as recurring services.
-Crucially, the previous interactive scope calculator had flawed logic:
-- `ai-integration` (₹15,000), `n8n-automation` (₹12,000), and `api-integration` (₹10,000) had positive numbers in `price`, causing the client calculator to sum one-time project builds directly into the `monthlyTotal` ("Estimated monthly retainer").
-- A business owner selecting an AI bot and a landing page would see an inflated, misleading "monthly retainer" instead of a one-time project investment.
+The redesign transforms FARAKIQ from an internal developer-centric capability ledger into an authoritative, customer-first agency showcase structured around FARAKIQ's three core verticals:
+1. **Development & AI Systems** (`01 // ENGINEERING`)
+2. **Paid Growth & Performance** (`02 // PERFORMANCE`)
+3. **Organic Search & Discovery** (`03 // DISCOVERY`)
 
 ---
 
-## 2. The New Customer-Facing Service Structure
+## 1. Core Information Architecture & Visual Concept
 
-We restructured the development vertical into **7 outcome-oriented offerings** where the primary name and copy directly answer: *"What problem does this solve for my business?"*
+### Reference Direction Applied Without Cloning
+Taking inspiration from the core structural principle of the reference (establishing strong, clear operating verticals before drilling into individual technical services):
+- **Master Display Headline**:
+  ```
+  BUILD THE SYSTEM.
+  DRIVE THE DEMAND.
+  OWN THE DISCOVERY.
+  ```
+  *Three disciplines // One growth system.*
+- **Three Editorial Vertical Panels**:
+  - `01 // ENGINEERING`: **Development & AI Systems** (*"Build the systems behind your business."*) — Coral Accent (`#FF4A34`).
+  - `02 // PERFORMANCE`: **Paid Growth & Performance** (*"Put your business in front of buyers."*) — Emerald Accent (`#10B981`).
+  - `03 // DISCOVERY`: **Organic Search & Discovery** (*"Own the search results that compound."*) — Cyan Accent (`#00E5FF`).
+- **Brand Consistency**: Uses FARAKIQ's established dark-mode tokens (`#0D0F12`, `#16191E`, `#272B30`), Space Grotesk display typography, IBM Plex Mono badges, and subtle card accent glows rather than bright pastel clone themes.
+
+---
+
+## 2. The Three Operating Verticals
+
+### Vertical 01 — DEVELOPMENT & AI SYSTEMS (`01 // ENGINEERING`)
+*"We engineer custom web platforms, conversion-ready company websites, 24/7 AI customer assistants, and automated operations that eliminate repetitive work and connect your software."*
 
 | Service Name | Customer Outcome / What We Build | Starting Anchor Price | Billing Type | Route Mapping |
 | :--- | :--- | :--- | :--- | :--- |
@@ -42,13 +44,33 @@ We restructured the development vertical into **7 outcome-oriented offerings** w
 | **Integrations & Connected Systems** | Seamless connections between website, CRM, payment gateways, WhatsApp, and tools | From ₹10,000 | One-time | `/services/n8n-automation` |
 | **Internal Tools & Dashboards** | Tailored admin dashboards, operations portals, and reporting tools for your team | Custom quote | One-time | `/services/web-development` |
 
-### Services Consolidated & Repositioned
-1. **"Customised Web App" + "Custom Application" → Consolidated into "Web Apps & Custom Platforms"**: Eliminated artificial duplication of browser applications.
-2. **"Conversion Landing Page" vs "Website Development"**: Decoupled entry-level ad landing pages (From ₹5,999) from comprehensive multi-page corporate websites (From ₹25,000).
-3. **"n8n Workflow Automation" → Repositioned as "Business Automation"**: Clients understand automated operations; n8n is highlighted in supporting technical copy, architecture diagrams, and the dedicated deep-dive page.
-4. **"REST API & Webhooks" → Repositioned as "Integrations & Connected Systems"**: Clients want their CRM, payments, and website to talk to each other; APIs and webhooks are the mechanism.
-5. **Added "Internal Tools & Dashboards"**: Clear positioning for operations teams wanting custom reporting, admin panels, and staff portals without off-the-shelf SaaS constraints.
-6. **Eliminated "Full-Stack" as a Repeated Customer Tag**: Replaced with outcome tags (`Conversion`, `Websites`, `Platforms`, `AI Systems`, `Automation`, `Integration`, `Operations`).
+*Supporting Stack Pills*: Next.js • React • TypeScript • Node.js • n8n • REST APIs • PostgreSQL • MongoDB • LLMs
+
+---
+
+### Vertical 02 — PAID GROWTH & PERFORMANCE (`02 // PERFORMANCE`)
+*"We put your business in front of customers who are actively searching for what you sell — with rigorous tracking, rapid creative testing, and transparent weekly numbers."*
+
+| Service Name | Customer Outcome / What We Deliver | Starting Anchor Price | Billing Type | Route Mapping |
+| :--- | :--- | :--- | :--- | :--- |
+| **PPC & Google Ads** | High-intent search, negative keyword pruning & conversion tracking to capture ready-to-buy searchers | ₹12,000 / mo | Monthly | `/services/google-ads` |
+| **Meta Ads (FB & IG)** | Direct-response Facebook & Instagram campaigns driven by structured creative & angle testing | ₹12,000 / mo | Monthly | `/services/meta-ads` |
+| **LinkedIn Ads** | Target decision-makers and high-value B2B accounts to generate qualified commercial consultations | ₹15,000 / mo | Monthly | `/services/google-ads` |
+
+*Supporting Stack Pills*: Google Ads • Meta Ads • LinkedIn Ads • Conversions API (CAPI) • GA4 • Tag Manager
+
+---
+
+### Vertical 03 — ORGANIC SEARCH & DISCOVERY (`03 // DISCOVERY`)
+*"Make your business effortless to find — both in Google's organic results and across the modern AI answer engines (ChatGPT, Perplexity) your customers use every day."*
+
+| Service Name | Customer Outcome / What We Deliver | Starting Anchor Price | Billing Type | Route Mapping |
+| :--- | :--- | :--- | :--- | :--- |
+| **Search Engine Optimization (SEO)** | Technical site crawlability, Schema.org graph injection, and high-intent commercial content architecture | ₹15,000 / mo | Monthly | `/services/seo` |
+| **Answer Engine Optimization (AEO)** | Optimize content answers and entity profiles so ChatGPT, Perplexity, and AI Overviews cite you | ₹10,000 / mo | Monthly | `/services/seo` |
+| **Generative Engine Optimization (GEO)** | Entity positioning and semantic authority across modern generative search and synthesis platforms | ₹10,000 / mo | Monthly | `/services/seo` |
+
+*Supporting Stack Pills*: Technical SEO • Schema.org Graph • AEO / Perplexity • Generative Search • Core Web Vitals
 
 ---
 
@@ -65,7 +87,7 @@ We restructured the development vertical into **7 outcome-oriented offerings** w
 
 ### Interactive Scope Ledger & Calculator (`components/Services.tsx`)
 The calculator data model was refactored:
-- `ServiceItem` now includes `billingType: "project" | "monthly"`, `shortDesc: string`, and `priceDisplay: string`.
+- `ServiceItem` includes `billingType: "project" | "monthly"`, `shortDesc: string`, and `priceDisplay: string`.
 - When users select items in the ledger, the calculator splits selections:
   - `projectItems = selectedList.filter(s => s.billingType === "project")`
   - `monthlyItems = selectedList.filter(s => s.billingType === "monthly")`
@@ -90,5 +112,6 @@ Technical SEO keywords (Next.js, TypeScript, n8n, REST API, Webhooks, LLMs, Post
 
 ## 5. Verification Results
 - **TypeScript & Lint**: 0 errors.
-- **Production Build (`npm run build`)**: Code 0, all 19 static routes generated cleanly in 2.0s.
+- **Production Build (`npm run build`)**: Code 0, all 19 static routes generated cleanly in 1.9s.
 - **Responsive Viewport Audit**: Tested at 375px, 414px, 768px, and 1280px+. Verified `scrollWidth <= innerWidth` with zero horizontal overflow.
+- **Live Browser Audit**: Tested interactive scope selection across cards and verified complete decoupling between one-time and monthly estimates.

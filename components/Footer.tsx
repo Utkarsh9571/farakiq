@@ -36,7 +36,7 @@ export default function Footer() {
               Custom Website Development, Full-Stack Web Applications, E-Commerce Platforms &amp; AI Integrations. We make the difference.
             </p>
             <span className="mono" style={{ fontSize: "0.78rem", color: "var(--text-light-dim)" }}>
-              Jaipur, India • Available Globally
+              Remote-First • Available Worldwide
             </span>
           </div>
 
