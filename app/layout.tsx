@@ -35,7 +35,10 @@ export const metadata: Metadata = {
     "n8n Workflow Automation",
     "Custom Software Engineering",
   ],
-  authors: [{ name: "Utkarsh Gaur", url: siteUrl }],
+  authors: [
+    { name: "Darwin Swami", url: siteUrl },
+    { name: "Utkarsh Sharma", url: siteUrl },
+  ],
   creator: "FARAKIQ",
   publisher: "FARAKIQ",
   alternates: {
@@ -101,8 +104,14 @@ const jsonLdProfessionalService = {
   },
   founder: {
     "@type": "Person",
-    name: "Utkarsh Gaur",
-    jobTitle: "Founder & Lead Engineer",
+    name: "Darwin Swami",
+    jobTitle: "Founder & Agency Lead",
+    url: siteUrl,
+  },
+  employee: {
+    "@type": "Person",
+    name: "Utkarsh Sharma",
+    jobTitle: "Lead Engineer",
     url: siteUrl,
   },
   knowsAbout: [

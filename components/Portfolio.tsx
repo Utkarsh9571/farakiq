@@ -31,7 +31,7 @@ export default function Portfolio() {
         description: project.cardSummary,
         creator: {
           "@type": "Person",
-          name: "Utkarsh Gaur",
+          name: "Utkarsh Sharma",
         },
         url: project.liveUrl || `https://farakiq.com/portfolio/${project.id}`,
       },

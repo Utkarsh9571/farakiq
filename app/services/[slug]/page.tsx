@@ -506,7 +506,7 @@ export default async function ServicePage({
                 Ready to stop wasting budget on disjointed vendors?
               </h2>
               <p style={{ margin: 0, color: "var(--text-light-dim)", fontSize: "0.95rem" }}>
-                Work directly with Utkarsh Gaur. Direct communication, predictable flat fees, zero agency bureaucracy.
+                Work directly with Darwin Swami and Utkarsh Sharma. Direct communication, predictable flat fees, zero agency bureaucracy.
               </p>
             </div>
             <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>

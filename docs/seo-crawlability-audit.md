@@ -38,8 +38,13 @@ The root layout structured data in [app/layout.tsx](file:///c:/Users/lenovo/Desk
   - `areaServed`: `Jaipur, India`
   - `founder`:
     - `@type`: `Person`
-    - `name`: `Utkarsh Gaur`
-    - `jobTitle`: `Founder & Lead Engineer`
+    - `name`: `Darwin Swami`
+    - `jobTitle`: `Founder & Agency Lead`
+    - `url`: `https://farakiq.com`
+  - `employee`:
+    - `@type`: `Person`
+    - `name`: `Utkarsh Sharma`
+    - `jobTitle`: `Lead Engineer`
     - `url`: `https://farakiq.com`
   - `address`: `PostalAddress` (`addressLocality: "Jaipur"`, `addressCountry: "IN"`)
   - `priceRange`: `₹₹₹`
@@ -59,7 +64,7 @@ Every portfolio project now dynamically receives its own valid Schema.org `Creat
   - `@type`: `CreativeWork`
   - `name`: Dynamically populated from `project.title`
   - `description`: Dynamically populated from `project.cardSummary`
-  - `creator`: `{ "@type": "Person", "name": "Utkarsh Gaur", "url": "https://farakiq.com" }`
+  - `creator`: `{ "@type": "Person", "name": "Utkarsh Sharma", "url": "https://farakiq.com" }`
   - `url`: Populated with `project.liveUrl` or canonical project route
   - `genre`: Category label (e.g. "Full-Stack Web App / Real Estate Platform")
   - `keywords`: Tech stack array joined as comma-separated terms

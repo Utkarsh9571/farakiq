@@ -16,7 +16,7 @@ export default function About() {
         <h2>Why choose FARAKIQ as your engineering partner</h2>
         <div className="about-body">
           <p>
-            FARAKIQ is led by Utkarsh Gaur. Most agencies hand you off to whoever&apos;s free that week. I work directly with a small number of founders at a time across custom websites, full-stack applications, AI integrations, and automation pipelines — so your digital product remains coherent and high-performing.
+            FARAKIQ is led by Darwin Swami. Most agencies hand you off to whoever&apos;s free that week. I work directly with a small number of founders at a time across custom websites, full-stack applications, AI integrations, and automation pipelines — so your digital product remains coherent and high-performing.
           </p>
           <p>
             If something isn&apos;t working, you&apos;ll hear it from me directly — no buried agency slides with arbitrary green arrows.

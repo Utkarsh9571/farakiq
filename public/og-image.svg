@@ -30,5 +30,5 @@
   <!-- Footer Info -->
   <line x1="96" y1="520" x2="1104" y2="520" stroke="#272B30" stroke-width="1" stroke-dasharray="6 6"/>
   <text x="96" y="565" font-family="'IBM Plex Mono', monospace" font-size="18" fill="#EDEAE0">farakiq.com</text>
-  <text x="1104" y="565" font-family="'IBM Plex Mono', monospace" font-size="18" fill="#A6A9A0" text-anchor="end">Utkarsh Gaur — Freelance Engineer</text>
+  <text x="1104" y="565" font-family="'IBM Plex Mono', monospace" font-size="18" fill="#A6A9A0" text-anchor="end">Led by Darwin Swami • Utkarsh Sharma</text>
 </svg>

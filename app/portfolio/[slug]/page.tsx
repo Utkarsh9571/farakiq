@@ -71,7 +71,7 @@ export default async function PortfolioProjectPage({
     description: project.cardSummary,
     creator: {
       "@type": "Person",
-      name: "Utkarsh Gaur",
+      name: "Utkarsh Sharma",
       url: siteUrl,
     },
     url: project.liveUrl || `${siteUrl}/portfolio/${project.id}`,
