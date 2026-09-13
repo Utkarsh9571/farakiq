@@ -1,8 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { SERVICES_DATA, ServiceItem, ServiceCategory } from "@/data/siteData";
+
+const SERVICE_ROUTE_MAP: Record<string, { href: string; label: string }> = {
+  "web-dev": { href: "/services/web-development", label: "Web Dev" },
+  "custom-web": { href: "/services/web-development", label: "Web Apps" },
+  "n8n-automation": { href: "/services/n8n-automation", label: "n8n" },
+  "ppc-google": { href: "/services/google-ads", label: "Google Ads" },
+  "meta-ads": { href: "/services/meta-ads", label: "Meta Ads" },
+  "seo": { href: "/services/seo", label: "SEO / AEO" },
+};
 
 function formatINR(num: number): string {
   return "₹" + Math.round(num).toLocaleString("en-IN");
@@ -118,11 +128,13 @@ export default function Services() {
                       const isSelected = !!selectedServices[item.id];
                       const priceDisplay =
                         item.price > 0 ? formatINR(item.price) : item.onetime || "One-time";
+                      const routeInfo = SERVICE_ROUTE_MAP[item.id];
                       return (
-                        <li key={item.id}>
+                        <li key={item.id} style={{ display: "flex", gap: "8px", alignItems: "stretch" }}>
                           <button
                             className={`pick-item ${isSelected ? "selected" : ""}`}
                             onClick={() => toggleService(item)}
+                            style={{ flex: 1 }}
                           >
                             <span className="pick-box"></span>
                             <span className="pick-name">
@@ -131,6 +143,24 @@ export default function Services() {
                             </span>
                             <span className="pick-price mono">{priceDisplay}</span>
                           </button>
+                          {routeInfo && (
+                            <Link
+                              href={routeInfo.href}
+                              className="btn btn-ghost"
+                              title={`Explore dedicated ${item.name} page`}
+                              style={{
+                                fontSize: "0.75rem",
+                                padding: "6px 10px",
+                                display: "inline-flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                borderColor: "var(--rule)",
+                                textDecoration: "none",
+                              }}
+                            >
+                              <span className="mono" style={{ color: "var(--waste)" }}>Details ↗</span>
+                            </Link>
+                          )}
                         </li>
                       );
                     })}

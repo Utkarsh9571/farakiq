@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function Navbar() {
@@ -14,7 +15,7 @@ export default function Navbar() {
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <nav className="wrap" id="mainNav">
-        <a href="#top" className="brand" aria-label="FARAKIQ Homepage">
+        <Link href="/" className="brand" aria-label="FARAKIQ Homepage">
           <Image
             src="/farakiq-logo.svg"
             alt="FARAKIQ — We Make The Difference"
@@ -23,32 +24,35 @@ export default function Navbar() {
             priority
             style={{ width: "auto", height: "28px", display: "block" }}
           />
-        </a>
+        </Link>
 
         <ul className="nav-links">
           <li>
-            <a href="#services">Services</a>
+            <Link href="/#services">Services</Link>
           </li>
           <li>
-            <a href="#portfolio">Projects</a>
+            <Link href="/#portfolio">Projects</Link>
           </li>
           <li>
-            <a href="#architecture">Architecture</a>
+            <Link href="/#architecture">Architecture</Link>
           </li>
           <li>
-            <a href="#pricing">Pricing</a>
+            <Link href="/#pricing">Pricing</Link>
           </li>
           <li>
-            <a href="#about">About</a>
+            <Link href="/blog">Blog</Link>
           </li>
           <li>
-            <a href="#contact">Contact</a>
+            <Link href="/#about">About</Link>
+          </li>
+          <li>
+            <Link href="/#contact">Contact</Link>
           </li>
         </ul>
 
-        <a href="#contact" className="btn btn-primary nav-cta">
+        <Link href="/#contact" className="btn btn-primary nav-cta">
           Book a call
-        </a>
+        </Link>
 
         <button
           className="menu-toggle"
@@ -72,24 +76,27 @@ export default function Navbar() {
             transition={{ duration: 0.25, ease: "easeInOut" }}
             style={{ display: "flex", overflow: "hidden" }}
           >
-            <a href="#services" onClick={() => setIsOpen(false)}>
+            <Link href="/#services" onClick={() => setIsOpen(false)}>
               Services
-            </a>
-            <a href="#portfolio" onClick={() => setIsOpen(false)}>
+            </Link>
+            <Link href="/#portfolio" onClick={() => setIsOpen(false)}>
               Projects
-            </a>
-            <a href="#architecture" onClick={() => setIsOpen(false)}>
+            </Link>
+            <Link href="/#architecture" onClick={() => setIsOpen(false)}>
               Architecture
-            </a>
-            <a href="#pricing" onClick={() => setIsOpen(false)}>
+            </Link>
+            <Link href="/#pricing" onClick={() => setIsOpen(false)}>
               Pricing
-            </a>
-            <a href="#about" onClick={() => setIsOpen(false)}>
+            </Link>
+            <Link href="/blog" onClick={() => setIsOpen(false)}>
+              Blog
+            </Link>
+            <Link href="/#about" onClick={() => setIsOpen(false)}>
               About
-            </a>
-            <a href="#contact" onClick={() => setIsOpen(false)}>
+            </Link>
+            <Link href="/#contact" onClick={() => setIsOpen(false)}>
               Contact
-            </a>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

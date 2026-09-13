@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { PORTFOLIO_PROJECTS, ProjectCategory, PortfolioProject } from "@/data/portfolioData";
+import StructuredData from "@/components/StructuredData";
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
@@ -16,8 +18,29 @@ export default function Portfolio() {
     return true;
   });
 
+  const portfolioItemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "FARAKIQ Engineering & Web Portfolio",
+    itemListElement: PORTFOLIO_PROJECTS.map((project, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      item: {
+        "@type": "CreativeWork",
+        name: project.title,
+        description: project.cardSummary,
+        creator: {
+          "@type": "Person",
+          name: "Utkarsh Gaur",
+        },
+        url: project.liveUrl || `https://farakiq.com/portfolio/${project.id}`,
+      },
+    })),
+  };
+
   return (
     <section id="portfolio">
+      <StructuredData data={portfolioItemListSchema} id="portfolio-creativework-list" />
       <div className="wrap">
         <motion.div
           className="section-head"
@@ -149,13 +172,22 @@ export default function Portfolio() {
                     </a>
                   </div>
 
-                  <button
-                    className="btn btn-ghost"
-                    style={{ width: "100%", justifyContent: "center", fontSize: "0.78rem", padding: "6px 10px", marginTop: "10px", borderColor: "transparent" }}
-                    onClick={() => setSelectedProject(project)}
-                  >
-                    <span className="mono">View Case Study Details ↓</span>
-                  </button>
+                  <div style={{ display: "flex", gap: "8px", marginTop: "10px" }}>
+                    <button
+                      className="btn btn-ghost"
+                      style={{ flex: "1", justifyContent: "center", fontSize: "0.78rem", padding: "6px 8px", borderColor: "transparent" }}
+                      onClick={() => setSelectedProject(project)}
+                    >
+                      <span className="mono">Quick View ↓</span>
+                    </button>
+                    <Link
+                      href={`/portfolio/${project.id}`}
+                      className="btn btn-ghost"
+                      style={{ flex: "1", justifyContent: "center", fontSize: "0.78rem", padding: "6px 8px", borderColor: "var(--rule)", textDecoration: "none" }}
+                    >
+                      <span className="mono" style={{ color: "var(--waste)" }}>Case Study →</span>
+                    </Link>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -278,7 +310,7 @@ export default function Portfolio() {
                     </div>
                   )}
 
-                  <div style={{ display: "flex", gap: "12px", marginTop: "12px", borderTop: "1px solid var(--rule)", paddingTop: "20px" }}>
+                  <div style={{ display: "flex", gap: "12px", marginTop: "12px", borderTop: "1px solid var(--rule)", paddingTop: "20px", flexWrap: "wrap" }}>
                     {selectedProject.liveUrl && (
                       <a
                         href={selectedProject.liveUrl}
@@ -299,6 +331,13 @@ export default function Portfolio() {
                     >
                       06 — View Repository (GitHub) ↗
                     </a>
+                    <Link
+                      href={`/portfolio/${selectedProject.id}`}
+                      className="btn btn-ghost"
+                      style={{ fontSize: "0.88rem", textDecoration: "none" }}
+                    >
+                      Full Case Study Page →
+                    </Link>
                   </div>
                 </div>
               </motion.div>

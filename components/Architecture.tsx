@@ -64,9 +64,9 @@ export default function Architecture() {
                     />
                   )}
                 </div>
-                <h4 style={{ fontSize: "1.05rem", fontWeight: 700, margin: "0 0 4px", color: "var(--text-light)" }}>
+                <h3 style={{ fontSize: "1.05rem", fontWeight: 700, margin: "0 0 4px", color: "var(--text-light)" }}>
                   {stage.title}
-                </h4>
+                </h3>
                 <p style={{ fontSize: "0.82rem", color: "var(--text-light-dim)", margin: 0, lineHeight: 1.4 }}>
                   {stage.subtitle}
                 </p>

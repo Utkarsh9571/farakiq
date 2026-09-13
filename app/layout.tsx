@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import StructuredData from "@/components/StructuredData";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -80,20 +81,29 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLdOrganization = {
+const jsonLdProfessionalService = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "FARAKIQ",
   url: siteUrl,
   logo: `${siteUrl}/farakiq-logo.svg`,
   image: `${siteUrl}/og-image.svg`,
-  description: "FARAKIQ provides custom website development, full-stack web applications, e-commerce solutions, AI integrations, and business workflow automations.",
+  email: "hello@darvin.co",
+  description:
+    "FARAKIQ delivers custom website development, full-stack web applications, e-commerce platforms, AI integrations, and automated workflows. We make the difference.",
   slogan: "We make the difference",
   priceRange: "₹₹₹",
+  areaServed: "Jaipur, India",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Jaipur",
     addressCountry: "IN",
+  },
+  founder: {
+    "@type": "Person",
+    name: "Utkarsh Gaur",
+    jobTitle: "Founder & Lead Engineer",
+    url: siteUrl,
   },
   knowsAbout: [
     "Website Development",
@@ -102,24 +112,9 @@ const jsonLdOrganization = {
     "E-Commerce Solutions",
     "AI Integrations",
     "n8n Workflow Automation",
-  ],
-};
-
-const jsonLdPerson = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Utkarsh Gaur",
-  jobTitle: "Founder & Lead Engineer",
-  worksFor: {
-    "@type": "Organization",
-    name: "FARAKIQ",
-  },
-  knowsAbout: [
-    "Full-Stack Web Development",
-    "React / Next.js",
-    "TypeScript",
-    "AI Integrations",
-    "Workflow Automation",
+    "Google Ads & Paid Search",
+    "Meta Ads & Performance Marketing",
+    "Search Engine Optimization (SEO)",
   ],
 };
 
@@ -131,14 +126,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPerson) }}
-        />
+        <StructuredData data={jsonLdProfessionalService} id="farakiq-organization-schema" />
       </head>
       <body>{children}</body>
     </html>
