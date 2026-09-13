@@ -179,18 +179,12 @@ export default async function PortfolioProjectPage({
                   className="btn btn-primary"
                   style={{ padding: "10px 20px", flex: "1 1 160px", justifyContent: "center" }}
                 >
-                  View Live Website ↗
+                  View Live Platform ↗
                 </a>
               )}
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-ghost"
-                style={{ padding: "10px 20px", flex: "1 1 160px", justifyContent: "center" }}
-              >
-                View Repository (GitHub) ↗
-              </a>
+              <Link href="/#contact" className="btn btn-ghost" style={{ padding: "10px 20px", flex: "1 1 160px", justifyContent: "center" }}>
+                Discuss Similar Build →
+              </Link>
               <Link href="/#portfolio" className="btn btn-ghost" style={{ padding: "10px 20px", flex: "1 1 140px", justifyContent: "center" }}>
                 ← All Projects
               </Link>
@@ -320,10 +314,10 @@ export default async function PortfolioProjectPage({
               </p>
               <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
                 <Link href="/services/web-development" className="btn btn-ghost">
-                  Website &amp; Web App Development →
+                  Websites &amp; Web Platforms →
                 </Link>
                 <Link href="/services/n8n-automation" className="btn btn-ghost">
-                  n8n Workflow Automation →
+                  Business Automation &amp; AI →
                 </Link>
                 <Link href="/#contact" className="btn btn-primary">
                   Discuss Your Project

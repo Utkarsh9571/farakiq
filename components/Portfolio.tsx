@@ -149,33 +149,24 @@ export default function Portfolio() {
                 </div>
 
                 <div>
-                  <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-                    {project.liveUrl && (
+                  {project.liveUrl && (
+                    <div style={{ marginBottom: "8px" }}>
                       <a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-primary"
-                        style={{ fontSize: "0.82rem", padding: "8px 14px", flex: "1", justifyContent: "center" }}
+                        style={{ fontSize: "0.82rem", padding: "8px 14px", width: "100%", justifyContent: "center" }}
                       >
-                        View Live ↗
+                        View Live Platform ↗
                       </a>
-                    )}
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-ghost"
-                      style={{ fontSize: "0.82rem", padding: "8px 14px", flex: "1", justifyContent: "center" }}
-                    >
-                      {project.liveUrl ? "GitHub" : "View Project (GitHub) ↗"}
-                    </a>
-                  </div>
+                    </div>
+                  )}
 
-                  <div style={{ display: "flex", gap: "8px", marginTop: "10px" }}>
+                  <div style={{ display: "flex", gap: "8px" }}>
                     <button
                       className="btn btn-ghost"
-                      style={{ flex: "1", justifyContent: "center", fontSize: "0.78rem", padding: "6px 8px", borderColor: "transparent" }}
+                      style={{ flex: "1", justifyContent: "center", fontSize: "0.78rem", padding: "7px 8px", borderColor: "var(--rule)" }}
                       onClick={() => setSelectedProject(project)}
                     >
                       <span className="mono">Quick View ↓</span>
@@ -183,7 +174,7 @@ export default function Portfolio() {
                     <Link
                       href={`/portfolio/${project.id}`}
                       className="btn btn-ghost"
-                      style={{ flex: "1", justifyContent: "center", fontSize: "0.78rem", padding: "6px 8px", borderColor: "var(--rule)", textDecoration: "none" }}
+                      style={{ flex: "1", justifyContent: "center", fontSize: "0.78rem", padding: "7px 8px", borderColor: "var(--rule)", textDecoration: "none" }}
                     >
                       <span className="mono" style={{ color: "var(--waste)" }}>Case Study →</span>
                     </Link>
@@ -320,18 +311,9 @@ export default function Portfolio() {
                         className="btn btn-primary"
                         style={{ fontSize: "0.88rem", flex: "1 1 180px", justifyContent: "center" }}
                       >
-                        05 — View Live Website ↗
+                        View Live Platform ↗
                       </a>
                     )}
-                    <a
-                      href={selectedProject.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-ghost"
-                      style={{ fontSize: "0.88rem", flex: "1 1 180px", justifyContent: "center" }}
-                    >
-                      06 — View Repository (GitHub) ↗
-                    </a>
                     <Link
                       href={`/portfolio/${selectedProject.id}`}
                       className="btn btn-ghost"
@@ -339,6 +321,14 @@ export default function Portfolio() {
                     >
                       Full Case Study Page →
                     </Link>
+                    <a
+                      href="#contact"
+                      onClick={() => setSelectedProject(null)}
+                      className="btn btn-ghost"
+                      style={{ fontSize: "0.88rem", textDecoration: "none", flex: "1 1 180px", justifyContent: "center", borderColor: "var(--rule)" }}
+                    >
+                      Discuss Similar Project →
+                    </a>
                   </div>
                 </div>
               </motion.div>
