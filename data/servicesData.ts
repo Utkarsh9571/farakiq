@@ -43,7 +43,7 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
     badge: "GROWTH & PERFORMANCE VERTICAL",
     title: "Meta Ads Management (Facebook & Instagram) | FARAKIQ",
     metaDescription:
-      "Direct-response Meta Ads management with flat-fee pricing, rapid creative testing, audience segmentation, and transparent weekly CPA/ROAS tracking from Jaipur, India.",
+      "Direct-response Meta Ads management with flat-fee pricing, rapid creative testing, audience segmentation, and transparent weekly CPA/ROAS tracking.",
     h1: "Meta Ads Management & Paid Social Growth",
     subtitle:
       "Engineered Facebook and Instagram ad campaigns focused on predictable lead acquisition and e-commerce return on ad spend — without agency retainers or percentage-of-spend markups.",
@@ -55,7 +55,7 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
       "B2B and high-ticket service companies needing qualified inbound consultations.",
       "Direct-to-consumer (D2C) and e-commerce brands wanting disciplined ROAS testing.",
       "Founders tired of paying agencies percentage-based fees that punish budget scaling.",
-      "Businesses in Jaipur, across India, and globally needing an accountable growth partner.",
+      "Businesses and brands globally needing an accountable growth partner.",
     ],
     capabilities: [
       {
@@ -156,7 +156,7 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
       "Google Ads is often where companies waste the most money through broad-match keyword leaks, unvetted Performance Max black boxes, and poor conversion tracking. FARAKIQ builds tightly-themed search ad groups, enforces rigorous negative keyword lists, and aligns keyword intent with dedicated landing pages to ensure your ad spend converts into real pipeline.",
     targetAudience: [
       "Companies targeting high-intent commercial keywords where searchers are ready to buy.",
-      "Local and regional businesses in Jaipur, Delhi NCR, and nationwide needing local search capture.",
+      "Growth-focused businesses, e-commerce brands, and high-ticket companies needing high-intent customer acquisition.",
       "SaaS and B2B platforms seeking qualified leads from specific category searches.",
       "Businesses burning budget on agency-managed Google Ads with low lead quality.",
     ],
@@ -244,7 +244,7 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
     badge: "SEARCH & DISCOVERY VERTICAL",
     title: "Search Engine Optimization (SEO) & AI Search (AEO) | FARAKIQ",
     metaDescription:
-      "Technical SEO, on-page optimization, and Answer Engine Optimization (AEO/GEO) designed for Google and modern AI search engines. Based in Jaipur, serving globally.",
+      "Technical SEO, on-page optimization, and Answer Engine Optimization (AEO/GEO) designed for Google and modern AI search engines. Serving clients worldwide.",
     h1: "Search Engine Optimization (SEO & AI Search)",
     subtitle:
       "On-page precision, technical crawlability, and Answer Engine Optimization (AEO) so your business ranks on Google and is cited accurately by modern generative search engines.",
@@ -256,7 +256,7 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
       "Businesses seeking compounding organic traffic without ongoing ad spend dependency.",
       "Companies with technical indexation, crawl budget, or site architecture problems.",
       "Brands wanting to be surfaced in AI overviews and generative answer engines (AEO/GEO).",
-      "Jaipur and Indian businesses wanting local search authority and national visibility.",
+      "Companies wanting sustainable organic search authority, national reach, and global visibility.",
     ],
     capabilities: [
       {
@@ -342,7 +342,7 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
     badge: "ENGINEERING VERTICAL",
     title: "Websites, Web Apps & Custom Software Platforms | FARAKIQ",
     metaDescription:
-      "Custom business websites, conversion landing pages, and web application platforms engineered with clean TypeScript architecture and fast loading. Jaipur, India.",
+      "Custom business websites, conversion landing pages, and web application platforms engineered with clean TypeScript architecture and fast loading.",
     h1: "Websites, Web Apps & Custom Platforms",
     subtitle:
       "We build modern business websites, conversion landing pages, and custom web applications that run fast in the browser with zero bloat.",
@@ -448,9 +448,9 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
     slug: "n8n-automation",
     name: "Business Automation & AI Systems",
     badge: "AUTOMATION & AI VERTICAL",
-    title: "Business Automation, AI Agents & System Integrations Jaipur | FARAKIQ",
+    title: "Business Automation, AI Agents & System Integrations | FARAKIQ",
     metaDescription:
-      "Custom workflow automations, 24/7 AI chatbots, CRM synchronization, and webhook orchestration without Zapier subscription bloat. Jaipur, India & worldwide.",
+      "Custom workflow automations, 24/7 AI chatbots, CRM synchronization, and webhook orchestration without Zapier subscription bloat. Available worldwide.",
     h1: "Business Automation, AI Agents & Connected Systems",
     subtitle:
       "Automate repetitive tasks, deploy AI assistants that talk to customers, and connect the software your business uses every day — keeping operations unified and efficient.",
@@ -462,7 +462,7 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
       "Businesses paying excessive monthly fees to Zapier or Make due to high task volume.",
       "Companies wanting to keep customer and transactional data on their own secure infrastructure.",
       "Sales teams needing automated lead qualification, instant notifications, and CRM updates.",
-      "Founders in Jaipur, India, and globally who want unified operations without hiring administrative staff.",
+      "Founders, growing teams, and businesses worldwide who want unified operations without hiring administrative staff.",
     ],
     capabilities: [
       {

@@ -96,10 +96,9 @@ const jsonLdProfessionalService = {
     "FARAKIQ delivers custom website development, full-stack web applications, e-commerce platforms, AI integrations, and automated workflows. We make the difference.",
   slogan: "We make the difference",
   priceRange: "₹₹₹",
-  areaServed: "Jaipur, India",
+  areaServed: "Worldwide",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Jaipur",
     addressCountry: "IN",
   },
   founder: {

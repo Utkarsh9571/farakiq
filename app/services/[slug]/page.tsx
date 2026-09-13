@@ -77,13 +77,12 @@ export default async function ServicePage({
       email: "hello@darvin.co",
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Jaipur",
         addressCountry: "IN",
       },
     },
     areaServed: {
       "@type": "AdministrativeArea",
-      name: "Jaipur, India & Available Globally",
+      name: "Worldwide",
     },
     offers: {
       "@type": "Offer",

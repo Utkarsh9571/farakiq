@@ -145,7 +145,7 @@ Content is decoupled from UI presentation and maintained in type-safe datasets u
 
 The SEO architecture is built for Googlebot crawlability and modern AI search engines:
 
-- **Root Structured Data (`app/layout.tsx`):** Consolidated Schema.org `ProfessionalService` JSON-LD including founder (`Darwin Swami`) and lead engineer (`Utkarsh Sharma`), official email (`hello@darvin.co`), geographic location (`Jaipur, India`), price range, and service competencies.
+- **Root Structured Data (`app/layout.tsx`):** Consolidated Schema.org `ProfessionalService` JSON-LD including founder (`Darwin Swami`) and lead engineer (`Utkarsh Sharma`), official email (`hello@darvin.co`), global service scope (`Worldwide`), price range, and service competencies.
 - **Service Pages Structured Data:** Schema.org `Service`, `BreadcrumbList`, and `FAQPage` JSON-LD on all 5 service routes.
 - **Portfolio Structured Data:** Schema.org `CreativeWork` JSON-LD dynamically generated for every project, plus an `ItemList` on the homepage portfolio section.
 - **Blog Structured Data:** Schema.org `Blog` on `/blog` and `BlogPosting` on each individual article.
@@ -238,7 +238,7 @@ Built with `motion/react`:
 
 - **Search Console Indexation:** Once deployed to the live domain, submit `https://farakiq.com/sitemap.xml` directly to Google Search Console.
 - **Editorial Expansion:** The `/blog` architecture is established. Adding 2–3 authentic articles quarterly will steadily grow long-tail search impressions.
-- **Local Geo-Signals:** Expand subtle local citations for Jaipur, Rajasthan, and Indian commercial hubs where relevant to search intent.
+- **Global & Regional Search Reach:** Expand subtle commercial citations for high-growth tech hubs and international client markets where relevant to search intent.
 
 ---
 

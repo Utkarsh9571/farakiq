@@ -13,7 +13,7 @@
 Before this implementation task, the repository structure was audited:
 
 - **Routing:** Purely single-page application experience rooted at `app/page.tsx`, where sections (`#services`, `#portfolio`, `#architecture`, `#roi`, `#pricing`, `#approach`, `#about`, `#contact`) were addressed via client-side hash anchors.
-- **Service Offerings:** Service items lived solely inside `data/siteData.ts` and were rendered inside a client-side interactive calculator/ledger in `components/Services.tsx`. Search engines had zero crawlable URLs for specific service intent (e.g. "n8n automation Jaipur", "Meta Ads Management", etc.).
+- **Service Offerings:** Service items lived solely inside `data/siteData.ts` and were rendered inside a client-side interactive calculator/ledger in `components/Services.tsx`. Search engines had zero crawlable URLs for specific service intent (e.g. "n8n automation agency", "Meta Ads Management", etc.).
 - **Portfolio Projects:** 5 projects (`brickbytes`, `zonirza`, `bliniq`, `mailpilot`, `meera`) existed in `data/portfolioData.ts`, rendered in `components/Portfolio.tsx` with details accessible exclusively through a client-side React modal toggle (`setSelectedProject(project)`). No dedicated URLs or Schema.org `CreativeWork` schemas were present.
 - **Structured Data:** The root layout (`app/layout.tsx`) contained two separate, incomplete JSON-LD tags: an incomplete `ProfessionalService` missing contact email, founder entity, and areaServed, plus a disconnected `Person` tag.
 - **Sitemap & Robots:** `app/robots.ts` was properly configured pointing to `/sitemap.xml`, but `app/sitemap.ts` returned only a single entry for the homepage root (`/`), leaving all other content unindexed.
@@ -35,7 +35,7 @@ The root layout structured data in [app/layout.tsx](file:///c:/Users/lenovo/Desk
   - `name`: `FARAKIQ`
   - `url`: `https://farakiq.com`
   - `email`: `hello@darvin.co`
-  - `areaServed`: `Jaipur, India`
+  - `areaServed`: `Worldwide`
   - `founder`:
     - `@type`: `Person`
     - `name`: `Darwin Swami`
@@ -46,7 +46,7 @@ The root layout structured data in [app/layout.tsx](file:///c:/Users/lenovo/Desk
     - `name`: `Utkarsh Sharma`
     - `jobTitle`: `Lead Engineer`
     - `url`: `https://farakiq.com`
-  - `address`: `PostalAddress` (`addressLocality: "Jaipur"`, `addressCountry: "IN"`)
+  - `address`: `PostalAddress` (`addressCountry: "IN"`)
   - `priceRange`: `₹₹₹`
   - `knowsAbout`: `[Web Development, Full-Stack Web Applications, AI Integrations, n8n Workflow Automation, Google Ads, Meta Ads, SEO]`
 
@@ -80,7 +80,7 @@ Five dedicated service routes have been created under `app/services/[slug]/page.
 1. **`/services/meta-ads`**
    - **Title:** `Meta Ads Management (Facebook & Instagram) | FARAKIQ`
    - **Target H1:** `Meta Ads Management & Paid Social Growth`
-   - **Description:** Direct-response Meta Ads management with flat-fee pricing, rapid creative testing, audience segmentation, and transparent weekly CPA/ROAS tracking from Jaipur, India.
+   - **Description:** Direct-response Meta Ads management with flat-fee pricing, rapid creative testing, audience segmentation, and transparent weekly CPA/ROAS tracking.
    - **Canonical:** `https://farakiq.com/services/meta-ads`
    - **Key Content:** Campaign architecture, Conversions API (CAPI) server tracking, creative batch testing, flat-fee comparison, deliverables, FAQs.
 
@@ -94,23 +94,23 @@ Five dedicated service routes have been created under `app/services/[slug]/page.
 3. **`/services/seo`**
    - **Title:** `Search Engine Optimization (SEO) & AI Search (AEO) | FARAKIQ`
    - **Target H1:** `Search Engine Optimization (SEO & AI Search)`
-   - **Description:** Technical SEO, on-page optimization, and Answer Engine Optimization (AEO/GEO) designed for Google and modern AI search engines. Based in Jaipur, serving globally.
+   - **Description:** Technical SEO, on-page optimization, and Answer Engine Optimization (AEO/GEO) designed for Google and modern AI search engines. Serving clients worldwide.
    - **Canonical:** `https://farakiq.com/services/seo`
    - **Key Content:** Core Web Vitals, Schema.org entity graph, Answer Engine Optimization (AEO/GEO for ChatGPT/Perplexity/Gemini), deliverables, FAQs.
 
 4. **`/services/web-development`**
    - **Title:** `Website & Full-Stack Web Application Development | FARAKIQ`
    - **Target H1:** `Website Development & Full-Stack Web Applications`
-   - **Description:** Custom website development, Next.js web applications, and e-commerce platforms engineered with clean TypeScript architecture and high performance. Jaipur, India.
+   - **Description:** Custom website development, Next.js web applications, and e-commerce platforms engineered with clean TypeScript architecture and high performance.
    - **Canonical:** `https://farakiq.com/services/web-development`
    - **Key Content:** Next.js App Router architecture, MongoDB/PostgreSQL database integration, responsive dark-mode design system, deliverables, FAQs.
 
 5. **`/services/n8n-automation`**
-   - **Title:** `n8n Workflow Automation & System Integrations Jaipur | FARAKIQ`
+   - **Title:** `n8n Workflow Automation & System Integrations | FARAKIQ`
    - **Target H1:** `n8n Workflow Automation & System Integrations`
-   - **Description:** Custom n8n workflow automations, CRM synchronization, API pipelines, and webhook orchestration without Zapier subscription bloat. Jaipur, India & worldwide.
+   - **Description:** Custom n8n workflow automations, CRM synchronization, API pipelines, and webhook orchestration without Zapier subscription bloat. Available worldwide.
    - **Canonical:** `https://farakiq.com/services/n8n-automation`
-   - **Key Content:** Self-hosted vs cloud n8n, lead routing, CRM/database syncing, error handling, deliverables, FAQs. Naturally addresses search intent such as *"n8n automation Jaipur"*.
+   - **Key Content:** Self-hosted vs cloud n8n, lead routing, CRM/database syncing, error handling, deliverables, FAQs. Naturally addresses search intent such as *"n8n workflow automation"*.
 
 ### SEO Features on Every Service Page:
 - Unique `<title>` and `<meta name="description">`
