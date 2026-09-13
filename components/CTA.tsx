@@ -102,7 +102,7 @@ export default function CTA() {
               <div className="mono" style={{ fontSize: "0.8rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
                 DIRECT CONTACT
               </div>
-              <a href="mailto:hello@darvin.co" className="mono" style={{ fontSize: "1.1rem", color: "var(--waste)", textDecoration: "none", fontWeight: 600 }}>
+              <a href="mailto:hello@darvin.co" className="mono" style={{ fontSize: "1.1rem", color: "var(--waste)", textDecoration: "none", fontWeight: 600, wordBreak: "break-all" }}>
                 hello@darvin.co
               </a>
             </div>
@@ -113,7 +113,7 @@ export default function CTA() {
             style={{
               background: "var(--ink-soft)",
               border: "1px solid var(--rule)",
-              padding: "32px",
+              padding: "clamp(20px, 4vw, 32px)",
               borderRadius: "var(--radius)",
             }}
             initial={{ opacity: 0, y: 20 }}
@@ -173,8 +173,9 @@ export default function CTA() {
                           background: "var(--ink)",
                           border: errors.name ? "1px solid var(--waste)" : "1px solid var(--rule)",
                           color: "var(--text-light)",
-                          padding: "10px 12px",
-                          fontSize: "0.9rem",
+                          padding: "12px 14px",
+                          fontSize: "1rem",
+                          minHeight: "44px",
                           borderRadius: "var(--radius)",
                         }}
                         placeholder="John Doe"
@@ -196,8 +197,9 @@ export default function CTA() {
                           background: "var(--ink)",
                           border: errors.email ? "1px solid var(--waste)" : "1px solid var(--rule)",
                           color: "var(--text-light)",
-                          padding: "10px 12px",
-                          fontSize: "0.9rem",
+                          padding: "12px 14px",
+                          fontSize: "1rem",
+                          minHeight: "44px",
                           borderRadius: "var(--radius)",
                         }}
                         placeholder="john@example.com"
@@ -221,8 +223,9 @@ export default function CTA() {
                           background: "var(--ink)",
                           border: "1px solid var(--rule)",
                           color: "var(--text-light)",
-                          padding: "10px 12px",
-                          fontSize: "0.9rem",
+                          padding: "12px 14px",
+                          fontSize: "1rem",
+                          minHeight: "44px",
                           borderRadius: "var(--radius)",
                         }}
                         placeholder="Optional"
@@ -242,8 +245,9 @@ export default function CTA() {
                           background: "var(--ink)",
                           border: "1px solid var(--rule)",
                           color: "var(--text-light)",
-                          padding: "10px 12px",
-                          fontSize: "0.9rem",
+                          padding: "12px 14px",
+                          fontSize: "1rem",
+                          minHeight: "44px",
                           borderRadius: "var(--radius)",
                         }}
                       >
@@ -270,8 +274,8 @@ export default function CTA() {
                         background: "var(--ink)",
                         border: errors.message ? "1px solid var(--waste)" : "1px solid var(--rule)",
                         color: "var(--text-light)",
-                        padding: "10px 12px",
-                        fontSize: "0.9rem",
+                        padding: "12px 14px",
+                        fontSize: "1rem",
                         borderRadius: "var(--radius)",
                         resize: "vertical",
                       }}

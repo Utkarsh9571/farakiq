@@ -59,6 +59,7 @@ export default function Navbar() {
           id="menuToggle"
           aria-expanded={isOpen}
           aria-controls="mobilePanel"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
           onClick={() => setIsOpen((prev) => !prev)}
         >
           {isOpen ? "Close" : "Menu"}
@@ -96,6 +97,14 @@ export default function Navbar() {
             </Link>
             <Link href="/#contact" onClick={() => setIsOpen(false)}>
               Contact
+            </Link>
+            <Link
+              href="/#contact"
+              className="btn btn-primary"
+              style={{ marginTop: "14px", width: "100%", justifyContent: "center" }}
+              onClick={() => setIsOpen(false)}
+            >
+              Book a call
             </Link>
           </motion.div>
         )}

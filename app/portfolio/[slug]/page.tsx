@@ -177,7 +177,7 @@ export default async function PortfolioProjectPage({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"
-                  style={{ padding: "10px 20px" }}
+                  style={{ padding: "10px 20px", flex: "1 1 160px", justifyContent: "center" }}
                 >
                   View Live Website ↗
                 </a>
@@ -187,11 +187,11 @@ export default async function PortfolioProjectPage({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-ghost"
-                style={{ padding: "10px 20px" }}
+                style={{ padding: "10px 20px", flex: "1 1 160px", justifyContent: "center" }}
               >
                 View Repository (GitHub) ↗
               </a>
-              <Link href="/#portfolio" className="btn btn-ghost" style={{ padding: "10px 20px" }}>
+              <Link href="/#portfolio" className="btn btn-ghost" style={{ padding: "10px 20px", flex: "1 1 140px", justifyContent: "center" }}>
                 ← All Projects
               </Link>
             </div>

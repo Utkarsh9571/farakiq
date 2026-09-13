@@ -139,8 +139,8 @@ export default function BlogIndexPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))",
-              gap: "28px",
+              gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 290px), 1fr))",
+              gap: "24px",
               marginBottom: "64px",
             }}
           >
@@ -151,7 +151,7 @@ export default function BlogIndexPage() {
                   background: "var(--ink-soft)",
                   border: "1px solid var(--rule)",
                   borderRadius: "var(--radius)",
-                  padding: "32px",
+                  padding: "clamp(20px, 4vw, 32px)",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",

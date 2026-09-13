@@ -220,7 +220,7 @@ export default async function BlogPostPage({
                 background: "var(--ink-soft)",
                 border: "1px solid var(--rule)",
                 borderRadius: "var(--radius)",
-                padding: "24px 28px",
+                padding: "clamp(18px, 4vw, 28px)",
                 marginBottom: "48px",
               }}
             >
@@ -329,6 +329,7 @@ export default async function BlogPostPage({
                       key={idx}
                       style={{
                         overflowX: "auto",
+                        WebkitOverflowScrolling: "touch",
                         margin: "28px 0 36px",
                         border: "1px solid var(--rule)",
                         borderRadius: "var(--radius)",
@@ -337,6 +338,7 @@ export default async function BlogPostPage({
                       <table
                         style={{
                           width: "100%",
+                          minWidth: "480px",
                           borderCollapse: "collapse",
                           fontSize: "0.88rem",
                           textAlign: "left",
@@ -352,6 +354,7 @@ export default async function BlogPostPage({
                                   padding: "12px 16px",
                                   color: "var(--waste)",
                                   fontWeight: 600,
+                                  whiteSpace: "nowrap",
                                 }}
                               >
                                 {h}
@@ -397,7 +400,7 @@ export default async function BlogPostPage({
                 borderTop: "1px solid var(--rule)",
                 paddingTop: "36px",
                 background: "var(--ink-soft)",
-                padding: "32px",
+                padding: "clamp(20px, 4vw, 32px)",
                 borderRadius: "var(--radius)",
               }}
             >

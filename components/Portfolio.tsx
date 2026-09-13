@@ -86,7 +86,7 @@ export default function Portfolio() {
           layout
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 280px), 1fr))",
             gap: "24px",
           }}
         >
@@ -210,7 +210,7 @@ export default function Portfolio() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: "20px",
+                padding: "clamp(10px, 3vw, 20px)",
               }}
               onClick={() => setSelectedProject(null)}
             >
@@ -222,7 +222,7 @@ export default function Portfolio() {
                 style={{
                   background: "var(--ink-soft)",
                   border: "1px solid var(--rule)",
-                  padding: "36px",
+                  padding: "clamp(20px, 4vw, 36px)",
                   borderRadius: "var(--radius)",
                   maxWidth: "680px",
                   width: "100%",
@@ -233,19 +233,20 @@ export default function Portfolio() {
                 }}
                 onClick={(e) => e.stopPropagation()}
               >
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "20px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "12px", marginBottom: "20px" }}>
                   <div>
                     <span className="mono" style={{ fontSize: "0.75rem", color: "var(--waste)" }}>
                       {selectedProject.categoryLabel.toUpperCase()}
                     </span>
-                    <h3 style={{ fontSize: "1.8rem", fontWeight: 700, margin: "4px 0 0", color: "var(--text-light)" }}>
+                    <h3 style={{ fontSize: "clamp(1.3rem, 4vw, 1.8rem)", fontWeight: 700, margin: "4px 0 0", color: "var(--text-light)" }}>
                       {selectedProject.title}
                     </h3>
                   </div>
                   <button
                     onClick={() => setSelectedProject(null)}
                     className="btn btn-ghost"
-                    style={{ padding: "6px 12px", fontSize: "0.85rem" }}
+                    aria-label="Close case study modal"
+                    style={{ padding: "8px 14px", minHeight: "44px", minWidth: "44px", fontSize: "0.85rem", flexShrink: 0 }}
                   >
                     ✕ Close
                   </button>
@@ -317,7 +318,7 @@ export default function Portfolio() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-primary"
-                        style={{ fontSize: "0.88rem" }}
+                        style={{ fontSize: "0.88rem", flex: "1 1 180px", justifyContent: "center" }}
                       >
                         05 — View Live Website ↗
                       </a>
@@ -327,14 +328,14 @@ export default function Portfolio() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-ghost"
-                      style={{ fontSize: "0.88rem" }}
+                      style={{ fontSize: "0.88rem", flex: "1 1 180px", justifyContent: "center" }}
                     >
                       06 — View Repository (GitHub) ↗
                     </a>
                     <Link
                       href={`/portfolio/${selectedProject.id}`}
                       className="btn btn-ghost"
-                      style={{ fontSize: "0.88rem", textDecoration: "none" }}
+                      style={{ fontSize: "0.88rem", textDecoration: "none", flex: "1 1 180px", justifyContent: "center" }}
                     >
                       Full Case Study Page →
                     </Link>

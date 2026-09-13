@@ -123,7 +123,7 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
     ],
     relatedServices: [
       { slug: "google-ads", name: "PPC & Google Ads", tag: "Paid Search" },
-      { slug: "web-development", name: "Website Development", tag: "Full-Stack" },
+      { slug: "web-development", name: "Websites & Custom Platforms", tag: "Web & Platforms" },
       { slug: "seo", name: "Search Engine Optimization", tag: "Organic Search" },
     ],
     relatedProjects: [
@@ -227,7 +227,7 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
     relatedServices: [
       { slug: "meta-ads", name: "Meta Ads Management", tag: "Paid Social" },
       { slug: "seo", name: "Search Engine Optimization", tag: "Organic Search" },
-      { slug: "web-development", name: "Website Development", tag: "Full-Stack" },
+      { slug: "web-development", name: "Websites & Custom Platforms", tag: "Web & Platforms" },
     ],
     relatedProjects: [
       {
@@ -323,9 +323,9 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
       },
     ],
     relatedServices: [
-      { slug: "web-development", name: "Website Development", tag: "Full-Stack" },
+      { slug: "web-development", name: "Websites & Custom Platforms", tag: "Web & Platforms" },
       { slug: "google-ads", name: "PPC & Google Ads", tag: "Paid Search" },
-      { slug: "n8n-automation", name: "n8n Workflow Automation", tag: "Automation" },
+      { slug: "n8n-automation", name: "Business Automation & AI", tag: "Automation & AI" },
     ],
     relatedProjects: [
       {
@@ -338,16 +338,16 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
 
   "web-development": {
     slug: "web-development",
-    name: "Website & Web App Development",
+    name: "Websites & Custom Web Platforms",
     badge: "ENGINEERING VERTICAL",
-    title: "Website & Full-Stack Web Application Development | FARAKIQ",
+    title: "Websites, Web Apps & Custom Software Platforms | FARAKIQ",
     metaDescription:
-      "Custom website development, Next.js web applications, and e-commerce platforms engineered with clean TypeScript architecture and high performance. Jaipur, India.",
-    h1: "Website Development & Full-Stack Web Applications",
+      "Custom business websites, conversion landing pages, and web application platforms engineered with clean TypeScript architecture and fast loading. Jaipur, India.",
+    h1: "Websites, Web Apps & Custom Platforms",
     subtitle:
-      "Custom digital platforms built with Next.js, React, and modern TypeScript. Lightning-fast page loads, bespoke UI engineering, and robust backend integrations.",
-    priceModel: "Websites from ₹25,000 • Web Apps from ₹60,000",
-    pricingTag: "One-time build or ongoing engineering",
+      "We build modern business websites, conversion landing pages, and custom web applications that run fast in the browser with zero bloat.",
+    priceModel: "Landing pages from ₹5,999 • Websites from ₹25,000 • Web Apps from ₹60,000",
+    pricingTag: "Transparent one-time project pricing",
     summary:
       "FARAKIQ designs and engineers production-ready web applications and business websites from the ground up. We avoid bloated generic templates and sluggish page builders. Every project is built with modern component architectures, type-safe code, responsive design systems, and built-in SEO fundamentals — delivering a digital presence that feels premium and converts visitors into clients.",
     targetAudience: [
@@ -421,7 +421,7 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
       },
     ],
     relatedServices: [
-      { slug: "n8n-automation", name: "n8n Workflow Automation", tag: "Automation" },
+      { slug: "n8n-automation", name: "Business Automation & AI Agents", tag: "Automation & AI" },
       { slug: "seo", name: "Search Engine Optimization", tag: "Organic Search" },
       { slug: "google-ads", name: "PPC & Google Ads", tag: "Paid Search" },
     ],
@@ -446,18 +446,18 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
 
   "n8n-automation": {
     slug: "n8n-automation",
-    name: "n8n Workflow Automation",
-    badge: "AUTOMATION & INTEGRATION VERTICAL",
-    title: "n8n Workflow Automation & System Integrations Jaipur | FARAKIQ",
+    name: "Business Automation & AI Systems",
+    badge: "AUTOMATION & AI VERTICAL",
+    title: "Business Automation, AI Agents & System Integrations Jaipur | FARAKIQ",
     metaDescription:
-      "Custom n8n workflow automations, CRM synchronization, API pipelines, and webhook orchestration without Zapier subscription bloat. Jaipur, India & worldwide.",
-    h1: "n8n Workflow Automation & System Integrations",
+      "Custom workflow automations, 24/7 AI chatbots, CRM synchronization, and webhook orchestration without Zapier subscription bloat. Jaipur, India & worldwide.",
+    h1: "Business Automation, AI Agents & Connected Systems",
     subtitle:
-      "Automate repetitive operations, connect fragmented software tools, and eliminate manual data entry with self-hosted or cloud n8n pipelines — keeping your data private and costs low.",
-    priceModel: "From ₹12,000 / month or one-time project",
-    pricingTag: "No per-task usage penalty",
+      "Automate repetitive tasks, deploy AI assistants that talk to customers, and connect the software your business uses every day — keeping operations unified and efficient.",
+    priceModel: "Business Automation from ₹12,000 • AI Agents from ₹15,000 • Integrations from ₹10,000",
+    pricingTag: "Scoped one-time builds or ongoing maintenance",
     summary:
-      "Growing companies often get trapped in expensive Zapier or Make subscription tiers that charge per-task fees as volume grows, or worse, struggle with broken spreadsheets and manual data re-entry. FARAKIQ designs and deploys custom n8n automations. From automated lead enrichment and CRM syncing to transactional webhooks and AI-assisted summaries, we engineer reliable pipelines that run smoothly in the background.",
+      "Growing companies often get trapped in expensive Zapier subscription tiers that charge per-task fees as volume grows, or worse, struggle with broken spreadsheets and manual data entry. FARAKIQ designs and deploys custom workflow automations and intelligent AI agents. From automated lead routing and CRM syncing to customer support bots and transactional webhooks, we engineer reliable systems that run smoothly in the background.",
     targetAudience: [
       "Businesses paying excessive monthly fees to Zapier or Make due to high task volume.",
       "Companies wanting to keep customer and transactional data on their own secure infrastructure.",
@@ -529,7 +529,7 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
       },
     ],
     relatedServices: [
-      { slug: "web-development", name: "Website Development", tag: "Full-Stack" },
+      { slug: "web-development", name: "Websites & Custom Platforms", tag: "Web & Platforms" },
       { slug: "meta-ads", name: "Meta Ads Management", tag: "Paid Social" },
       { slug: "google-ads", name: "PPC & Google Ads", tag: "Paid Search" },
     ],

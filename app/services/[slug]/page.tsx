@@ -256,7 +256,7 @@ export default async function ServicePage({
                 Who This Service Is Engineered For
               </h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "20px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: "20px" }}>
               {service.targetAudience.map((audience, i) => (
                 <div
                   key={i}
@@ -288,7 +288,7 @@ export default async function ServicePage({
                 Core Capabilities &amp; Engineering Scope
               </h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "24px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "24px" }}>
               {service.capabilities.map((cap, i) => (
                 <div
                   key={i}
@@ -320,7 +320,7 @@ export default async function ServicePage({
                 How We Execute This Work
               </h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: "24px" }}>
               {service.processSteps.map((step) => (
                 <div
                   key={step.num}
@@ -370,7 +370,7 @@ export default async function ServicePage({
                 style={{
                   background: "var(--ink-soft)",
                   border: "1px solid var(--rule)",
-                  padding: "32px",
+                  padding: "clamp(20px, 4vw, 32px)",
                   borderRadius: "var(--radius)",
                 }}
               >
@@ -402,7 +402,7 @@ export default async function ServicePage({
                   style={{
                     background: "var(--ink-soft)",
                     border: "1px solid var(--rule)",
-                    padding: "26px 30px",
+                    padding: "clamp(18px, 3.5vw, 26px) clamp(16px, 3.5vw, 30px)",
                     borderRadius: "var(--radius)",
                   }}
                 >
@@ -428,7 +428,7 @@ export default async function ServicePage({
               </h2>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px", marginBottom: "32px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: "20px", marginBottom: "32px" }}>
               {service.relatedServices.map((rel) => (
                 <Link
                   key={rel.slug}
@@ -488,7 +488,7 @@ export default async function ServicePage({
             style={{
               background: "var(--ink-soft)",
               border: "1px solid var(--waste)",
-              padding: "44px 36px",
+              padding: "clamp(24px, 5vw, 44px) clamp(18px, 4vw, 36px)",
               borderRadius: "var(--radius)",
               display: "flex",
               justifyContent: "space-between",

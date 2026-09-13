@@ -23,7 +23,7 @@ export default function Architecture() {
           className="arch-pipeline"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))",
             gap: "16px",
             marginBottom: "36px",
           }}
@@ -38,7 +38,7 @@ export default function Architecture() {
                 style={{
                   background: isActive ? "var(--ink-soft)" : "transparent",
                   border: isActive ? "1px solid var(--waste)" : "1px solid var(--rule)",
-                  padding: "20px 18px",
+                  padding: "18px 16px",
                   borderRadius: "var(--radius)",
                   textAlign: "left",
                   cursor: "pointer",
@@ -87,7 +87,7 @@ export default function Architecture() {
               background: "var(--ink-soft)",
               border: "1px solid var(--rule)",
               borderRadius: "var(--radius)",
-              padding: "32px",
+              padding: "clamp(18px, 4vw, 32px)",
               display: "grid",
               gridTemplateColumns: "1.2fr 1fr",
               gap: "36px",
@@ -100,7 +100,7 @@ export default function Architecture() {
               <div className="mono" style={{ fontSize: "0.78rem", color: "var(--waste)", marginBottom: "8px" }}>
                 STAGE {activeStage.number} ARCHITECTURE
               </div>
-              <h3 style={{ fontSize: "1.6rem", fontWeight: 700, margin: "0 0 16px", color: "var(--text-light)" }}>
+              <h3 style={{ fontSize: "clamp(1.25rem, 3.5vw, 1.6rem)", fontWeight: 700, margin: "0 0 16px", color: "var(--text-light)" }}>
                 {activeStage.title}
               </h3>
               <p style={{ color: "var(--text-light-dim)", fontSize: "1rem", lineHeight: 1.6, margin: "0 0 24px" }}>
@@ -140,6 +140,9 @@ export default function Architecture() {
                 fontFamily: "var(--font-ibm-plex-mono), monospace",
                 fontSize: "0.82rem",
                 color: "var(--text-light-dim)",
+                overflowX: "auto",
+                wordBreak: "break-word",
+                maxWidth: "100%",
               }}
             >
               <div style={{ display: "flex", gap: "6px", marginBottom: "16px", borderBottom: "1px dashed var(--rule)", paddingBottom: "10px" }}>

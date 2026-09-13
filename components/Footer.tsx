@@ -118,19 +118,19 @@ export default function Footer() {
             <div className="mono" style={{ fontSize: "0.8rem", color: "var(--waste)", marginBottom: "14px", letterSpacing: "0.04em" }}>
               CONNECT
             </div>
-            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "6px" }}>
               <li>
-                <a href="mailto:hello@darvin.co" className="mono" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem" }}>
+                <a href="mailto:hello@darvin.co" className="mono" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem", wordBreak: "break-all", minHeight: "36px", display: "inline-flex", alignItems: "center" }}>
                   hello@darvin.co
                 </a>
               </li>
               <li>
-                <Link href="/#contact" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem" }}>
+                <Link href="/#contact" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem", minHeight: "36px", display: "inline-flex", alignItems: "center" }}>
                   Project Enquiry
                 </Link>
               </li>
               <li>
-                <Link href="/#top" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem" }}>
+                <Link href="/#top" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem", minHeight: "36px", display: "inline-flex", alignItems: "center" }}>
                   Back to top ↑
                 </Link>
               </li>
@@ -161,6 +161,12 @@ export default function Footer() {
 
       <style jsx global>{`
         @media (max-width: 860px) {
+          .footer-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 32px !important;
+          }
+        }
+        @media (max-width: 480px) {
           .footer-grid {
             grid-template-columns: 1fr !important;
             gap: 28px !important;
