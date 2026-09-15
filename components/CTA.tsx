@@ -23,7 +23,7 @@ export default function CTA() {
     name: "",
     email: "",
     company: "",
-    projectType: "Full-Stack Web App",
+    projectType: "Integrated Engineering + Growth",
     budgetRange: "₹25,000 – ₹50,000",
     message: "",
   });
@@ -80,7 +80,7 @@ export default function CTA() {
     } catch (err: unknown) {
       console.error("Submission error:", err);
       setStatus("error");
-      setErrorMessage("Unable to send message automatically. Please email hello@darvin.co directly.");
+      setErrorMessage("Unable to send message automatically. Please email hello@farakiq.com directly.");
     }
   };
 
@@ -89,37 +89,53 @@ export default function CTA() {
       <div className="wrap final-cta">
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: "56px", alignItems: "start" }} className="contact-grid">
           {/* Left Column: Heading & Positioning */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          >
             <div className="badge-tech">
               <span className="dot" />
               <span>PROJECT ENQUIRY</span>
             </div>
-            <h2>Let&apos;s build something that scales your business.</h2>
+            <h2>Let&apos;s build and scale something that grows your business.</h2>
             <p style={{ color: "var(--text-light-dim)", fontSize: "1.05rem", lineHeight: 1.6, marginBottom: "28px" }}>
-              Whether you need a custom web application, AI integrations, or n8n workflow automations — fill out the form and I will respond within 24 hours.
+              Whether you need a custom web application, AI automation, high-converting ad campaigns, or organic search discovery — fill out the form and our partners will respond within 24 hours.
             </p>
-            <div style={{ background: "var(--ink-soft)", border: "1px solid var(--rule)", padding: "20px", borderRadius: "var(--radius)" }}>
-              <div className="mono" style={{ fontSize: "0.8rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+            <motion.div
+              whileHover={{ y: -3, borderColor: "var(--waste)" }}
+              transition={{ duration: 0.2 }}
+              style={{
+                background: "var(--card-bg)",
+                border: "1px solid var(--card-border)",
+                padding: "clamp(20px, 3vw, 24px)",
+                borderRadius: "var(--radius-lg)",
+                boxShadow: "var(--shadow-sm), var(--card-inner-highlight)",
+              }}
+            >
+              <div className="mono" style={{ fontSize: "0.76rem", color: "var(--text-light-dim)", marginBottom: "6px", letterSpacing: "0.04em", fontWeight: 600 }}>
                 DIRECT CONTACT
               </div>
-              <a href="mailto:hello@darvin.co" className="mono" style={{ fontSize: "1.1rem", color: "var(--waste)", textDecoration: "none", fontWeight: 600, wordBreak: "break-all" }}>
-                hello@darvin.co
+              <a href="mailto:hello@farakiq.com" className="mono" style={{ fontSize: "1.1rem", color: "var(--waste)", textDecoration: "none", fontWeight: 600, wordBreak: "break-all" }}>
+                hello@farakiq.com
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Column: Lead Form */}
           <motion.div
             style={{
-              background: "var(--ink-soft)",
-              border: "1px solid var(--rule)",
-              padding: "clamp(20px, 4vw, 32px)",
-              borderRadius: "var(--radius)",
+              background: "var(--card-bg)",
+              border: "1px solid var(--card-border)",
+              padding: "clamp(24px, 4vw, 36px)",
+              borderRadius: "var(--radius-lg)",
+              boxShadow: "var(--shadow-md), var(--card-inner-highlight)",
             }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
             <AnimatePresence mode="wait">
               {status === "success" ? (
@@ -130,14 +146,14 @@ export default function CTA() {
                   exit={{ opacity: 0 }}
                   style={{ textAlign: "center", padding: "36px 12px" }}
                 >
-                  <div className="stamp value" style={{ transform: "none", marginBottom: "20px", fontSize: "0.9rem" }}>
+                  <div className="stamp value" style={{ transform: "none", marginBottom: "20px", fontSize: "0.85rem" }}>
                     SUBMISSION RECEIVED
                   </div>
-                  <h3 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 12px", color: "var(--text-light)" }}>
+                  <h3 style={{ fontSize: "1.4rem", fontWeight: 700, margin: "0 0 12px", color: "var(--text-light)", letterSpacing: "-0.01em" }}>
                     Thank you for reaching out!
                   </h3>
-                  <p style={{ color: "var(--text-light-dim)", fontSize: "0.95rem", lineHeight: 1.5, margin: "0 0 24px" }}>
-                    Your project details have been recorded. I will review your requirements and follow up via email shortly.
+                  <p style={{ color: "var(--text-light-dim)", fontSize: "0.95rem", lineHeight: 1.6, margin: "0 0 24px" }}>
+                    Your project details have been recorded. We will review your requirements and follow up via email shortly.
                   </p>
                   <button
                     className="btn btn-ghost"
@@ -147,7 +163,7 @@ export default function CTA() {
                         name: "",
                         email: "",
                         company: "",
-                        projectType: "Full-Stack Web App",
+                        projectType: "Integrated Engineering + Growth",
                         budgetRange: "₹25,000 – ₹50,000",
                         message: "",
                       });
@@ -170,13 +186,14 @@ export default function CTA() {
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         style={{
                           width: "100%",
-                          background: "var(--ink)",
-                          border: errors.name ? "1px solid var(--waste)" : "1px solid var(--rule)",
+                          background: "rgba(10, 12, 15, 0.85)",
+                          border: errors.name ? "1px solid var(--waste)" : "1px solid var(--card-border)",
                           color: "var(--text-light)",
                           padding: "12px 14px",
-                          fontSize: "1rem",
+                          fontSize: "0.95rem",
                           minHeight: "44px",
-                          borderRadius: "var(--radius)",
+                          borderRadius: "var(--radius-md)",
+                          boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
                         }}
                         placeholder="John Doe"
                       />
@@ -194,13 +211,14 @@ export default function CTA() {
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         style={{
                           width: "100%",
-                          background: "var(--ink)",
-                          border: errors.email ? "1px solid var(--waste)" : "1px solid var(--rule)",
+                          background: "rgba(10, 12, 15, 0.85)",
+                          border: errors.email ? "1px solid var(--waste)" : "1px solid var(--card-border)",
                           color: "var(--text-light)",
                           padding: "12px 14px",
-                          fontSize: "1rem",
+                          fontSize: "0.95rem",
                           minHeight: "44px",
-                          borderRadius: "var(--radius)",
+                          borderRadius: "var(--radius-md)",
+                          boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
                         }}
                         placeholder="john@example.com"
                       />
@@ -220,13 +238,14 @@ export default function CTA() {
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         style={{
                           width: "100%",
-                          background: "var(--ink)",
-                          border: "1px solid var(--rule)",
+                          background: "rgba(10, 12, 15, 0.85)",
+                          border: "1px solid var(--card-border)",
                           color: "var(--text-light)",
                           padding: "12px 14px",
-                          fontSize: "1rem",
+                          fontSize: "0.95rem",
                           minHeight: "44px",
-                          borderRadius: "var(--radius)",
+                          borderRadius: "var(--radius-md)",
+                          boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
                         }}
                         placeholder="Optional"
                       />
@@ -242,20 +261,22 @@ export default function CTA() {
                         onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
                         style={{
                           width: "100%",
-                          background: "var(--ink)",
-                          border: "1px solid var(--rule)",
+                          background: "rgba(10, 12, 15, 0.85)",
+                          border: "1px solid var(--card-border)",
                           color: "var(--text-light)",
                           padding: "12px 14px",
-                          fontSize: "1rem",
+                          fontSize: "0.95rem",
                           minHeight: "44px",
-                          borderRadius: "var(--radius)",
+                          borderRadius: "var(--radius-md)",
+                          boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
                         }}
                       >
-                        <option value="Full-Stack Web App">Full-Stack Web App</option>
-                        <option value="AI Integration & Chatbot">AI Integration &amp; Chatbot</option>
-                        <option value="n8n Workflow Automation">n8n Workflow Automation</option>
-                        <option value="API & Custom Systems">API &amp; Custom Systems</option>
-                        <option value="Other Technical Service">Other Technical Service</option>
+                        <option value="Integrated Engineering + Growth">Integrated Engineering + Growth</option>
+                        <option value="Websites & Custom Web Apps">Websites &amp; Custom Web Apps</option>
+                        <option value="Paid Ads (Google, Meta, LinkedIn)">Paid Ads (Google, Meta, LinkedIn)</option>
+                        <option value="Organic Search & Discovery (SEO/AEO)">Organic Search &amp; Discovery (SEO/AEO)</option>
+                        <option value="AI Systems & Workflow Automation">AI Systems &amp; Workflow Automation</option>
+                        <option value="Other Project Scope">Other Project Scope</option>
                       </select>
                     </div>
                   </div>
@@ -271,15 +292,16 @@ export default function CTA() {
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       style={{
                         width: "100%",
-                        background: "var(--ink)",
-                        border: errors.message ? "1px solid var(--waste)" : "1px solid var(--rule)",
+                        background: "rgba(10, 12, 15, 0.85)",
+                        border: errors.message ? "1px solid var(--waste)" : "1px solid var(--card-border)",
                         color: "var(--text-light)",
                         padding: "12px 14px",
-                        fontSize: "1rem",
-                        borderRadius: "var(--radius)",
+                        fontSize: "0.95rem",
+                        borderRadius: "var(--radius-md)",
+                        boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
                         resize: "vertical",
                       }}
-                      placeholder="Briefly describe what you would like to build..."
+                      placeholder="Briefly describe your project requirements, target audience, or growth goals..."
                     />
                     {errors.message && <span style={{ color: "var(--waste)", fontSize: "0.75rem", marginTop: "4px", display: "block" }}>{errors.message}</span>}
                   </div>

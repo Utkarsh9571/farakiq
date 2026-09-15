@@ -4,7 +4,7 @@
 **Updated:** September 2026  
 **Project:** FARAKIQ Agency Website  
 **Repository:** `https://github.com/Utkarsh9571/farakiq.git`  
-**Founders / Leadership:** Darwin Swami (Agency / Venture Lead) & Utkarsh Sharma (Lead Engineer)  
+**Brand & Positioning:** FARAKIQ — Specialized Engineering & Growth Partnership  
 **Framework Environment:** Next.js 16.3.4 (Turbopack, App Router, React 19, TypeScript)
 
 ---
@@ -55,7 +55,7 @@ farakiq.com/
 ├── /                                   [Homepage single-page scroll]
 │   ├── #services                       [Capability pillars & scope calculator]
 │   ├── #portfolio                      [Featured work & quick view modal]
-│   ├── #architecture                   [How I Build interactive matrix]
+│   ├── #architecture                   [How We Build interactive matrix]
 │   ├── #roi                            [Interactive conversion estimator]
 │   ├── #pricing                        [Flat-fee tiers & agency comparison]
 │   ├── #approach                       [3-step process]
@@ -90,13 +90,13 @@ The homepage (`app/page.tsx`) renders components in the following order:
 1. **`Navbar` (`components/Navbar.tsx`)**: Fixed header with backdrop blur, SVG brand logo, primary anchor links, `/blog` link, "Book a call" CTA button, and responsive mobile slide-down menu.
 2. **`Hero` (`components/Hero.tsx`)**: High-impact value proposition (*"Are you ready to stop wasting your money?"*), dual CTA buttons, and comparative "Receipt No. 001" (agency retainer bloat) vs "Receipt No. 002" (FARAKIQ traceable value).
 3. **`Portfolio` (`components/Portfolio.tsx`)**: Interactive project showcase with category filters (`All`, `Websites`, `Web Apps`, `AI & Automation`), tech pills, live/code links, client-side quick modal, and full case study links.
-4. **`Architecture` (`components/Architecture.tsx`)**: *"How I Build: From Problem to Production"* pipeline matrix with 4 stages (`01 Audit & Problem Framing`, `02 Modular System Design`, `03 API & Automation Integration`, `04 Production & Deployment`) and interactive terminal simulation panel.
+4. **`Architecture` (`components/Architecture.tsx`)**: *"How We Build: From Problem to Production"* pipeline matrix with 4 stages (`01 Audit & Problem Framing`, `02 Modular System Design`, `03 API & Automation Integration`, `04 Production & Deployment`) and interactive terminal simulation panel.
 5. **`RoiCalculator` (`components/RoiCalculator.tsx`)**: Interactive conversion estimator featuring sliders for monthly spend, lead volume, close rate, deal value, and projected growth lift.
 6. **`Services` (`components/Services.tsx`)**: Capability vertical tabs (`Development & AI Systems`, `Paid Ads & Performance`, `Organic Search`), interactive pick-list scope ledger with dynamic monthly total estimation, and direct links to dedicated service pages (`Details ↗`).
 7. **`Pricing` (`components/Pricing.tsx`)**: Fixed fee tiers (`Starter ₹20,000/mo`, `Growth ₹35,000/mo`, `Partner ₹50,000/mo`) and 5-point comparison table against traditional agencies and typical freelancers.
 8. **`Approach` (`components/Approach.tsx`)**: 3-step execution methodology (`01 Audit`, `02 Strategy`, `03 Execution`).
-9. **`About` (`components/About.tsx`)**: Ethos, leadership context (Darwin Swami), and interactive technical skills tag cloud.
-10. **`CTA` (`components/CTA.tsx`)**: Direct email (`hello@darvin.co`) and interactive project enquiry form with client-side validation.
+9. **`About` (`components/About.tsx`)**: Ethos, partnership advantages, and interactive technical skills tag cloud.
+10. **`CTA` (`components/CTA.tsx`)**: Direct email (`hello@farakiq.com`) and interactive project enquiry form with client-side validation.
 11. **`Footer` (`components/Footer.tsx`)**: 4-column footer containing brand statement, navigation links, dedicated service page links, and contact channels.
 
 ---
@@ -109,11 +109,13 @@ The codebase follows a modular structure:
 components/
 ├── About.tsx             # Ethos & skills cloud (Client Component)
 ├── Approach.tsx          # 3-step execution methodology (Client Component)
-├── Architecture.tsx      # How I Build pipeline matrix (Client Component)
+├── Architecture.tsx      # How We Build pipeline matrix (Client Component)
+├── BrandLogo.tsx         # Stylized FARAKIQ brand mark (Client Component)
 ├── CTA.tsx               # Project enquiry form & direct contact (Client Component)
 ├── Footer.tsx            # 4-column site-wide footer (Client Component)
 ├── Hero.tsx              # Hero headline & comparative receipts (Client Component)
 ├── Navbar.tsx            # Sticky navigation & mobile drawer (Client Component)
+├── NotFoundContent.tsx   # Custom 404 interactive stage (Client Component)
 ├── Portfolio.tsx         # Filterable portfolio grid & modal (Client Component)
 ├── Pricing.tsx           # Pricing tiers & comparison matrix (Client Component)
 ├── RoiCalculator.tsx     # Interactive conversion sliders (Client Component)
@@ -122,7 +124,7 @@ components/
 ```
 
 ### Server vs. Client Component Boundaries
-- **Server Components:** Route pages (`app/layout.tsx`, `app/page.tsx`, `app/services/[slug]/page.tsx`, `app/portfolio/[slug]/page.tsx`, `app/blog/page.tsx`, `app/blog/[slug]/page.tsx`). They render semantic HTML on the server and stream without client hydration overhead for static content.
+- **Server Components:** Route pages (`app/layout.tsx`, `app/page.tsx`, `app/not-found.tsx`, `app/services/[slug]/page.tsx`, `app/portfolio/[slug]/page.tsx`, `app/blog/page.tsx`, `app/blog/[slug]/page.tsx`). They render semantic HTML on the server and stream without client hydration overhead for static content.
 - **Client Components (`"use client"`):** Used specifically for interactive UI widgets requiring React state (`useState`), user input, and Framer Motion (`motion/react`) animations.
 
 ---
@@ -145,7 +147,7 @@ Content is decoupled from UI presentation and maintained in type-safe datasets u
 
 The SEO architecture is built for Googlebot crawlability and modern AI search engines:
 
-- **Root Structured Data (`app/layout.tsx`):** Consolidated Schema.org `ProfessionalService` JSON-LD including founder (`Darwin Swami`) and lead engineer (`Utkarsh Sharma`), official email (`hello@darvin.co`), global service scope (`Worldwide`), price range, and service competencies.
+- **Root Structured Data (`app/layout.tsx`):** Consolidated Schema.org `ProfessionalService` JSON-LD including official email (`hello@farakiq.com`), global service scope (`Worldwide`), price range, and service competencies.
 - **Service Pages Structured Data:** Schema.org `Service`, `BreadcrumbList`, and `FAQPage` JSON-LD on all 5 service routes.
 - **Portfolio Structured Data:** Schema.org `CreativeWork` JSON-LD dynamically generated for every project, plus an `ItemList` on the homepage portfolio section.
 - **Blog Structured Data:** Schema.org `Blog` on `/blog` and `BlogPosting` on each individual article.
@@ -257,7 +259,7 @@ When implementing future requests from Darwin, the following files will be the p
   - `components/Hero.tsx` (Hero copy & receipt comparisons)
   - `components/Services.tsx` (Service ledger & pricing calculations)
   - `components/Portfolio.tsx` (Project filters & card layout)
-  - `components/Architecture.tsx` (How I Build process matrix)
+  - `components/Architecture.tsx` (How We Build process matrix)
   - `components/Pricing.tsx` (Retainers & comparison table)
   - `components/CTA.tsx` (Contact form & copy)
 - **Data Stores (Single Source of Truth):**

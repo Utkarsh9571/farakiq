@@ -18,10 +18,14 @@
   <text x="132" y="162" font-family="'IBM Plex Mono', monospace" font-size="14" font-weight="600" fill="#A6A9A0" letter-spacing="0.08em">WEB DEVELOPMENT • FULL-STACK • AI &amp; AUTOMATION</text>
 
   <!-- Farakiq Brand Title -->
-  <text x="96" y="270" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="96" fill="#FFFFFF" letter-spacing="0.08em">FARAKIQ</text>
+  <g transform="skewX(-8) translate(30, 0)">
+    <text x="96" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-style="italic" font-size="96" letter-spacing="-3px">
+      <tspan fill="#FFFFFF">FARAK</tspan><tspan fill="#FF4A34">IQ</tspan>
+    </text>
+  </g>
 
   <!-- Tagline -->
-  <text x="98" y="320" font-family="'IBM Plex Mono', monospace" font-weight="600" font-size="22" fill="#FF4A34" letter-spacing="0.25em">WE MAKE THE DIFFERENCE</text>
+  <text x="98" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="18" fill="#8A8A8E" letter-spacing="6px">WE MAKE THE DIFFERENCE</text>
 
   <!-- Description -->
   <text x="98" y="410" font-family="'Space Grotesk', sans-serif" font-weight="500" font-size="30" fill="#A6A9A0">Custom Web Applications • Business Websites • E-Commerce Platforms</text>
@@ -30,5 +34,5 @@
   <!-- Footer Info -->
   <line x1="96" y1="520" x2="1104" y2="520" stroke="#272B30" stroke-width="1" stroke-dasharray="6 6"/>
   <text x="96" y="565" font-family="'IBM Plex Mono', monospace" font-size="18" fill="#EDEAE0">farakiq.com</text>
-  <text x="1104" y="565" font-family="'IBM Plex Mono', monospace" font-size="18" fill="#A6A9A0" text-anchor="end">Led by Darwin Swami • Utkarsh Sharma</text>
+  <text x="1104" y="565" font-family="'IBM Plex Mono', monospace" font-size="18" fill="#A6A9A0" text-anchor="end">Web Development, Full-Stack &amp; AI Systems</text>
 </svg>

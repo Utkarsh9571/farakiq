@@ -30,8 +30,8 @@ export default function Portfolio() {
         name: project.title,
         description: project.cardSummary,
         creator: {
-          "@type": "Person",
-          name: "Utkarsh Sharma",
+          "@type": "Organization",
+          name: "FARAKIQ",
         },
         url: project.liveUrl || `https://farakiq.com/portfolio/${project.id}`,
       },
@@ -69,8 +69,8 @@ export default function Portfolio() {
           ].map((tab) => (
             <motion.button
               key={tab.id}
-              className={`btn ${activeCategory === tab.id ? "btn-primary" : "btn-ghost"}`}
-              style={{ fontSize: "0.85rem", padding: "8px 16px" }}
+              className={`btn btn-sm ${activeCategory === tab.id ? "btn-primary" : "btn-ghost"}`}
+              style={{ borderRadius: "var(--radius-sm)" }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => setActiveCategory(tab.id as ProjectCategory)}
@@ -102,29 +102,31 @@ export default function Portfolio() {
                 whileHover={{ y: -6, borderColor: "var(--waste)" }}
                 transition={{ duration: 0.35, delay: idx * 0.08 }}
                 style={{
-                  background: "var(--ink-soft)",
-                  border: project.isPrimaryWeb ? "1px solid rgba(255, 74, 52, 0.4)" : "1px solid var(--rule)",
-                  padding: "26px",
-                  borderRadius: "var(--radius)",
+                  background: "var(--card-bg)",
+                  border: project.isPrimaryWeb ? "1px solid rgba(255, 74, 52, 0.45)" : "1px solid var(--card-border)",
+                  padding: "clamp(22px, 3vw, 28px)",
+                  borderRadius: "var(--radius-lg)",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
                   position: "relative",
-                  boxShadow: project.isPrimaryWeb ? "0 4px 20px rgba(0, 0, 0, 0.25)" : "none",
+                  boxShadow: project.isPrimaryWeb
+                    ? "var(--shadow-glow-waste), var(--card-inner-highlight)"
+                    : "var(--shadow-sm), var(--card-inner-highlight)",
                 }}
               >
                 <div>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px" }}>
-                    <span className="mono" style={{ fontSize: "0.72rem", color: "var(--waste)", letterSpacing: "0.04em", fontWeight: 600 }}>
+                    <span className="mono" style={{ fontSize: "0.72rem", color: "var(--waste)", letterSpacing: "0.05em", fontWeight: 600 }}>
                       {project.categoryLabel.toUpperCase()}
                     </span>
                   </div>
 
-                  <h3 style={{ fontSize: "1.3rem", fontWeight: 700, margin: "0 0 10px", color: "var(--text-light)" }}>
+                  <h3 style={{ fontSize: "1.3rem", fontWeight: 700, margin: "0 0 10px", color: "var(--text-light)", letterSpacing: "-0.01em" }}>
                     {project.title}
                   </h3>
 
-                  <p style={{ color: "var(--text-light-dim)", fontSize: "0.9rem", margin: "0 0 18px", lineHeight: 1.5 }}>
+                  <p style={{ color: "var(--text-light-dim)", fontSize: "0.9rem", margin: "0 0 18px", lineHeight: 1.55 }}>
                     {project.cardSummary}
                   </p>
 
@@ -136,10 +138,12 @@ export default function Portfolio() {
                         className="mono"
                         style={{
                           fontSize: "0.72rem",
-                          background: "rgba(255, 255, 255, 0.04)",
-                          border: "1px solid var(--rule)",
+                          background: "rgba(255, 255, 255, 0.03)",
+                          border: "1px solid var(--card-border)",
+                          borderRadius: "var(--radius-sm)",
                           color: "var(--text-light-dim)",
-                          padding: "3px 8px",
+                          padding: "3px 9px",
+                          boxShadow: "var(--card-inner-highlight)",
                         }}
                       >
                         {tech}
@@ -150,13 +154,13 @@ export default function Portfolio() {
 
                 <div>
                   {project.liveUrl && (
-                    <div style={{ marginBottom: "8px" }}>
+                    <div style={{ marginBottom: "10px" }}>
                       <a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-primary"
-                        style={{ fontSize: "0.82rem", padding: "8px 14px", width: "100%", justifyContent: "center" }}
+                        style={{ fontSize: "0.84rem", padding: "10px 14px", minHeight: "40px", width: "100%", justifyContent: "center", borderRadius: "var(--radius-md)" }}
                       >
                         View Live Platform ↗
                       </a>
@@ -166,7 +170,7 @@ export default function Portfolio() {
                   <div style={{ display: "flex", gap: "8px" }}>
                     <button
                       className="btn btn-ghost"
-                      style={{ flex: "1", justifyContent: "center", fontSize: "0.78rem", padding: "7px 8px", borderColor: "var(--rule)" }}
+                      style={{ flex: "1", justifyContent: "center", fontSize: "0.8rem", padding: "8px 10px", minHeight: "38px", borderRadius: "var(--radius-md)" }}
                       onClick={() => setSelectedProject(project)}
                     >
                       <span className="mono">Quick View ↓</span>
@@ -174,7 +178,7 @@ export default function Portfolio() {
                     <Link
                       href={`/portfolio/${project.id}`}
                       className="btn btn-ghost"
-                      style={{ flex: "1", justifyContent: "center", fontSize: "0.78rem", padding: "7px 8px", borderColor: "var(--rule)", textDecoration: "none" }}
+                      style={{ flex: "1", justifyContent: "center", fontSize: "0.8rem", padding: "8px 10px", minHeight: "38px", borderRadius: "var(--radius-md)", textDecoration: "none" }}
                     >
                       <span className="mono" style={{ color: "var(--waste)" }}>Case Study →</span>
                     </Link>
@@ -196,40 +200,41 @@ export default function Portfolio() {
                 right: 0,
                 bottom: 0,
                 background: "rgba(0, 0, 0, 0.85)",
-                backdropFilter: "blur(6px)",
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)",
                 zIndex: 100,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: "clamp(10px, 3vw, 20px)",
+                padding: "clamp(12px, 3vw, 24px)",
               }}
               onClick={() => setSelectedProject(null)}
             >
               <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                initial={{ opacity: 0, scale: 0.96, y: 16 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                exit={{ opacity: 0, scale: 0.96, y: 16 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
                 style={{
-                  background: "var(--ink-soft)",
-                  border: "1px solid var(--rule)",
-                  padding: "clamp(20px, 4vw, 36px)",
-                  borderRadius: "var(--radius)",
+                  background: "var(--card-bg-elevated)",
+                  border: "1px solid var(--card-border-hover)",
+                  padding: "clamp(22px, 4vw, 36px)",
+                  borderRadius: "var(--radius-lg)",
                   maxWidth: "680px",
                   width: "100%",
                   maxHeight: "90vh",
                   overflowY: "auto",
                   position: "relative",
-                  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.5)",
+                  boxShadow: "var(--shadow-lg), var(--card-inner-highlight)",
                 }}
                 onClick={(e) => e.stopPropagation()}
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "12px", marginBottom: "20px" }}>
                   <div>
-                    <span className="mono" style={{ fontSize: "0.75rem", color: "var(--waste)" }}>
+                    <span className="mono" style={{ fontSize: "0.75rem", color: "var(--waste)", fontWeight: 600, letterSpacing: "0.04em" }}>
                       {selectedProject.categoryLabel.toUpperCase()}
                     </span>
-                    <h3 style={{ fontSize: "clamp(1.3rem, 4vw, 1.8rem)", fontWeight: 700, margin: "4px 0 0", color: "var(--text-light)" }}>
+                    <h3 style={{ fontSize: "clamp(1.3rem, 4vw, 1.8rem)", fontWeight: 700, margin: "4px 0 0", color: "var(--text-light)", letterSpacing: "-0.01em" }}>
                       {selectedProject.title}
                     </h3>
                   </div>
@@ -237,7 +242,7 @@ export default function Portfolio() {
                     onClick={() => setSelectedProject(null)}
                     className="btn btn-ghost"
                     aria-label="Close case study modal"
-                    style={{ padding: "8px 14px", minHeight: "44px", minWidth: "44px", fontSize: "0.85rem", flexShrink: 0 }}
+                    style={{ padding: "8px 14px", minHeight: "40px", minWidth: "40px", fontSize: "0.85rem", flexShrink: 0, borderRadius: "var(--radius-md)" }}
                   >
                     ✕ Close
                   </button>
@@ -245,25 +250,25 @@ export default function Portfolio() {
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                   <div>
-                    <div className="mono" style={{ fontSize: "0.78rem", color: "var(--waste)", marginBottom: "4px" }}>
+                    <div className="mono" style={{ fontSize: "0.78rem", color: "var(--waste)", marginBottom: "4px", letterSpacing: "0.04em", fontWeight: 600 }}>
                       01 — WHAT IT IS
                     </div>
-                    <p style={{ margin: 0, color: "var(--text-light-dim)", fontSize: "0.95rem", lineHeight: 1.5 }}>
+                    <p style={{ margin: 0, color: "var(--text-light-dim)", fontSize: "0.95rem", lineHeight: 1.6 }}>
                       {selectedProject.caseStudy.whatItIs}
                     </p>
                   </div>
 
                   <div>
-                    <div className="mono" style={{ fontSize: "0.78rem", color: "var(--waste)", marginBottom: "4px" }}>
-                      02 — WHAT I BUILT
+                    <div className="mono" style={{ fontSize: "0.78rem", color: "var(--waste)", marginBottom: "4px", letterSpacing: "0.04em", fontWeight: 600 }}>
+                      02 — WHAT WE BUILT
                     </div>
-                    <p style={{ margin: 0, color: "var(--text-light-dim)", fontSize: "0.95rem", lineHeight: 1.5 }}>
-                      {selectedProject.caseStudy.whatIBuilt}
+                    <p style={{ margin: 0, color: "var(--text-light-dim)", fontSize: "0.95rem", lineHeight: 1.6 }}>
+                      {selectedProject.caseStudy.whatWeBuilt}
                     </p>
                   </div>
 
                   <div>
-                    <div className="mono" style={{ fontSize: "0.78rem", color: "var(--waste)", marginBottom: "6px" }}>
+                    <div className="mono" style={{ fontSize: "0.78rem", color: "var(--waste)", marginBottom: "6px", letterSpacing: "0.04em", fontWeight: 600 }}>
                       03 — KEY FUNCTIONALITY
                     </div>
                     <ul style={{ margin: 0, paddingLeft: "18px", color: "var(--text-light-dim)", fontSize: "0.9rem", lineHeight: 1.6 }}>
@@ -274,7 +279,7 @@ export default function Portfolio() {
                   </div>
 
                   <div>
-                    <div className="mono" style={{ fontSize: "0.78rem", color: "var(--waste)", marginBottom: "8px" }}>
+                    <div className="mono" style={{ fontSize: "0.78rem", color: "var(--waste)", marginBottom: "8px", letterSpacing: "0.04em", fontWeight: 600 }}>
                       04 — TECHNOLOGY STACK
                     </div>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
@@ -284,10 +289,12 @@ export default function Portfolio() {
                           className="mono"
                           style={{
                             fontSize: "0.78rem",
-                            background: "rgba(255, 255, 255, 0.04)",
-                            border: "1px solid var(--rule)",
+                            background: "rgba(255, 255, 255, 0.03)",
+                            border: "1px solid var(--card-border)",
+                            borderRadius: "var(--radius-sm)",
                             color: "var(--text-light)",
                             padding: "4px 10px",
+                            boxShadow: "var(--card-inner-highlight)",
                           }}
                         >
                           {tech}
@@ -297,19 +304,19 @@ export default function Portfolio() {
                   </div>
 
                   {selectedProject.caseStudy.liveDemoNote && (
-                    <div className="mono" style={{ fontSize: "0.8rem", color: "var(--text-light-dim)", background: "rgba(255, 74, 52, 0.08)", padding: "10px 14px", borderLeft: "2px solid var(--waste)" }}>
+                    <div className="mono" style={{ fontSize: "0.8rem", color: "var(--text-light-dim)", background: "rgba(255, 74, 52, 0.06)", border: "1px solid rgba(255, 74, 52, 0.2)", borderRadius: "var(--radius-md)", padding: "12px 16px", borderLeft: "3px solid var(--waste)" }}>
                       {selectedProject.caseStudy.liveDemoNote}
                     </div>
                   )}
 
-                  <div style={{ display: "flex", gap: "12px", marginTop: "12px", borderTop: "1px solid var(--rule)", paddingTop: "20px", flexWrap: "wrap" }}>
+                  <div style={{ display: "flex", gap: "12px", marginTop: "12px", borderTop: "1px solid var(--card-border)", paddingTop: "20px", flexWrap: "wrap" }}>
                     {selectedProject.liveUrl && (
                       <a
                         href={selectedProject.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-primary"
-                        style={{ fontSize: "0.88rem", flex: "1 1 180px", justifyContent: "center" }}
+                        style={{ fontSize: "0.88rem", flex: "1 1 180px", justifyContent: "center", borderRadius: "var(--radius-md)" }}
                       >
                         View Live Platform ↗
                       </a>
@@ -317,7 +324,7 @@ export default function Portfolio() {
                     <Link
                       href={`/portfolio/${selectedProject.id}`}
                       className="btn btn-ghost"
-                      style={{ fontSize: "0.88rem", textDecoration: "none", flex: "1 1 180px", justifyContent: "center" }}
+                      style={{ fontSize: "0.88rem", textDecoration: "none", flex: "1 1 180px", justifyContent: "center", borderRadius: "var(--radius-md)" }}
                     >
                       Full Case Study Page →
                     </Link>
@@ -325,7 +332,7 @@ export default function Portfolio() {
                       href="#contact"
                       onClick={() => setSelectedProject(null)}
                       className="btn btn-ghost"
-                      style={{ fontSize: "0.88rem", textDecoration: "none", flex: "1 1 180px", justifyContent: "center", borderColor: "var(--rule)" }}
+                      style={{ fontSize: "0.88rem", textDecoration: "none", flex: "1 1 180px", justifyContent: "center", borderRadius: "var(--radius-md)" }}
                     >
                       Discuss Similar Project →
                     </a>

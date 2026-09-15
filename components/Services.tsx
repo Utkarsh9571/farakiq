@@ -21,31 +21,34 @@ const SERVICE_ROUTE_MAP: Record<string, { href: string; label: string }> = {
   "geo": { href: "/services/seo", label: "GEO" },
 };
 
-function formatINR(num: number): string {
-  return "₹" + Math.round(num).toLocaleString("en-IN");
-}
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const },
+  },
+};
 
 export default function Services() {
-  const [selectedServices, setSelectedServices] = useState<Record<string, ServiceItem>>({});
+  const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({});
 
-  const toggleService = (item: ServiceItem) => {
-    setSelectedServices((prev) => {
-      const next = { ...prev };
-      if (next[item.id]) {
-        delete next[item.id];
-      } else {
-        next[item.id] = item;
-      }
-      return next;
-    });
+  const toggleExpand = (id: string) => {
+    setExpandedItems((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
   };
-
-  const selectedList = Object.values(selectedServices);
-  const projectItems = selectedList.filter((item) => item.billingType === "project");
-  const monthlyItems = selectedList.filter((item) => item.billingType === "monthly");
-
-  const projectMinTotal = projectItems.reduce((sum, item) => sum + (item.price || 0), 0);
-  const monthlyTotal = monthlyItems.reduce((sum, item) => sum + (item.price || 0), 0);
 
   return (
     <section id="services">
@@ -56,7 +59,7 @@ export default function Services() {
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           style={{ maxWidth: "76ch" }}
         >
           <div className="badge-tech">
@@ -76,22 +79,26 @@ export default function Services() {
         </motion.div>
 
         {/* Three Verticals Showcase Panels */}
-        <div className="verticals-grid">
-          {SERVICES_DATA.map((vertical: ServiceCategory, vIdx: number) => {
+        <motion.div
+          className="verticals-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {SERVICES_DATA.map((vertical: ServiceCategory) => {
             return (
               <motion.div
                 key={vertical.id}
                 className="vertical-card"
+                variants={cardVariants}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 style={
                   {
                     "--card-accent": vertical.accentColor,
                     backgroundColor: vertical.accentBg,
                   } as React.CSSProperties
                 }
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.45, delay: vIdx * 0.1, ease: "easeOut" }}
               >
                 {/* Vertical Card Header */}
                 <div className="vertical-card-header">
@@ -110,76 +117,84 @@ export default function Services() {
                   <p className="vertical-desc">{vertical.description}</p>
                 </div>
 
-                {/* Capabilities Inside Vertical */}
+                {/* Expandable Services Accordion */}
                 <div className="vertical-items-section">
                   <span className="vertical-items-heading">
-                    Capabilities &amp; Starting Anchors
+                    Capabilities &amp; Services ({vertical.items.length})
                   </span>
 
-                  <ul className="pick-list">
-                    {vertical.items.map((item) => {
-                      const isSelected = !!selectedServices[item.id];
+                  <div className="service-accordion-list">
+                    {vertical.items.map((item: ServiceItem) => {
+                      const isExpanded = !!expandedItems[item.id];
                       const routeInfo = SERVICE_ROUTE_MAP[item.id];
+
                       return (
-                        <li
+                        <div
                           key={item.id}
+                          className={`service-accordion-item ${isExpanded ? "expanded" : ""}`}
                           style={{
-                            display: "flex",
-                            gap: "8px",
-                            alignItems: "flex-start",
-                            minWidth: 0,
-                            padding: "8px 0",
+                            border: isExpanded ? `1px solid ${vertical.accentColor}` : "1px solid var(--card-border)",
+                            borderRadius: "var(--radius-md)",
+                            marginBottom: "8px",
+                            background: isExpanded ? "var(--card-bg-elevated)" : "rgba(255, 255, 255, 0.02)",
+                            boxShadow: isExpanded ? "var(--shadow-sm), var(--card-inner-highlight)" : "var(--card-inner-highlight)",
+                            transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+                            overflow: "hidden",
                           }}
                         >
+                          {/* Accordion Header / Trigger Button */}
                           <button
-                            className={`pick-item ${isSelected ? "selected" : ""}`}
-                            onClick={() => toggleService(item)}
-                            title={`Click to toggle ${item.name} in custom scope estimate`}
+                            type="button"
+                            onClick={() => toggleExpand(item.id)}
+                            aria-expanded={isExpanded}
+                            className="service-accordion-btn"
                             style={{
-                              flex: 1,
-                              minWidth: 0,
+                              width: "100%",
                               display: "flex",
-                              alignItems: "flex-start",
+                              justifyContent: "space-between",
+                              alignItems: "center",
                               gap: "10px",
-                              padding: "4px 2px",
-                              textAlign: "left",
+                              padding: "12px 14px",
                               background: "none",
                               border: "none",
+                              cursor: "pointer",
+                              textAlign: "left",
+                              color: "inherit",
                             }}
                           >
-                            <span className="pick-box" style={{ marginTop: "4px" }}></span>
-                            <span className="pick-info" style={{ flex: 1, minWidth: 0 }}>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: 0, flex: 1 }}>
                               <span
-                                className="pick-name"
                                 style={{
-                                  display: "flex",
-                                  alignItems: "center",
-                                  gap: "6px",
-                                  flexWrap: "wrap",
                                   fontSize: "0.88rem",
                                   fontWeight: 600,
                                   color: "var(--text-light)",
+                                  lineHeight: 1.3,
                                 }}
                               >
                                 {item.name}
-                                {item.tag && (
-                                  <span className="tag" style={{ fontSize: "0.68rem" }}>
-                                    {item.tag}
-                                  </span>
-                                )}
                               </span>
-                              {item.shortDesc && (
-                                <span className="pick-desc">{item.shortDesc}</span>
+                              {item.tag && (
+                                <span
+                                  className="mono"
+                                  style={{
+                                    fontSize: "0.68rem",
+                                    color: "var(--text-light-dim)",
+                                    letterSpacing: "0.03em",
+                                  }}
+                                >
+                                  {item.tag}
+                                </span>
                               )}
-                            </span>
+                            </div>
 
-                            <span className="pick-pricing-col">
+                            <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
                               <span
-                                className="pick-price mono"
+                                className="mono"
                                 style={{
-                                  fontSize: "0.8rem",
+                                  fontSize: "0.78rem",
+                                  color: vertical.accentColor,
                                   fontWeight: 600,
-                                  color: isSelected ? "var(--value)" : "var(--text-light)",
+                                  whiteSpace: "nowrap",
                                 }}
                               >
                                 {item.priceDisplay}
@@ -187,53 +202,107 @@ export default function Services() {
                               <span
                                 className="mono"
                                 style={{
-                                  fontSize: "0.66rem",
-                                  color:
-                                    item.billingType === "project"
-                                      ? "var(--value)"
-                                      : "var(--accent-cyan)",
-                                  letterSpacing: "0.02em",
-                                  marginTop: "2px",
+                                  fontSize: "0.74rem",
+                                  color: "var(--text-light-dim)",
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                  width: "14px",
+                                  height: "14px",
+                                  transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
+                                  transition: "transform 0.2s ease",
                                 }}
                               >
-                                {item.billingType === "project" ? "One-time" : "Monthly"}
+                                ▾
                               </span>
-                            </span>
+                            </div>
                           </button>
 
-                          {routeInfo && (
-                            <Link
-                              href={routeInfo.href}
-                              className="btn btn-ghost"
-                              title={`Explore dedicated ${item.name} page`}
-                              style={{
-                                fontSize: "0.7rem",
-                                padding: "5px 7px",
-                                minHeight: "32px",
-                                display: "inline-flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                borderColor: "var(--rule)",
-                                textDecoration: "none",
-                                flexShrink: 0,
-                                marginTop: "3px",
-                              }}
-                            >
-                              <span className="mono" style={{ color: vertical.accentColor }}>
-                                Details ↗
-                              </span>
-                            </Link>
-                          )}
-                        </li>
+                          {/* Expandable Content Area */}
+                          <AnimatePresence initial={false}>
+                            {isExpanded && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                                style={{ overflow: "hidden" }}
+                              >
+                                <div
+                                  style={{
+                                    padding: "0 14px 14px",
+                                    borderTop: "1px dashed var(--card-border)",
+                                    paddingTop: "10px",
+                                  }}
+                                >
+                                  <p
+                                    style={{
+                                      fontSize: "0.84rem",
+                                      color: "var(--text-light-dim)",
+                                      lineHeight: 1.5,
+                                      margin: "0 0 12px",
+                                    }}
+                                  >
+                                    {item.shortDesc}
+                                  </p>
+
+                                  <div
+                                    style={{
+                                      display: "flex",
+                                      justifyContent: "space-between",
+                                      alignItems: "center",
+                                      flexWrap: "wrap",
+                                      gap: "8px",
+                                      paddingTop: "2px",
+                                    }}
+                                  >
+                                    <span
+                                      className="mono"
+                                      style={{
+                                        fontSize: "0.7rem",
+                                        color: item.billingType === "project" ? "var(--value)" : "var(--accent-cyan)",
+                                        background: item.billingType === "project" ? "rgba(31, 111, 84, 0.15)" : "rgba(0, 229, 255, 0.1)",
+                                        border: `1px solid ${item.billingType === "project" ? "var(--value)" : "var(--accent-cyan)"}`,
+                                        padding: "3px 8px",
+                                        borderRadius: "var(--radius-full)",
+                                        boxShadow: "var(--card-inner-highlight)",
+                                      }}
+                                    >
+                                      {item.billingType === "project" ? "One-time deliverable" : "Monthly retainer"}
+                                    </span>
+
+                                    {routeInfo && (
+                                      <Link
+                                        href={routeInfo.href}
+                                        className="mono"
+                                        style={{
+                                          fontSize: "0.74rem",
+                                          color: vertical.accentColor,
+                                          textDecoration: "none",
+                                          display: "inline-flex",
+                                          alignItems: "center",
+                                          gap: "4px",
+                                          fontWeight: 600,
+                                        }}
+                                      >
+                                        View details ↗
+                                      </Link>
+                                    )}
+                                  </div>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
                       );
                     })}
-                  </ul>
+                  </div>
                 </div>
 
-                {/* Vertical Footer */}
+                {/* Vertical Card Footer */}
                 <div className="vertical-footer">
                   <span className="vertical-items-heading" style={{ marginBottom: "8px" }}>
-                    Supporting Stack
+                    Supporting Technologies
                   </span>
                   <div className="vertical-tech-pills">
                     {vertical.supportingTech.map((tech) => (
@@ -246,7 +315,7 @@ export default function Services() {
                   <Link
                     href={vertical.primaryRoute}
                     className="btn btn-ghost vertical-explore-btn"
-                    style={{ borderColor: "var(--rule)", textDecoration: "none" }}
+                    style={{ textDecoration: "none", borderRadius: "var(--radius-md)", boxShadow: "var(--card-inner-highlight)" }}
                   >
                     <span>Explore {vertical.number} Deep Dive →</span>
                   </Link>
@@ -254,208 +323,6 @@ export default function Services() {
               </motion.div>
             );
           })}
-        </div>
-
-        {/* Interactive Custom Engagement Scope Estimator */}
-        <motion.div
-          className="bundle"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          style={{ marginTop: "64px" }}
-        >
-          <div className="bundle-list">
-            <div className="badge-tech" style={{ marginBottom: "12px" }}>
-              <span className="dot" style={{ background: "var(--value)", boxShadow: "0 0 8px var(--value)" }} />
-              <span>CUSTOM ENGAGEMENT BUILDER</span>
-            </div>
-            <div className="bundle-title">Your Selected FARAKIQ Deliverables</div>
-            {selectedList.length === 0 ? (
-              <p className="bundle-empty">
-                Tap any capability item across the three verticals above to calculate an estimated engagement scope.
-              </p>
-            ) : (
-              <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-                {projectItems.length > 0 && (
-                  <div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "6px",
-                        marginBottom: "8px",
-                      }}
-                    >
-                      <span
-                        style={{
-                          width: "6px",
-                          height: "6px",
-                          borderRadius: "50%",
-                          background: "var(--value)",
-                        }}
-                      />
-                      <span
-                        className="mono"
-                        style={{
-                          fontSize: "0.72rem",
-                          color: "var(--value)",
-                          letterSpacing: "0.04em",
-                          fontWeight: 600,
-                        }}
-                      >
-                        ONE-TIME PROJECT BUILDS ({projectItems.length})
-                      </span>
-                    </div>
-                    <ul className="bundle-items">
-                      {projectItems.map((item) => (
-                        <li
-                          key={item.id}
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                            gap: "8px",
-                          }}
-                        >
-                          <span style={{ fontSize: "0.85rem" }}>{item.name}</span>
-                          <span
-                            className="mono"
-                            style={{
-                              color: "var(--value)",
-                              flexShrink: 0,
-                              fontSize: "0.82rem",
-                            }}
-                          >
-                            {item.priceDisplay}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {monthlyItems.length > 0 && (
-                  <div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "6px",
-                        marginBottom: "8px",
-                      }}
-                    >
-                      <span
-                        style={{
-                          width: "6px",
-                          height: "6px",
-                          borderRadius: "50%",
-                          background: "var(--accent-cyan)",
-                        }}
-                      />
-                      <span
-                        className="mono"
-                        style={{
-                          fontSize: "0.72rem",
-                          color: "var(--accent-cyan)",
-                          letterSpacing: "0.04em",
-                          fontWeight: 600,
-                        }}
-                      >
-                        MONTHLY GROWTH RETAINERS ({monthlyItems.length})
-                      </span>
-                    </div>
-                    <ul className="bundle-items">
-                      {monthlyItems.map((item) => (
-                        <li
-                          key={item.id}
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                            gap: "8px",
-                          }}
-                        >
-                          <span style={{ fontSize: "0.85rem" }}>{item.name}</span>
-                          <span
-                            className="mono"
-                            style={{
-                              color: "var(--accent-cyan)",
-                              flexShrink: 0,
-                              fontSize: "0.82rem",
-                            }}
-                          >
-                            {item.priceDisplay}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-
-          <div className="receipt bundle-receipt">
-            <div className="receipt-title">FARAKIQ SCOPE NO. 007</div>
-            <div className="receipt-heading">Estimated engagement scope</div>
-            <div className="receipt-line">
-              <span className="label">Selected capability items</span>
-              <span className="val mono">{selectedList.length}</span>
-            </div>
-            <div className="receipt-line">
-              <span className="label">One-time project estimate</span>
-              <span
-                className="val mono"
-                style={{
-                  color: projectItems.length ? "var(--value)" : "var(--text-light-dim)",
-                  fontWeight: 600,
-                }}
-              >
-                {projectItems.length === 0
-                  ? "None selected"
-                  : projectMinTotal > 0
-                  ? `From ${formatINR(projectMinTotal)}`
-                  : "Custom quote"}
-              </span>
-            </div>
-            <div className="receipt-line">
-              <span className="label">Estimated monthly retainer</span>
-              <span
-                className="val mono"
-                style={{
-                  color: monthlyItems.length ? "var(--accent-cyan)" : "var(--text-light-dim)",
-                  fontWeight: 600,
-                }}
-              >
-                {monthlyItems.length === 0 ? "None selected" : `${formatINR(monthlyTotal)} / mo`}
-              </span>
-            </div>
-            <div
-              className="receipt-line"
-              style={{
-                borderTop: "1px dashed var(--rule-paper)",
-                paddingTop: "10px",
-                marginTop: "8px",
-              }}
-            >
-              <span
-                className="label"
-                style={{
-                  fontSize: "0.74rem",
-                  color: "var(--text-light-dim)",
-                  fontStyle: "italic",
-                  lineHeight: 1.35,
-                }}
-              >
-                * Development builds are scoped once per deliverable. Ongoing marketing, ads &amp;
-                SEO are billed monthly.
-              </span>
-            </div>
-            <a href="#contact" className="btn btn-primary bundle-cta">
-              Discuss your custom scope
-            </a>
-          </div>
         </motion.div>
       </div>
     </section>

@@ -354,7 +354,7 @@ export const SERVICES_CATALOG: Record<string, ServiceDetail> = {
       "Founders needing a modern, custom business website that outclasses competitors.",
       "Businesses requiring full-stack web applications with authentication, databases, and dashboards.",
       "E-commerce brands seeking bespoke shopping experiences without Shopify template constraints.",
-      "Teams wanting direct collaboration with Darwin Swami and lead engineer Utkarsh Sharma rather than rotating agency juniors.",
+      "Teams wanting direct collaboration with specialist partners rather than rotating agency juniors.",
     ],
     capabilities: [
       {

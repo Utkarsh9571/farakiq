@@ -4,12 +4,19 @@ export interface ArchitectureStage {
   title: string;
   subtitle: string;
   description: string;
-  nodes: string[];
-  terminalOutput: {
-    phase: string;
+  focusAreas: string[];
+  deliverableMatrix: {
+    badge: string;
     focus: string;
-    connectedComponents: string[];
-    outcome: string;
+    engineeringTrack: {
+      label: string;
+      items: string[];
+    };
+    growthTrack: {
+      label: string;
+      items: string[];
+    };
+    targetOutcome: string;
   };
 }
 
@@ -17,57 +24,117 @@ export const ARCHITECTURE_STAGES: ArchitectureStage[] = [
   {
     id: "stage-1",
     number: "01",
-    title: "Audit & Problem Framing",
-    subtitle: "Identify operational bottlenecks and manual effort",
-    description: "Every build starts by understanding where manual tasks, disconnected tools, or poor UI create friction for your business.",
-    nodes: ["Workflow Mapping", "API Gap Analysis", "User Journey Friction"],
-    terminalOutput: {
-      phase: "Phase 01 — Analysis",
-      focus: "Framing technical scope & automation goals",
-      connectedComponents: ["Existing Tools", "Manual Pain Points"],
-      outcome: "Clear blueprint for system requirements",
+    title: "Audit & Strategy",
+    subtitle: "Diagnose technical bottlenecks, audience demand, and growth leaks",
+    description: "Every engagement starts by identifying where manual tasks, slow page loads, disconnected tools, or unfocused ad spend create friction for your business. We audit your full stack and customer acquisition channels simultaneously.",
+    focusAreas: ["Architecture & Code Review", "Search & Ad Account Audit", "Conversion & Funnel Mapping", "Unified Growth Roadmap"],
+    deliverableMatrix: {
+      badge: "PHASE 01 // FOUNDATION",
+      focus: "Comprehensive diagnostics across systems and acquisition",
+      engineeringTrack: {
+        label: "Systems & Engineering",
+        items: [
+          "Codebase health & Core Web Vitals benchmark",
+          "Database schema & API bottleneck analysis",
+          "Tooling stack & operational friction mapping",
+        ],
+      },
+      growthTrack: {
+        label: "Growth & Marketing",
+        items: [
+          "Historical ad spend & CPA / ROAS audit",
+          "Keyword indexation & search crawlability check",
+          "Competitor positioning & angle gap review",
+        ],
+      },
+      targetOutcome: "Prioritized 90-day technical blueprint + growth roadmap",
     },
   },
   {
     id: "stage-2",
     number: "02",
-    title: "Modular System Design",
-    subtitle: "Architect clean interfaces and component structure",
-    description: "Designing responsive frontend layouts, database schemas, and AI module boundaries for long-term maintainability.",
-    nodes: ["Frontend / Web UI", "AI / LLM Integration", "Database / Storage"],
-    terminalOutput: {
-      phase: "Phase 02 — Architecture",
-      focus: "Component isolation & API contract design",
-      connectedComponents: ["React / Next.js UI", "Data Schema", "AI Models"],
-      outcome: "Scalable frontend and modular core",
+    title: "System & Experience Design",
+    subtitle: "Architect fast web applications and high-converting acquisition funnels",
+    description: "We map user journeys, database schemas, and conversion pathways before writing production code or deploying ad spend. Every interface is structured for sub-second speeds, clear value communication, and search indexability.",
+    focusAreas: ["Modern Next.js Architecture", "High-Converting Landing Funnels", "Data Schemas & API Contracts", "Signal & Attribution Blueprint"],
+    deliverableMatrix: {
+      badge: "PHASE 02 // ARCHITECTURE",
+      focus: "Eliminating friction between traffic and conversion",
+      engineeringTrack: {
+        label: "Systems & Engineering",
+        items: [
+          "Modular Next.js component hierarchy",
+          "PostgreSQL/MongoDB relational schema design",
+          "Authentication & security permission rules",
+        ],
+      },
+      growthTrack: {
+        label: "Growth & Marketing",
+        items: [
+          "Direct-response messaging & offer hooks",
+          "Pixel taxonomy & Meta CAPI event mapping",
+          "AEO/GEO semantic entity architecture",
+        ],
+      },
+      targetOutcome: "High-intent UX prototypes + scalable data models",
     },
   },
   {
     id: "stage-3",
     number: "03",
-    title: "API & Automation Integration",
-    subtitle: "Connect systems into unified automated workflows",
-    description: "Linking web apps to n8n automations, custom REST APIs, webhooks, and third-party services so data flows seamlessly.",
-    nodes: ["Automation / n8n", "REST APIs & Webhooks", "Third-Party Services"],
-    terminalOutput: {
-      phase: "Phase 03 — Integration",
-      focus: "Event-driven workflow execution & API wiring",
-      connectedComponents: ["n8n Engine", "Webhooks", "External APIs"],
-      outcome: "Unified, hands-free business processes",
+    title: "Build, Integrate & Automate",
+    subtitle: "Engineer custom software, AI assistants, and automated workflow pipelines",
+    description: "We build type-safe web applications, connect third-party APIs, and deploy n8n automations that route leads, sync CRM data, and assist customers 24/7 — ensuring your operational backbone runs hands-free.",
+    focusAreas: ["Full-Stack TypeScript Build", "n8n Workflow Automation", "AI Agents & Chatbot Systems", "CRM & Payment Integrations"],
+    deliverableMatrix: {
+      badge: "PHASE 03 // EXECUTION",
+      focus: "Production-grade development & automated operations",
+      engineeringTrack: {
+        label: "Systems & Engineering",
+        items: [
+          "Responsive, accessible React/Next.js frontend",
+          "Secure REST/Webhook endpoints & database sync",
+          "Automated lead routing & n8n error retry queues",
+        ],
+      },
+      growthTrack: {
+        label: "Growth & Marketing",
+        items: [
+          "Verified GA4 & Meta Conversions API events",
+          "High-intent ad creatives & campaign segmentation",
+          "Rich Schema.org structured data injection",
+        ],
+      },
+      targetOutcome: "Production-ready web platform + hands-free operations",
     },
   },
   {
     id: "stage-4",
     number: "04",
-    title: "Production & Deployment",
-    subtitle: "Deploy fast, reliable, and production-ready applications",
-    description: "Building production bundles, verifying responsiveness across devices, optimizing assets, and deploying to Vercel/cloud hosting.",
-    nodes: ["Vercel Hosting", "Mobile Optimization", "Performance Audit"],
-    terminalOutput: {
-      phase: "Phase 04 — Deployment",
-      focus: "Production build & live deployment",
-      connectedComponents: ["Vercel Edge Platform", "SEO & Meta", "Responsive Shell"],
-      outcome: "Live, fast, high-converting application",
+    title: "Launch, Grow & Scale",
+    subtitle: "Deploy edge infrastructure, launch ad campaigns, and drive organic discovery",
+    description: "We deploy your web applications to global edge cloud hosting, launch targeted Google and Meta ad campaigns, and track keyword rankings. We review numbers weekly with direct partner access — cutting waste and compounding results.",
+    focusAreas: ["Edge Cloud Deployment", "Google & Meta Ads Launch", "Technical SEO Indexation", "Weekly Metric Transparency"],
+    deliverableMatrix: {
+      badge: "PHASE 04 // SCALE",
+      focus: "Live market deployment & continuous revenue optimization",
+      engineeringTrack: {
+        label: "Systems & Engineering",
+        items: [
+          "Production deployment on Vercel/Cloudflare",
+          "Real-time uptime monitoring & security headers",
+          "Ongoing application enhancements & updates",
+        ],
+      },
+      growthTrack: {
+        label: "Growth & Marketing",
+        items: [
+          "Active campaign management & creative sprints",
+          "Weekly plain-language CPA & ROAS reporting",
+          "Compounding organic search & AI answer rankings",
+        ],
+      },
+      targetOutcome: "Scalable revenue engine with transparent weekly performance",
     },
   },
 ];

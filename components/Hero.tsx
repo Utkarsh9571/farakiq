@@ -42,15 +42,15 @@ export default function Hero() {
         >
           <motion.div variants={itemVariants} className="badge-tech">
             <span className="dot" />
-            <span>FULL-STACK • AI INTEGRATIONS • WORKFLOW AUTOMATION</span>
+            <span>SOFTWARE ENGINEERING • AI AUTOMATION • GROWTH &amp; PERFORMANCE</span>
           </motion.div>
-
+ 
           <motion.h1 variants={itemVariants}>
             Are you ready to stop wasting your money?
           </motion.h1>
 
           <motion.p variants={itemVariants} className="sub">
-            FARAKIQ engineers custom website platforms, full-stack applications, and automated AI workflows — so founders stop paying agencies for reports they don&apos;t read and results they can&apos;t trace.
+            FARAKIQ is a specialized technical and growth partnership. We engineer high-performance web applications, AI automation systems, and ROI-driven marketing campaigns — uniting deep software engineering with precision search and paid acquisition.
           </motion.p>
 
           <motion.div variants={itemVariants} className="hero-ctas">
@@ -70,7 +70,7 @@ export default function Hero() {
               whileTap={{ scale: 0.97 }}
               transition={{ duration: 0.15 }}
             >
-              See what I build
+              Explore our services
             </motion.a>
           </motion.div>
         </motion.div>
@@ -91,19 +91,19 @@ export default function Hero() {
             <div className="receipt-title">RECEIPT NO. 001</div>
             <div className="receipt-heading">The agency bill</div>
             <div className="receipt-line">
-              <span className="label">Monthly retainer</span>
+              <span className="label">Monthly retainer overhead</span>
               <span className="val">₹40,000–₹80,000</span>
             </div>
             <div className="receipt-line">
-              <span className="label">Reports you don&apos;t read</span>
+              <span className="label">Vanity reports you don&apos;t read</span>
               <span className="val">Included</span>
             </div>
             <div className="receipt-line">
-              <span className="label">New account manager, every 6 months</span>
+              <span className="label">Rotating junior account managers</span>
               <span className="val">Included</span>
             </div>
             <div className="receipt-line">
-              <span className="label">Clear answer on what&apos;s working</span>
+              <span className="label">Clear answers on tech &amp; ad ROI</span>
               <span className="val">Not included</span>
             </div>
             <span className="stamp waste">TOTAL VALUE: UNCLEAR</span>
@@ -118,19 +118,19 @@ export default function Hero() {
             <div className="receipt-title">RECEIPT NO. 002</div>
             <div className="receipt-heading">Working with FARAKIQ</div>
             <div className="receipt-line">
-              <span className="label">Monthly retainer</span>
+              <span className="label">Unnecessary retainer markup</span>
               <span className="val">You keep it</span>
             </div>
             <div className="receipt-line">
-              <span className="label">Reports you actually understand</span>
+              <span className="label">Plain-language tech &amp; growth metrics</span>
               <span className="val">Included</span>
             </div>
             <div className="receipt-line">
-              <span className="label">One engineering partner</span>
-              <span className="val">Direct</span>
+              <span className="label">Direct specialist partner access</span>
+              <span className="val">Engineering + Growth</span>
             </div>
             <div className="receipt-line">
-              <span className="label">Clear answer on what&apos;s working</span>
+              <span className="label">Clear answers on systems &amp; conversions</span>
               <span className="val">Every week</span>
             </div>
             <span className="stamp value">TOTAL VALUE: TRACEABLE</span>
@@ -138,7 +138,7 @@ export default function Hero() {
         </motion.div>
 
         <p className="receipt-caption">
-          This isn&apos;t a knock on every agency — it&apos;s why I built this differently.
+          A transparent partnership model designed to eliminate agency bloat and deliver accountable execution across engineering, AI systems, and customer acquisition.
         </p>
       </div>
     </section>

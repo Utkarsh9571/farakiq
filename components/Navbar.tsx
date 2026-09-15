@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
+import BrandLogo from "@/components/BrandLogo";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,14 +16,7 @@ export default function Navbar() {
     >
       <nav className="wrap" id="mainNav">
         <Link href="/" className="brand" aria-label="FARAKIQ Homepage">
-          <Image
-            src="/farakiq-logo.svg"
-            alt="FARAKIQ — We Make The Difference"
-            width={160}
-            height={30}
-            priority
-            style={{ width: "auto", height: "28px", display: "block" }}
-          />
+          <BrandLogo size="sm" asLink={false} />
         </Link>
 
         <ul className="nav-links">

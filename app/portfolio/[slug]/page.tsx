@@ -70,8 +70,8 @@ export default async function PortfolioProjectPage({
     name: project.title,
     description: project.cardSummary,
     creator: {
-      "@type": "Person",
-      name: "Utkarsh Sharma",
+      "@type": "Organization",
+      name: "FARAKIQ",
       url: siteUrl,
     },
     url: project.liveUrl || `${siteUrl}/portfolio/${project.id}`,
@@ -226,16 +226,16 @@ export default async function PortfolioProjectPage({
               </p>
             </section>
 
-            {/* 02 What I Built */}
+            {/* 02 What We Built */}
             <section style={{ borderTop: "1px solid var(--rule)", paddingTop: "36px" }}>
               <div className="mono" style={{ fontSize: "0.8rem", color: "var(--waste)", marginBottom: "8px" }}>
-                02 — WHAT I BUILT
+                02 — WHAT WE BUILT
               </div>
               <h2 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "0 0 16px", color: "var(--text-light)" }}>
                 Engineering &amp; System Architecture
               </h2>
               <p style={{ color: "var(--text-light-dim)", fontSize: "1.05rem", lineHeight: 1.7, margin: 0 }}>
-                {project.caseStudy.whatIBuilt}
+                {project.caseStudy.whatWeBuilt}
               </p>
             </section>
 

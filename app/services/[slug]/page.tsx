@@ -74,7 +74,7 @@ export default async function ServicePage({
       "@type": "ProfessionalService",
       name: "FARAKIQ",
       url: siteUrl,
-      email: "hello@darvin.co",
+      email: "hello@farakiq.com",
       address: {
         "@type": "PostalAddress",
         addressCountry: "IN",
@@ -505,7 +505,7 @@ export default async function ServicePage({
                 Ready to stop wasting budget on disjointed vendors?
               </h2>
               <p style={{ margin: 0, color: "var(--text-light-dim)", fontSize: "0.95rem" }}>
-                Work directly with Darwin Swami and Utkarsh Sharma. Direct communication, predictable flat fees, zero agency bureaucracy.
+                Work directly with our specialist partners. Direct communication, predictable flat fees, zero agency bureaucracy.
               </p>
             </div>
             <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
@@ -513,11 +513,11 @@ export default async function ServicePage({
                 Book a Free Audit
               </Link>
               <a
-                href="mailto:hello@darvin.co"
+                href="mailto:hello@farakiq.com"
                 className="btn btn-ghost"
                 style={{ padding: "12px 20px" }}
               >
-                Email hello@darvin.co
+                Email hello@farakiq.com
               </a>
             </div>
           </div>

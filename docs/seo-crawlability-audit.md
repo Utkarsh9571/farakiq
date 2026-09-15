@@ -17,7 +17,7 @@ Before this implementation task, the repository structure was audited:
 - **Portfolio Projects:** 5 projects (`brickbytes`, `zonirza`, `bliniq`, `mailpilot`, `meera`) existed in `data/portfolioData.ts`, rendered in `components/Portfolio.tsx` with details accessible exclusively through a client-side React modal toggle (`setSelectedProject(project)`). No dedicated URLs or Schema.org `CreativeWork` schemas were present.
 - **Structured Data:** The root layout (`app/layout.tsx`) contained two separate, incomplete JSON-LD tags: an incomplete `ProfessionalService` missing contact email, founder entity, and areaServed, plus a disconnected `Person` tag.
 - **Sitemap & Robots:** `app/robots.ts` was properly configured pointing to `/sitemap.xml`, but `app/sitemap.ts` returned only a single entry for the homepage root (`/`), leaving all other content unindexed.
-- **Heading Hierarchy:** `components/Architecture.tsx` skipped an HTML heading level from `<h2>How I Build</h2>` directly to `<h4>` on the four pipeline stages.
+- **Heading Hierarchy:** `components/Architecture.tsx` had an HTML heading structure for the four pipeline stages.
 - **External Links:** Existing links in `components/Portfolio.tsx` were checked; while four existing external links had `rel="noopener noreferrer"`, there was no project-wide standard or coverage for new case studies or content pages.
 - **Legacy Files:** A legacy static single-file prototype `index.html` (40KB) was discovered in the repository root from the initial commit. It is not served by Next.js App Router but remains preserved in source control.
 
@@ -34,18 +34,8 @@ The root layout structured data in [app/layout.tsx](file:///c:/Users/lenovo/Desk
   - `@type`: `ProfessionalService`
   - `name`: `FARAKIQ`
   - `url`: `https://farakiq.com`
-  - `email`: `hello@darvin.co`
+  - `email`: `hello@farakiq.com`
   - `areaServed`: `Worldwide`
-  - `founder`:
-    - `@type`: `Person`
-    - `name`: `Darwin Swami`
-    - `jobTitle`: `Founder & Agency Lead`
-    - `url`: `https://farakiq.com`
-  - `employee`:
-    - `@type`: `Person`
-    - `name`: `Utkarsh Sharma`
-    - `jobTitle`: `Lead Engineer`
-    - `url`: `https://farakiq.com`
   - `address`: `PostalAddress` (`addressCountry: "IN"`)
   - `priceRange`: `₹₹₹`
   - `knowsAbout`: `[Web Development, Full-Stack Web Applications, AI Integrations, n8n Workflow Automation, Google Ads, Meta Ads, SEO]`
@@ -64,7 +54,7 @@ Every portfolio project now dynamically receives its own valid Schema.org `Creat
   - `@type`: `CreativeWork`
   - `name`: Dynamically populated from `project.title`
   - `description`: Dynamically populated from `project.cardSummary`
-  - `creator`: `{ "@type": "Person", "name": "Utkarsh Sharma", "url": "https://farakiq.com" }`
+  - `creator`: `{ "@type": "Organization", "name": "FARAKIQ", "url": "https://farakiq.com" }`
   - `url`: Populated with `project.liveUrl` or canonical project route
   - `genre`: Category label (e.g. "Full-Stack Web App / Real Estate Platform")
   - `keywords`: Tech stack array joined as comma-separated terms
@@ -168,7 +158,7 @@ A repository-wide audit was conducted for all external links (`<a>` tags using `
 ## 7. Heading Hierarchy Fixes
 
 ### Issue Resolved:
-In [components/Architecture.tsx](file:///c:/Users/lenovo/Desktop/darwin/components/Architecture.tsx), the heading hierarchy previously skipped from `<h2>How I Build: From Problem to Production</h2>` directly to `<h4>` on the 4 stage buttons (01 Audit & Problem Framing, 02 System Architecture, 03 Core Build, 04 Deploy & Scale).
+In [components/Architecture.tsx](file:///c:/Users/lenovo/Desktop/darwin/components/Architecture.tsx), the heading hierarchy previously skipped from `<h2>How We Build: From Problem to Production</h2>` directly to `<h4>` on the 4 stage buttons (01 Audit & Problem Framing, 02 System Architecture, 03 Core Build, 04 Deploy & Scale).
 
 ### Fix:
 Changed line 67 in [components/Architecture.tsx](file:///c:/Users/lenovo/Desktop/darwin/components/Architecture.tsx) from `<h4>` to `<h3>`, retaining the exact inline styling (`fontSize: "1.05rem", fontWeight: 700, margin: "0 0 4px", color: "var(--text-light)"`).
@@ -178,7 +168,7 @@ Changed line 67 in [components/Architecture.tsx](file:///c:/Users/lenovo/Desktop
 H1 — Are you ready to stop wasting your money? (Hero.tsx)
   H2 — Featured Websites & Web Applications (Portfolio.tsx)
     H3 — [Project Card Titles]
-  H2 — How I Build: From Problem to Production (Architecture.tsx)
+  H2 — How We Build: From Problem to Production (Architecture.tsx)
     H3 — Audit & Problem Framing (Architecture.tsx)
     H3 — System Architecture (Architecture.tsx)
     H3 — Core Build (Architecture.tsx)
@@ -314,6 +304,6 @@ Route (app)
 | **Portfolio Navigation** | Exclusive modal JavaScript click handler | Added crawlable `<Link>` to dedicated project pages on each card and modal | **Implemented & Verified** |
 | **Blog Architecture** | Non-existent | `/blog` index and `/blog/[slug]` dynamic routes with `BlogPosting` schemas and 2 complete articles | **Implemented & Verified** |
 | **External Links** | Unaudited | Audited repository-wide; verified all external `target="_blank"` links use `rel="noopener noreferrer"` | **Implemented & Verified** |
-| **Heading Hierarchy** | Skipped `H2 → H4` in "How I Build" | Corrected stage titles to `H3` in [components/Architecture.tsx](file:///c:/Users/lenovo/Desktop/darwin/components/Architecture.tsx); verified zero visual difference | **Implemented & Verified** |
+| **Heading Hierarchy** | Skipped `H2 → H4` in "How We Build" | Corrected stage titles to `H3` in [components/Architecture.tsx](file:///c:/Users/lenovo/Desktop/darwin/components/Architecture.tsx); verified zero visual difference | **Implemented & Verified** |
 | **Sitemap & Crawlability** | Only indexed `/` | Programmatically generates all 19 static URLs with priorities in [app/sitemap.ts](file:///c:/Users/lenovo/Desktop/darwin/app/sitemap.ts) | **Implemented & Verified** |
 | **Future / Client Input Items** | — | Domain verification in Google Search Console, submission of `sitemap.xml`, and optional client-written articles | **Documented for Client** |

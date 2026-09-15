@@ -338,7 +338,7 @@ export interface ComparisonRow {
   label: string;
   agency: string;
   freelancer: string;
-  darvin: string;
+  farakiq: string;
 }
 
 export const COMPARISON_DATA: ComparisonRow[] = [
@@ -346,31 +346,31 @@ export const COMPARISON_DATA: ComparisonRow[] = [
     label: "Monthly fee (multi-channel)",
     agency: "₹75,000–2,00,000+",
     freelancer: "₹15,000–50,000",
-    darvin: "₹20,000–50,000",
+    farakiq: "₹20,000–50,000",
   },
   {
     label: "Who does the work",
     agency: "Often a junior, assigned",
     freelancer: "Usually one person",
-    darvin: "Specialist partners",
+    farakiq: "Specialist partners",
   },
   {
     label: "Ad spend fee model",
     agency: "Often % of spend",
     freelancer: "Varies",
-    darvin: "Flat fee, always",
+    farakiq: "Flat fee, always",
   },
   {
     label: "Point of contact",
     agency: "Rotates over time",
     freelancer: "Stable",
-    darvin: "Dedicated partner lead",
+    farakiq: "Dedicated partner lead",
   },
   {
     label: "Backup if unavailable",
     agency: "Team coverage",
     freelancer: "None",
-    darvin: "Documented process & team coverage",
+    farakiq: "Documented process & team coverage",
   },
 ];
 

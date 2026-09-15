@@ -36,8 +36,7 @@ export const metadata: Metadata = {
     "Custom Software Engineering",
   ],
   authors: [
-    { name: "Darwin Swami", url: siteUrl },
-    { name: "Utkarsh Sharma", url: siteUrl },
+    { name: "FARAKIQ", url: siteUrl },
   ],
   creator: "FARAKIQ",
   publisher: "FARAKIQ",
@@ -91,7 +90,7 @@ const jsonLdProfessionalService = {
   url: siteUrl,
   logo: `${siteUrl}/farakiq-logo.svg`,
   image: `${siteUrl}/og-image.svg`,
-  email: "hello@darvin.co",
+  email: "hello@farakiq.com",
   description:
     "FARAKIQ delivers custom website development, full-stack web applications, e-commerce platforms, AI integrations, and automated workflows. We make the difference.",
   slogan: "We make the difference",
@@ -100,18 +99,6 @@ const jsonLdProfessionalService = {
   address: {
     "@type": "PostalAddress",
     addressCountry: "IN",
-  },
-  founder: {
-    "@type": "Person",
-    name: "Darwin Swami",
-    jobTitle: "Founder & Agency Lead",
-    url: siteUrl,
-  },
-  employee: {
-    "@type": "Person",
-    name: "Utkarsh Sharma",
-    jobTitle: "Lead Engineer",
-    url: siteUrl,
   },
   knowsAbout: [
     "Website Development",

@@ -13,7 +13,7 @@ export interface PortfolioProject {
   // Case Study Details (01 to 06)
   caseStudy: {
     whatItIs: string;
-    whatIBuilt: string;
+    whatWeBuilt: string;
     keyFunctionality: string[];
     technology: string[];
     liveDemoNote?: string;
@@ -31,7 +31,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     isPrimaryWeb: true,
     caseStudy: {
       whatItIs: "An interactive real-estate digitization platform designed to replace flat paper plans, static blueprints, and spreadsheets with interactive digital sales experiences.",
-      whatIBuilt: "Full-stack web application featuring vector spatial maps, real-time lot availability dashboards, and custom buyer-broker-developer views.",
+      whatWeBuilt: "Full-stack web application featuring vector spatial maps, real-time lot availability dashboards, and custom buyer-broker-developer views.",
       keyFunctionality: [
         "Interactive property/layout visualization & vector plot exploration",
         "Real-time inventory synchronization across buyers, brokers, and developers",
@@ -51,7 +51,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     isPrimaryWeb: true,
     caseStudy: {
       whatItIs: "A premier light luxury e-commerce platform engineered for an editorial-grade shopping experience and complete order lifecycle management.",
-      whatIBuilt: "Full-stack e-commerce application with product catalog, persistent wishlist sync, custom configuration, and automated email flows.",
+      whatWeBuilt: "Full-stack e-commerce application with product catalog, persistent wishlist sync, custom configuration, and automated email flows.",
       keyFunctionality: [
         "Complete order lifecycle tracking (Placed → Confirmed → Processing → Shipped → Delivered)",
         "Persistent cross-device wishlist system with database synchronization",
@@ -72,7 +72,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     isPrimaryWeb: true,
     caseStudy: {
       whatItIs: "A clean, modern business website built to establish strong online presence and present healthcare services clearly to prospective clients.",
-      whatIBuilt: "Responsive client business website featuring modern typography, structured service pages, and conversion-focused design.",
+      whatWeBuilt: "Responsive client business website featuring modern typography, structured service pages, and conversion-focused design.",
       keyFunctionality: [
         "Professional healthcare business presentation and brand showcase",
         "Responsive, mobile-first page layouts and navigation shell",
@@ -92,7 +92,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     isPrimaryWeb: false,
     caseStudy: {
       whatItIs: "An AI-controlled Gmail client where natural language commands directly drive state-driven UI actions and email workflows.",
-      whatIBuilt: "Full-stack email application integrating Google OAuth, CopilotKit AI assistant, SSE real-time sync, and human-in-the-loop confirmation controls.",
+      whatWeBuilt: "Full-stack email application integrating Google OAuth, CopilotKit AI assistant, SSE real-time sync, and human-in-the-loop confirmation controls.",
       keyFunctionality: [
         "Natural language AI UI control (opens compose, fills fields, filters inbox)",
         "Human-in-the-loop safety confirmation before sending emails",
@@ -113,7 +113,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     isPrimaryWeb: false,
     caseStudy: {
       whatItIs: "An AI-powered conversational sales assistant built with deterministic state-machine logic to qualify and score sales leads.",
-      whatIBuilt: "Conversational backend service combining regex lead extraction, automated scoring (100pt scale), and Gemini-assisted Hinglish message rewriting.",
+      whatWeBuilt: "Conversational backend service combining regex lead extraction, automated scoring (100pt scale), and Gemini-assisted Hinglish message rewriting.",
       keyFunctionality: [
         "Deterministic lead qualification flow using state-machine logic",
         "100-point automated lead scoring system",

@@ -39,8 +39,8 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: "2026-03-01",
     readTime: "6 min read",
     author: {
-      name: "Utkarsh Sharma",
-      role: "Lead Engineer, FARAKIQ",
+      name: "FARAKIQ Editorial",
+      role: "Engineering & Growth Team",
       url: "https://farakiq.com",
     },
     category: "Paid Advertising",
@@ -184,8 +184,8 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: "2026-03-05",
     readTime: "7 min read",
     author: {
-      name: "Utkarsh Sharma",
-      role: "Lead Engineer, FARAKIQ",
+      name: "FARAKIQ Editorial",
+      role: "Engineering & Growth Team",
       url: "https://farakiq.com",
     },
     category: "Workflow Automation",

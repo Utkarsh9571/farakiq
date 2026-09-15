@@ -88,7 +88,7 @@ All testing was executed against the active local Next.js production build (`htt
   - *Problem*: Collapsing the 4-column footer directly to 1 single column on tablets (768px–860px) made the footer excessively tall.
   - *Fix*: Implemented a 2×2 grid layout on tablet viewports (`768px–860px`), collapsing to 1 column only on screens ≤ 480px.
 - **Direct Email Long String Break (`components/CTA.tsx`, `components/Footer.tsx`)**:
-  - *Problem*: Email addresses (`hello@darvin.co`) could cause awkward line shifts on ultra-narrow viewports.
+  - *Problem*: Email addresses (`hello@farakiq.com`) could cause awkward line shifts on ultra-narrow viewports.
   - *Fix*: Added `wordBreak: "break-all"`.
 
 ---

@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
+import BrandLogo from "@/components/BrandLogo";
 
 export default function Footer() {
   return (
@@ -23,17 +23,11 @@ export default function Footer() {
         >
           {/* Column 1: Brand & Official Tagline */}
           <div>
-            <Link href="/" className="brand" aria-label="FARAKIQ Homepage" style={{ marginBottom: "14px", display: "inline-block" }}>
-              <Image
-                src="/farakiq-logo.svg"
-                alt="FARAKIQ — We Make The Difference"
-                width={160}
-                height={30}
-                style={{ width: "auto", height: "28px", display: "block" }}
-              />
+            <Link href="/" className="brand" aria-label="FARAKIQ Homepage" style={{ marginBottom: "16px", display: "inline-block" }}>
+              <BrandLogo size="md" showTagline={true} asLink={false} />
             </Link>
             <p style={{ color: "var(--text-light-dim)", fontSize: "0.92rem", lineHeight: 1.5, margin: "0 0 16px", maxWidth: "36ch" }}>
-              Custom Website Development, Full-Stack Web Applications, E-Commerce Platforms &amp; AI Integrations. We make the difference.
+              Software Engineering, AI Systems, Paid Growth Marketing &amp; Technical SEO. Two specialized partners delivering integrated digital products and acquisition.
             </p>
             <span className="mono" style={{ fontSize: "0.78rem", color: "var(--text-light-dim)" }}>
               Remote-First • Available Worldwide
@@ -120,8 +114,8 @@ export default function Footer() {
             </div>
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "6px" }}>
               <li>
-                <a href="mailto:hello@darvin.co" className="mono" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem", wordBreak: "break-all", minHeight: "36px", display: "inline-flex", alignItems: "center" }}>
-                  hello@darvin.co
+                <a href="mailto:hello@farakiq.com" className="mono" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem", wordBreak: "break-all", minHeight: "36px", display: "inline-flex", alignItems: "center" }}>
+                  hello@farakiq.com
                 </a>
               </li>
               <li>
@@ -147,12 +141,31 @@ export default function Footer() {
             justifyContent: "space-between",
             alignItems: "center",
             flexWrap: "wrap",
-            gap: "12px",
+            gap: "16px",
           }}
         >
           <p className="mono" style={{ margin: 0, color: "var(--text-light-dim)", fontSize: "0.8rem" }}>
             &copy; 2026 FARAKIQ. All rights reserved.
           </p>
+
+          <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap" }}>
+            <Link
+              href="/privacy-policy"
+              className="mono"
+              style={{ color: "var(--text-light-dim)", fontSize: "0.78rem", textDecoration: "none" }}
+            >
+              Privacy Policy
+            </Link>
+            <span style={{ color: "var(--rule)", fontSize: "0.8rem" }}>•</span>
+            <Link
+              href="/terms-and-conditions"
+              className="mono"
+              style={{ color: "var(--text-light-dim)", fontSize: "0.78rem", textDecoration: "none" }}
+            >
+              Terms of Service
+            </Link>
+          </div>
+
           <p className="mono" style={{ margin: 0, color: "var(--text-light-dim)", fontSize: "0.8rem" }}>
             Built with Next.js &amp; Motion
           </p>

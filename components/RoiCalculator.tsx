@@ -1,11 +1,39 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "motion/react";
+import { motion, Variants } from "motion/react";
 
 function formatINR(num: number): string {
   return "₹" + Math.round(num).toLocaleString("en-IN");
 }
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.35, ease: "easeOut" },
+  },
+};
+
+const cardHoverVariants = {
+  rest: { y: 0 },
+  hover: {
+    y: -4,
+    boxShadow: "0 14px 32px rgba(0, 0, 0, 0.45)",
+    transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
+  },
+};
 
 export default function RoiCalculator() {
   const [spend, setSpend] = useState<number>(150000);
@@ -36,30 +64,41 @@ export default function RoiCalculator() {
   return (
     <section id="roi">
       <div className="wrap">
-        <div className="section-head">
+        <motion.div
+          className="section-head"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        >
           <h2>Interactive Conversion Estimator</h2>
           <p>
             Adjust the sliders below based on your own business metrics. This tool provides an estimate calculated directly from your input assumptions.
           </p>
-        </div>
+        </motion.div>
 
         <motion.div
           className="calc roi-calc"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="calc-inputs">
             <div
               className="mono"
               style={{
-                fontSize: "0.75rem",
+                fontSize: "0.74rem",
                 color: "var(--waste)",
-                marginBottom: "16px",
-                border: "1px solid var(--rule)",
-                padding: "6px 12px",
+                marginBottom: "20px",
+                border: "1px solid rgba(255, 74, 52, 0.3)",
+                background: "rgba(255, 74, 52, 0.05)",
+                padding: "6px 14px",
+                borderRadius: "var(--radius-full)",
                 display: "inline-block",
+                boxShadow: "var(--card-inner-highlight)",
+                fontWeight: 600,
+                letterSpacing: "0.04em",
               }}
             >
               ESTIMATOR TOOL — BASED ENTIRELY ON VISITOR INPUTS
@@ -123,8 +162,19 @@ export default function RoiCalculator() {
             </p>
           </div>
 
-          <div className="roi-outputs">
-            <div className="receipt roi-receipt">
+          <motion.div
+            className="roi-outputs"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <motion.div
+              className="receipt roi-receipt"
+              variants={itemVariants}
+              whileHover={{ y: -4, boxShadow: "0 14px 32px rgba(0, 0, 0, 0.45)" }}
+              transition={{ duration: 0.2 }}
+            >
               <div className="receipt-title">RECEIPT NO. 004</div>
               <div className="receipt-heading">Current baseline</div>
               <div className="receipt-line">
@@ -144,9 +194,14 @@ export default function RoiCalculator() {
                 <span className="val mono">{formatINR(revNow)}</span>
               </div>
               <span className="stamp waste">ROI: {roiNow.toFixed(0)}%</span>
-            </div>
+            </motion.div>
             <div className="roi-arrow mono">→</div>
-            <div className="receipt roi-receipt">
+            <motion.div
+              className="receipt roi-receipt"
+              variants={itemVariants}
+              whileHover={{ y: -4, boxShadow: "0 14px 32px rgba(0, 0, 0, 0.45)" }}
+              transition={{ duration: 0.2 }}
+            >
               <div className="receipt-title">RECEIPT NO. 005</div>
               <div className="receipt-heading">Projected estimate</div>
               <div className="receipt-line">
@@ -166,8 +221,8 @@ export default function RoiCalculator() {
                 <span className="val mono">{formatINR(revAfter)}</span>
               </div>
               <span className="stamp value">ROI: {roiAfter.toFixed(0)}%</span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
