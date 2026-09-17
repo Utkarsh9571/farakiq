@@ -26,8 +26,8 @@ export default function Footer() {
             <Link href="/" className="brand" aria-label="FARAKIQ Homepage" style={{ marginBottom: "16px", display: "inline-block" }}>
               <BrandLogo size="md" showTagline={true} asLink={false} />
             </Link>
-            <p style={{ color: "var(--text-light-dim)", fontSize: "0.92rem", lineHeight: 1.5, margin: "0 0 16px", maxWidth: "36ch" }}>
-              Software Engineering, AI Systems, Paid Growth Marketing &amp; Technical SEO. Two specialized partners delivering integrated digital products and acquisition.
+            <p style={{ color: "var(--text-light-dim)", fontSize: "0.92rem", lineHeight: 1.5, margin: "0 0 16px", maxWidth: "38ch" }}>
+              FARAKIQ provides website development, AI automation, and performance marketing services for founders who want one accountable partner instead of five vendors.
             </p>
             <span className="mono" style={{ fontSize: "0.78rem", color: "var(--text-light-dim)" }}>
               Remote-First • Available Worldwide

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     default: "FARAKIQ — Web Development, Full-Stack & AI Systems",
     template: "%s | FARAKIQ",
   },
-  description: "FARAKIQ delivers custom website development, full-stack web applications, business platforms, e-commerce stores, AI integrations, and n8n workflow automations. We make the difference.",
+  description: "FARAKIQ provides website development, AI automation, and performance marketing services for founders who want one accountable partner instead of five vendors.",
   keywords: [
     "FARAKIQ",
     "Website Development",
@@ -34,6 +34,22 @@ export const metadata: Metadata = {
     "AI Integrations",
     "n8n Workflow Automation",
     "Custom Software Engineering",
+    "Google Ads Management",
+    "Meta Ads Agency",
+    "LinkedIn Ads for B2B",
+    "PPC Management",
+    "SEO Services",
+    "Answer Engine Optimization",
+    "Generative Engine Optimization",
+    "AI Search Optimization",
+    "AI Chatbot Development",
+    "WhatsApp Automation",
+    "Business Process Automation",
+    "REST API Integration",
+    "Custom Web App Development",
+    "Freelance Full-Stack Developer",
+    "Hire AI Automation Expert",
+    "Next.js Development Agency",
   ],
   authors: [
     { name: "FARAKIQ", url: siteUrl },
@@ -61,7 +77,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "FARAKIQ — Web Development, Full-Stack & AI Systems",
-    description: "Custom website development, full-stack web applications, e-commerce platforms, AI integrations, and automated workflows. We make the difference.",
+    description: "FARAKIQ provides website development, AI automation, and performance marketing services for founders who want one accountable partner instead of five vendors.",
     url: siteUrl,
     siteName: "FARAKIQ",
     images: [
@@ -78,38 +94,68 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "FARAKIQ — Web Development, Full-Stack & AI Systems",
-    description: "Custom website development, full-stack web applications, e-commerce platforms, AI integrations, and automated workflows.",
+    description: "FARAKIQ provides website development, AI automation, and performance marketing services for founders who want one accountable partner instead of five vendors.",
     images: ["/og-image.svg"],
   },
 };
 
-const jsonLdProfessionalService = {
+const jsonLdOrganization = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "FARAKIQ",
-  url: siteUrl,
-  logo: `${siteUrl}/farakiq-logo.svg`,
-  image: `${siteUrl}/og-image.svg`,
-  email: "hello@farakiq.com",
-  description:
-    "FARAKIQ delivers custom website development, full-stack web applications, e-commerce platforms, AI integrations, and automated workflows. We make the difference.",
-  slogan: "We make the difference",
-  priceRange: "₹₹₹",
-  areaServed: "Worldwide",
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "IN",
-  },
-  knowsAbout: [
-    "Website Development",
-    "Full-Stack Web Development",
-    "Web Applications",
-    "E-Commerce Solutions",
-    "AI Integrations",
-    "n8n Workflow Automation",
-    "Google Ads & Paid Search",
-    "Meta Ads & Performance Marketing",
-    "Search Engine Optimization (SEO)",
+  "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": `${siteUrl}/#organization`,
+      name: "FARAKIQ",
+      url: siteUrl,
+      logo: `${siteUrl}/farakiq-logo.svg`,
+      image: `${siteUrl}/og-image.svg`,
+      email: "hello@farakiq.com",
+      description:
+        "FARAKIQ provides website development, AI automation, and performance marketing services for founders who want one accountable partner instead of five vendors.",
+      slogan: "We make the difference",
+      priceRange: "₹₹₹",
+      areaServed: "Worldwide",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "IN",
+      },
+      knowsAbout: [
+        "Website Development",
+        "Full-Stack Web Development",
+        "Web Applications",
+        "E-Commerce Solutions",
+        "AI Integrations",
+        "n8n Workflow Automation",
+        "Google Ads Management",
+        "Meta Ads & Performance Marketing",
+        "Search Engine Optimization (SEO)",
+        "Answer Engine Optimization (AEO)",
+        "Generative Engine Optimization (GEO)",
+        "AI Search Optimization",
+        "AI Chatbot Development",
+        "WhatsApp Automation",
+        "Business Process Automation",
+        "REST API Integration",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: "hello@farakiq.com",
+        contactType: "customer service",
+        areaServed: "Worldwide",
+        availableLanguage: ["English", "Hindi"],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "FARAKIQ",
+      description:
+        "FARAKIQ provides website development, AI automation, and performance marketing services for founders who want one accountable partner instead of five vendors.",
+      publisher: {
+        "@id": `${siteUrl}/#organization`,
+      },
+    },
   ],
 };
 
@@ -121,7 +167,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
       <head>
-        <StructuredData data={jsonLdProfessionalService} id="farakiq-organization-schema" />
+        <StructuredData data={jsonLdOrganization} id="farakiq-organization-schema" />
       </head>
       <body>{children}</body>
     </html>

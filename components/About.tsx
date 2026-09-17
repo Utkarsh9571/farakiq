@@ -16,7 +16,7 @@ export default function About() {
         <h2>Why choose FARAKIQ as your engineering &amp; growth partner</h2>
         <div className="about-body">
           <p>
-            FARAKIQ is a specialized two-partner firm uniting deep software engineering with performance marketing and SEO. Most agencies hand you off to rotating account managers or junior contractors. We work directly with a small roster of founders at a time across custom web platforms, AI workflow automations, high-ROI paid campaigns, and organic search — ensuring your product and growth engine operate as one cohesive system.
+            FARAKIQ provides website development, AI automation, and performance marketing services for founders who want one accountable partner instead of five vendors. Most agencies hand you off to rotating account managers or junior contractors. We work directly with a small roster of founders at a time across custom web platforms, AI workflow automations, high-ROI paid campaigns, and organic search — ensuring your product and growth engine operate as one cohesive system.
           </p>
           <p>
             If an acquisition campaign isn&apos;t converting or an architecture decision has trade-offs, you&apos;ll hear it from us directly — no buried agency slides with arbitrary green arrows or hand-waving.
