@@ -25,7 +25,8 @@ export default function BrandLogo({
     <div
       key={replayKey}
       className={`brand-logo brand-logo-${size} ${className}`}
-      aria-label="FARAKIQ — We Make The Difference"
+      aria-hidden={asLink ? "true" : undefined}
+      aria-label={!asLink ? "FARAKIQ logo — We Make The Difference" : undefined}
     >
       <div className="brand-logo-text">
         <span className="brand-logo-farak">FARAK</span>
@@ -52,7 +53,7 @@ export default function BrandLogo({
 
   if (asLink) {
     return (
-      <Link href={href} className="brand" aria-label="FARAKIQ Homepage">
+      <Link href={href} className="brand" aria-label="FARAKIQ logo — Homepage">
         {content}
       </Link>
     );

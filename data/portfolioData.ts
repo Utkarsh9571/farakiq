@@ -89,7 +89,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     categoryLabel: "AI / Full-Stack Application",
     cardSummary: "AI-assisted Gmail client combining natural-language commands with real UI actions, Gmail APIs, and human-in-the-loop controls.",
     techStack: ["Next.js", "TypeScript", "CopilotKit", "Google Gemini", "Zustand", "Gmail API"],
-    isPrimaryWeb: false,
+    isPrimaryWeb: true,
     caseStudy: {
       whatItIs: "An AI-controlled Gmail client where natural language commands directly drive state-driven UI actions and email workflows.",
       whatWeBuilt: "Full-stack email application integrating Google OAuth, CopilotKit AI assistant, SSE real-time sync, and human-in-the-loop confirmation controls.",
@@ -110,7 +110,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     cardSummary: "AI sales chatbot prototype demonstrating deterministic lead qualification, scoring, and AI-assisted conversational responses.",
     techStack: ["Node.js", "Express", "MongoDB", "Google Gemini", "Vercel", "Render"],
     liveUrl: "https://meera-chatbot-h2x8.vercel.app/",
-    isPrimaryWeb: false,
+    isPrimaryWeb: true,
     caseStudy: {
       whatItIs: "An AI-powered conversational sales assistant built with deterministic state-machine logic to qualify and score sales leads.",
       whatWeBuilt: "Conversational backend service combining regex lead extraction, automated scoring (100pt scale), and Gemini-assisted Hinglish message rewriting.",
