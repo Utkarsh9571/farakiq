@@ -87,56 +87,107 @@ export default function CTA() {
   return (
     <section id="contact" style={{ borderBottom: "1px solid var(--rule)" }}>
       <div className="wrap final-cta">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: "56px", alignItems: "start" }} className="contact-grid">
-          {/* Left Column: Heading & Positioning */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.15fr", gap: "48px", alignItems: "stretch" }} className="contact-grid">
+          {/* Left Column: Heading & Process Positioning */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}
           >
-            <div className="badge-tech">
-              <span className="dot" />
-              <span>PROJECT ENQUIRY</span>
+            <div>
+              <div className="badge-tech" style={{ marginBottom: "16px" }}>
+                <span className="dot" />
+                <span>PROJECT ENQUIRY // START HERE</span>
+              </div>
+              <h2 style={{ fontSize: "clamp(1.8rem, 2.6vw, 2.4rem)", lineHeight: 1.18, letterSpacing: "-0.02em", margin: "0 0 16px" }}>
+                Let&apos;s build what your business needs next.
+              </h2>
+              <p style={{ color: "var(--text-light-dim)", fontSize: "1.02rem", lineHeight: 1.6, margin: "0 0 24px" }}>
+                Whether you need a new digital system, an AI-powered workflow, more qualified leads, or stronger search visibility — tell us what you&apos;re working on and we&apos;ll figure out the right next step.
+              </p>
+
+              {/* What Happens Next Process Block */}
+              <div className="contact-process" style={{ margin: "24px 0 28px" }}>
+                <span className="mono" style={{ fontSize: "0.72rem", color: "var(--text-light-dim)", letterSpacing: "0.05em", fontWeight: 600, display: "block", marginBottom: "12px", textTransform: "uppercase" }}>
+                  WHAT HAPPENS NEXT
+                </span>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px" }} className="process-steps">
+                  <div style={{ background: "rgba(255, 255, 255, 0.02)", border: "1px solid var(--card-border)", borderRadius: "var(--radius-md)", padding: "12px 14px", boxShadow: "var(--card-inner-highlight)" }}>
+                    <span className="mono" style={{ fontSize: "0.68rem", color: "var(--waste)", fontWeight: 700, display: "block", marginBottom: "4px" }}>01 // REVIEW</span>
+                    <span style={{ fontSize: "0.8rem", color: "var(--text-light-dim)", lineHeight: 1.35, display: "block" }}>We analyze your goals &amp; scope.</span>
+                  </div>
+                  <div style={{ background: "rgba(255, 255, 255, 0.02)", border: "1px solid var(--card-border)", borderRadius: "var(--radius-md)", padding: "12px 14px", boxShadow: "var(--card-inner-highlight)" }}>
+                    <span className="mono" style={{ fontSize: "0.68rem", color: "var(--waste)", fontWeight: 700, display: "block", marginBottom: "4px" }}>02 // DIAGNOSE</span>
+                    <span style={{ fontSize: "0.8rem", color: "var(--text-light-dim)", lineHeight: 1.35, display: "block" }}>We map out the right architecture.</span>
+                  </div>
+                  <div style={{ background: "rgba(255, 255, 255, 0.02)", border: "1px solid var(--card-border)", borderRadius: "var(--radius-md)", padding: "12px 14px", boxShadow: "var(--card-inner-highlight)" }}>
+                    <span className="mono" style={{ fontSize: "0.68rem", color: "var(--waste)", fontWeight: 700, display: "block", marginBottom: "4px" }}>03 // RESPOND</span>
+                    <span style={{ fontSize: "0.8rem", color: "var(--text-light-dim)", lineHeight: 1.35, display: "block" }}>We reply with next steps within 24h.</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h2>Let&apos;s build and scale something that grows your business.</h2>
-            <p style={{ color: "var(--text-light-dim)", fontSize: "1.05rem", lineHeight: 1.6, marginBottom: "28px" }}>
-              Whether you need a custom web application, AI automation, high-converting ad campaigns, or organic search discovery — fill out the form and our partners will respond within 24 hours.
-            </p>
+
+            {/* Direct Email Card */}
             <motion.div
-              whileHover={{ y: -3, borderColor: "var(--waste)" }}
+              whileHover={{ y: -2, borderColor: "var(--waste)" }}
               transition={{ duration: 0.2 }}
               style={{
                 background: "var(--card-bg)",
                 border: "1px solid var(--card-border)",
-                padding: "clamp(20px, 3vw, 24px)",
-                borderRadius: "var(--radius-lg)",
+                padding: "16px 20px",
+                borderRadius: "var(--radius-md)",
                 boxShadow: "var(--shadow-sm), var(--card-inner-highlight)",
+                marginTop: "16px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                gap: "12px",
               }}
             >
-              <div className="mono" style={{ fontSize: "0.76rem", color: "var(--text-light-dim)", marginBottom: "6px", letterSpacing: "0.04em", fontWeight: 600 }}>
-                DIRECT CONTACT
+              <div>
+                <div className="mono" style={{ fontSize: "0.72rem", color: "var(--text-light-dim)", letterSpacing: "0.04em", fontWeight: 600, marginBottom: "2px" }}>
+                  DIRECT EMAIL ENQUIRY
+                </div>
+                <a href="mailto:hello@farakiq.com" className="mono" style={{ fontSize: "1.05rem", color: "var(--waste)", textDecoration: "none", fontWeight: 600, wordBreak: "break-all" }}>
+                  hello@farakiq.com
+                </a>
               </div>
-              <a href="mailto:hello@farakiq.com" className="mono" style={{ fontSize: "1.1rem", color: "var(--waste)", textDecoration: "none", fontWeight: 600, wordBreak: "break-all" }}>
-                hello@farakiq.com
-              </a>
+              <span className="mono" style={{ fontSize: "0.72rem", color: "var(--text-light-dim)", background: "rgba(255, 255, 255, 0.03)", padding: "4px 10px", borderRadius: "var(--radius-full)", border: "1px solid var(--card-border)" }}>
+                Response time &lt; 24h
+              </span>
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Lead Form */}
+          {/* Right Column: Project Intake Form */}
           <motion.div
             style={{
               background: "var(--card-bg)",
               border: "1px solid var(--card-border)",
-              padding: "clamp(24px, 4vw, 36px)",
+              padding: "clamp(24px, 3.5vw, 32px)",
               borderRadius: "var(--radius-lg)",
               boxShadow: "var(--shadow-md), var(--card-inner-highlight)",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
             }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
+            <div style={{ marginBottom: "20px" }}>
+              <span className="mono" style={{ fontSize: "0.72rem", color: "var(--waste)", letterSpacing: "0.05em", fontWeight: 600, textTransform: "uppercase" }}>
+                START A PROJECT
+              </span>
+              <h3 style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--text-light)", margin: "4px 0 0", letterSpacing: "-0.01em" }}>
+                Tell us what you&apos;re building.
+              </h3>
+            </div>
+
             <AnimatePresence mode="wait">
               {status === "success" ? (
                 <motion.div
@@ -144,7 +195,7 @@ export default function CTA() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
-                  style={{ textAlign: "center", padding: "36px 12px" }}
+                  style={{ textAlign: "center", padding: "36px 12px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", flex: 1 }}
                 >
                   <div className="stamp value" style={{ transform: "none", marginBottom: "20px", fontSize: "0.85rem" }}>
                     SUBMISSION RECEIVED
@@ -153,7 +204,7 @@ export default function CTA() {
                     Thank you for reaching out!
                   </h3>
                   <p style={{ color: "var(--text-light-dim)", fontSize: "0.95rem", lineHeight: 1.6, margin: "0 0 24px" }}>
-                    Your project details have been recorded. We will review your requirements and follow up via email shortly.
+                    Your project details have been recorded. We will review your requirements and follow up via email within 24 hours.
                   </p>
                   <button
                     className="btn btn-ghost"
@@ -173,153 +224,163 @@ export default function CTA() {
                   </button>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "16px" }} className="form-row-2">
-                    <div>
-                      <label className="mono" style={{ display: "block", fontSize: "0.8rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
-                        Your Name *
-                      </label>
-                      <input
-                        type="text"
-                        className="mono"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        style={{
-                          width: "100%",
-                          background: "rgba(10, 12, 15, 0.85)",
-                          border: errors.name ? "1px solid var(--waste)" : "1px solid var(--card-border)",
-                          color: "var(--text-light)",
-                          padding: "12px 14px",
-                          fontSize: "0.95rem",
-                          minHeight: "44px",
-                          borderRadius: "var(--radius-md)",
-                          boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
-                        }}
-                        placeholder="John Doe"
-                      />
-                      {errors.name && <span style={{ color: "var(--waste)", fontSize: "0.75rem", marginTop: "4px", display: "block" }}>{errors.name}</span>}
+                <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", flex: 1, justifyContent: "space-between" }}>
+                  <div>
+                    {/* Row 1: Name & Email */}
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "14px" }} className="form-row-2">
+                      <div>
+                        <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                          Your Name *
+                        </label>
+                        <input
+                          type="text"
+                          className="mono"
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          style={{
+                            width: "100%",
+                            background: "rgba(10, 12, 15, 0.85)",
+                            border: errors.name ? "1px solid var(--waste)" : "1px solid var(--card-border)",
+                            color: "var(--text-light)",
+                            padding: "10px 12px",
+                            fontSize: "0.9rem",
+                            minHeight: "42px",
+                            borderRadius: "var(--radius-md)",
+                            boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
+                          }}
+                          placeholder="John Doe"
+                        />
+                        {errors.name && <span style={{ color: "var(--waste)", fontSize: "0.74rem", marginTop: "4px", display: "block" }}>{errors.name}</span>}
+                      </div>
+
+                      <div>
+                        <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                          Email Address *
+                        </label>
+                        <input
+                          type="email"
+                          className="mono"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          style={{
+                            width: "100%",
+                            background: "rgba(10, 12, 15, 0.85)",
+                            border: errors.email ? "1px solid var(--waste)" : "1px solid var(--card-border)",
+                            color: "var(--text-light)",
+                            padding: "10px 12px",
+                            fontSize: "0.9rem",
+                            minHeight: "42px",
+                            borderRadius: "var(--radius-md)",
+                            boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
+                          }}
+                          placeholder="john@example.com"
+                        />
+                        {errors.email && <span style={{ color: "var(--waste)", fontSize: "0.74rem", marginTop: "4px", display: "block" }}>{errors.email}</span>}
+                      </div>
                     </div>
 
-                    <div>
-                      <label className="mono" style={{ display: "block", fontSize: "0.8rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
-                        Email Address *
+                    {/* Row 2: Company & Category */}
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "14px" }} className="form-row-2">
+                      <div>
+                        <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                          Company / Organization
+                        </label>
+                        <input
+                          type="text"
+                          className="mono"
+                          value={formData.company}
+                          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                          style={{
+                            width: "100%",
+                            background: "rgba(10, 12, 15, 0.85)",
+                            border: "1px solid var(--card-border)",
+                            color: "var(--text-light)",
+                            padding: "10px 12px",
+                            fontSize: "0.9rem",
+                            minHeight: "42px",
+                            borderRadius: "var(--radius-md)",
+                            boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
+                          }}
+                          placeholder="Optional"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                          What do you need help with?
+                        </label>
+                        <select
+                          className="mono"
+                          value={formData.projectType}
+                          onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                          style={{
+                            width: "100%",
+                            background: "rgba(10, 12, 15, 0.85)",
+                            border: "1px solid var(--card-border)",
+                            color: "var(--text-light)",
+                            padding: "10px 12px",
+                            fontSize: "0.86rem",
+                            minHeight: "42px",
+                            borderRadius: "var(--radius-md)",
+                            boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
+                          }}
+                        >
+                          <option value="Integrated Engineering + Growth">Integrated Engineering &amp; Growth</option>
+                          <option value="Website / Landing Page">Website / Landing Page</option>
+                          <option value="Web Application / Custom Platform">Web Application / Custom Platform</option>
+                          <option value="AI Agent / Chatbot">AI Agent / Chatbot</option>
+                          <option value="Business Automation & Integrations">Business Automation &amp; Integrations</option>
+                          <option value="Paid Ads (Google, Meta, LinkedIn)">Paid Ads (Google, Meta, LinkedIn)</option>
+                          <option value="Organic Search & Discovery (SEO/AEO)">Organic Search &amp; Discovery (SEO/AEO)</option>
+                          <option value="Not sure — I'd like to discuss it">Not sure — I&apos;d like to discuss options</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Row 3: Project Requirements */}
+                    <div style={{ marginBottom: "16px" }}>
+                      <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                        Project Requirements *
                       </label>
-                      <input
-                        type="email"
+                      <textarea
                         className="mono"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        rows={4}
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         style={{
                           width: "100%",
                           background: "rgba(10, 12, 15, 0.85)",
-                          border: errors.email ? "1px solid var(--waste)" : "1px solid var(--card-border)",
+                          border: errors.message ? "1px solid var(--waste)" : "1px solid var(--card-border)",
                           color: "var(--text-light)",
-                          padding: "12px 14px",
-                          fontSize: "0.95rem",
-                          minHeight: "44px",
+                          padding: "10px 12px",
+                          fontSize: "0.88rem",
                           borderRadius: "var(--radius-md)",
                           boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
+                          resize: "vertical",
+                          minHeight: "100px",
                         }}
-                        placeholder="john@example.com"
+                        placeholder="Tell us what you're trying to build or solve..."
                       />
-                      {errors.email && <span style={{ color: "var(--waste)", fontSize: "0.75rem", marginTop: "4px", display: "block" }}>{errors.email}</span>}
+                      {errors.message && <span style={{ color: "var(--waste)", fontSize: "0.74rem", marginTop: "4px", display: "block" }}>{errors.message}</span>}
                     </div>
                   </div>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "16px" }} className="form-row-2">
-                    <div>
-                      <label className="mono" style={{ display: "block", fontSize: "0.8rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
-                        Company / Organization
-                      </label>
-                      <input
-                        type="text"
-                        className="mono"
-                        value={formData.company}
-                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        style={{
-                          width: "100%",
-                          background: "rgba(10, 12, 15, 0.85)",
-                          border: "1px solid var(--card-border)",
-                          color: "var(--text-light)",
-                          padding: "12px 14px",
-                          fontSize: "0.95rem",
-                          minHeight: "44px",
-                          borderRadius: "var(--radius-md)",
-                          boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
-                        }}
-                        placeholder="Optional"
-                      />
-                    </div>
+                  <div>
+                    {status === "error" && (
+                      <div style={{ color: "var(--waste)", fontSize: "0.82rem", marginBottom: "14px" }} className="mono">
+                        {errorMessage}
+                      </div>
+                    )}
 
-                    <div>
-                      <label className="mono" style={{ display: "block", fontSize: "0.8rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
-                        Project Category
-                      </label>
-                      <select
-                        className="mono"
-                        value={formData.projectType}
-                        onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                        style={{
-                          width: "100%",
-                          background: "rgba(10, 12, 15, 0.85)",
-                          border: "1px solid var(--card-border)",
-                          color: "var(--text-light)",
-                          padding: "12px 14px",
-                          fontSize: "0.95rem",
-                          minHeight: "44px",
-                          borderRadius: "var(--radius-md)",
-                          boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
-                        }}
-                      >
-                        <option value="Integrated Engineering + Growth">Integrated Engineering + Growth</option>
-                        <option value="Websites & Custom Web Apps">Websites &amp; Custom Web Apps</option>
-                        <option value="Paid Ads (Google, Meta, LinkedIn)">Paid Ads (Google, Meta, LinkedIn)</option>
-                        <option value="Organic Search & Discovery (SEO/AEO)">Organic Search &amp; Discovery (SEO/AEO)</option>
-                        <option value="AI Systems & Workflow Automation">AI Systems &amp; Workflow Automation</option>
-                        <option value="Other Project Scope">Other Project Scope</option>
-                      </select>
-                    </div>
+                    <button
+                      type="submit"
+                      className="btn btn-primary"
+                      disabled={status === "submitting"}
+                      style={{ width: "100%", justifyContent: "center", padding: "12px 20px" }}
+                    >
+                      {status === "submitting" ? "Sending Project Enquiry..." : "Send Project Enquiry →"}
+                    </button>
                   </div>
-
-                  <div style={{ marginBottom: "16px" }}>
-                    <label className="mono" style={{ display: "block", fontSize: "0.8rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
-                      Project Requirements *
-                    </label>
-                    <textarea
-                      className="mono"
-                      rows={4}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      style={{
-                        width: "100%",
-                        background: "rgba(10, 12, 15, 0.85)",
-                        border: errors.message ? "1px solid var(--waste)" : "1px solid var(--card-border)",
-                        color: "var(--text-light)",
-                        padding: "12px 14px",
-                        fontSize: "0.95rem",
-                        borderRadius: "var(--radius-md)",
-                        boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
-                        resize: "vertical",
-                      }}
-                      placeholder="Briefly describe your project requirements, target audience, or growth goals..."
-                    />
-                    {errors.message && <span style={{ color: "var(--waste)", fontSize: "0.75rem", marginTop: "4px", display: "block" }}>{errors.message}</span>}
-                  </div>
-
-                  {status === "error" && (
-                    <div style={{ color: "var(--waste)", fontSize: "0.82rem", marginBottom: "16px" }} className="mono">
-                      {errorMessage}
-                    </div>
-                  )}
-
-                  <button
-                    type="submit"
-                    className="btn btn-primary"
-                    disabled={status === "submitting"}
-                    style={{ width: "100%", justifyContent: "center" }}
-                  >
-                    {status === "submitting" ? "Submitting Enquiry..." : "Submit Project Enquiry"}
-                  </button>
                 </form>
               )}
             </AnimatePresence>
@@ -336,8 +397,12 @@ export default function CTA() {
           .form-row-2 {
             grid-template-columns: 1fr !important;
           }
+          .process-steps {
+            grid-template-columns: 1fr !important;
+          }
         }
       `}</style>
     </section>
   );
 }
+

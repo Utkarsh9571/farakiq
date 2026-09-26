@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, Variants } from "motion/react";
+import { section } from "motion/react-client";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -82,64 +83,7 @@ export default function Hero() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <motion.div
-            className="receipt a"
-            variants={cardVariants}
-            whileHover={{ y: -6, boxShadow: "0 14px 32px rgba(0, 0, 0, 0.45)" }}
-            transition={{ duration: 0.25 }}
-          >
-            <div className="receipt-title">RECEIPT NO. 001</div>
-            <div className="receipt-heading">The agency bill</div>
-            <div className="receipt-line">
-              <span className="label">Monthly retainer overhead</span>
-              <span className="val">₹40,000–₹80,000</span>
-            </div>
-            <div className="receipt-line">
-              <span className="label">Vanity reports you don&apos;t read</span>
-              <span className="val">Included</span>
-            </div>
-            <div className="receipt-line">
-              <span className="label">Rotating junior account managers</span>
-              <span className="val">Included</span>
-            </div>
-            <div className="receipt-line">
-              <span className="label">Clear answers on tech &amp; ad ROI</span>
-              <span className="val">Not included</span>
-            </div>
-            <span className="stamp waste">TOTAL VALUE: UNCLEAR</span>
-          </motion.div>
-
-          <motion.div
-            className="receipt b"
-            variants={cardVariants}
-            whileHover={{ y: -6, boxShadow: "0 14px 32px rgba(0, 0, 0, 0.45)" }}
-            transition={{ duration: 0.25 }}
-          >
-            <div className="receipt-title">RECEIPT NO. 002</div>
-            <div className="receipt-heading">Working with FARAKIQ</div>
-            <div className="receipt-line">
-              <span className="label">Unnecessary retainer markup</span>
-              <span className="val">You keep it</span>
-            </div>
-            <div className="receipt-line">
-              <span className="label">Plain-language tech &amp; growth metrics</span>
-              <span className="val">Included</span>
-            </div>
-            <div className="receipt-line">
-              <span className="label">Direct specialist partner access</span>
-              <span className="val">Engineering + Growth</span>
-            </div>
-            <div className="receipt-line">
-              <span className="label">Clear answers on systems &amp; conversions</span>
-              <span className="val">Every week</span>
-            </div>
-            <span className="stamp value">TOTAL VALUE: TRACEABLE</span>
-          </motion.div>
         </motion.div>
-
-        <p className="receipt-caption">
-          A transparent partnership model designed to eliminate agency bloat and deliver accountable execution across engineering, AI systems, and customer acquisition.
-        </p>
       </div>
     </section>
   );

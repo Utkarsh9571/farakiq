@@ -722,7 +722,7 @@ section {
 
 .verticals-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
   margin-top: 40px;
   align-items: stretch;
@@ -734,7 +734,7 @@ section {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-lg);
-  padding: clamp(26px, 3.5vw, 34px);
+  padding: clamp(24px, 3vw, 32px);
   position: relative;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
   overflow: hidden;
@@ -815,32 +815,34 @@ section {
   letter-spacing: 0.05em;
   font-weight: 600;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   display: block;
 }
 
 .vertical-footer {
   margin-top: auto;
-  padding-top: 18px;
+  padding-top: 24px;
   border-top: 1px solid var(--rule);
 }
 
 .vertical-tech-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 16px;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .vertical-tech-pill {
   font-family: var(--font-ibm-plex-mono), monospace;
   font-size: 0.7rem;
   color: var(--text-light-dim);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--card-border);
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: var(--radius-full);
   box-shadow: var(--card-inner-highlight);
+  white-space: nowrap;
 }
 
 .vertical-explore-btn {
@@ -851,13 +853,75 @@ section {
   border-radius: var(--radius-md);
 }
 
+/* Featured card layout for Development & AI Systems */
+.vertical-card-featured {
+  grid-column: 1 / -1;
+  background: radial-gradient(circle at top right, rgba(255, 74, 52, 0.05), transparent 60%), var(--card-bg);
+  border-color: rgba(255, 74, 52, 0.25);
+}
+
+.vertical-card-featured:hover {
+  border-color: var(--waste);
+  box-shadow: 0 12px 32px -8px rgba(255, 74, 52, 0.12), var(--card-inner-highlight);
+}
+
+.vertical-card-featured .service-accordion-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.vertical-card-featured .vertical-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+}
+
+.vertical-card-featured .vertical-footer-tech {
+  flex: 1;
+  min-width: 280px;
+}
+
+.vertical-card-featured .vertical-footer .vertical-tech-pills {
+  margin-bottom: 0;
+}
+
+.vertical-card-featured .vertical-footer .vertical-explore-btn {
+  width: auto;
+  min-width: 220px;
+}
+
 @media (max-width: 1024px) {
+  .vertical-card-featured .service-accordion-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
   .verticals-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
+  }
+  .vertical-card-featured {
+    grid-column: auto;
+  }
+  .vertical-card-featured .service-accordion-list {
+    grid-template-columns: 1fr;
+  }
+  .vertical-card-featured .vertical-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .vertical-card-featured .vertical-footer .vertical-explore-btn {
+    width: 100%;
   }
   .vertical-card {
-    padding: 24px 18px;
+    padding: 22px 18px;
   }
 }
 
@@ -918,9 +982,7 @@ section {
 }
 
 .tier:hover {
-  transform: translateY(-3px);
-  border-color: var(--card-border-hover);
-  box-shadow: var(--shadow-md), var(--card-inner-highlight);
+  transform: translateY(-4px);
 }
 
 .tier.featured {
@@ -1013,8 +1075,8 @@ section {
 
 .dev-project-card:hover {
   transform: translateY(-3px);
-  border-color: var(--card-border-hover);
-  box-shadow: var(--shadow-md), var(--card-inner-highlight);
+  border-color: var(--waste);
+  box-shadow: 0 8px 24px -6px rgba(255, 74, 52, 0.2), var(--card-inner-highlight);
 }
 
 .dev-project-title {

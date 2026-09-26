@@ -26,6 +26,7 @@ const cardVariants: Variants = {
 export default function Pricing() {
   const [expandedDevProjects, setExpandedDevProjects] = useState<Record<string, boolean>>({});
   const [expandedTiers, setExpandedTiers] = useState<Record<string, boolean>>({});
+  const [hoveredTier, setHoveredTier] = useState<string | null>(null);
 
   const toggleDevProject = (id: string) => {
     setExpandedDevProjects((prev) => ({
@@ -77,76 +78,90 @@ export default function Pricing() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
+          onMouseLeave={() => setHoveredTier(null)}
         >
-          {PRICING_TIERS.map((tier) => (
-            <motion.div
-              key={tier.name}
-              variants={cardVariants}
-              whileHover={{ y: -4, borderColor: tier.featured ? "var(--waste)" : "var(--card-border-hover)" }}
-              transition={{ duration: 0.25 }}
-              className={`tier ${tier.featured ? "featured" : ""}`}
-            >
-              <div className="tier-name">{tier.name}</div>
-              <div className="tier-price mono">
-                {tier.price}
-                <span>{tier.period}</span>
-              </div>
-              <p className="tier-desc" style={{ flex: 1 }}>{tier.description}</p>
+          {PRICING_TIERS.map((tier) => {
+            const isHighlighted = hoveredTier ? hoveredTier === tier.name : tier.featured;
 
-              {/* Inclusions Toggle */}
-              <button
-                type="button"
-                onClick={() => toggleTier(tier.name)}
-                className="mono"
+            return (
+              <motion.div
+                key={tier.name}
+                variants={cardVariants}
+                onMouseEnter={() => setHoveredTier(tier.name)}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.25 }}
+                className={`tier ${isHighlighted ? "featured" : ""}`}
                 style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  width: "100%",
-                  background: "rgba(255, 255, 255, 0.03)",
-                  border: "1px solid var(--card-border)",
-                  color: "var(--text-light)",
-                  padding: "8px 12px",
-                  borderRadius: "var(--radius-sm)",
-                  fontSize: "0.76rem",
-                  cursor: "pointer",
-                  marginTop: "12px",
-                  textAlign: "left",
-                  boxShadow: "var(--card-inner-highlight)",
-                  transition: "all 0.15s ease",
+                  borderColor: isHighlighted ? "var(--waste)" : "var(--card-border)",
+                  backgroundColor: isHighlighted ? "rgba(255, 74, 52, 0.04)" : "var(--card-bg)",
+                  boxShadow: isHighlighted ? "var(--shadow-glow-waste), var(--card-inner-highlight)" : "var(--shadow-sm), var(--card-inner-highlight)",
+                  transition: "border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease",
                 }}
               >
-                <span>{expandedTiers[tier.name] ? "Hide inclusions" : "Included scope"}</span>
-                <span>{expandedTiers[tier.name] ? "▲" : "▼"}</span>
-              </button>
+                <div className="tier-name" style={{ color: isHighlighted ? "var(--waste)" : "var(--text-light-dim)", transition: "color 0.25s ease" }}>
+                  {tier.name}
+                </div>
+                <div className="tier-price mono">
+                  {tier.price}
+                  <span>{tier.period}</span>
+                </div>
+                <p className="tier-desc" style={{ flex: 1 }}>{tier.description}</p>
 
-              <AnimatePresence initial={false}>
-                {expandedTiers[tier.name] && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                    style={{ overflow: "hidden" }}
-                  >
-                    <ul className="tier-list" style={{ marginTop: "12px", paddingTop: "8px", borderTop: "1px dashed var(--rule)" }}>
-                      {tier.features.map((feat, idx) => (
-                        <li key={idx}>
-                          {feat.includes(" or ") ? (
-                            <>
-                              {feat.split(" or ")[0]} <strong>or</strong> {feat.split(" or ")[1]}
-                            </>
-                          ) : (
-                            feat
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+                {/* Inclusions Toggle */}
+                <button
+                  type="button"
+                  onClick={() => toggleTier(tier.name)}
+                  className="mono"
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    width: "100%",
+                    background: "rgba(255, 255, 255, 0.03)",
+                    border: "1px solid var(--card-border)",
+                    color: "var(--text-light)",
+                    padding: "8px 12px",
+                    borderRadius: "var(--radius-sm)",
+                    fontSize: "0.76rem",
+                    cursor: "pointer",
+                    marginTop: "12px",
+                    textAlign: "left",
+                    boxShadow: "var(--card-inner-highlight)",
+                    transition: "all 0.15s ease",
+                  }}
+                >
+                  <span>{expandedTiers[tier.name] ? "Hide inclusions" : "Included scope"}</span>
+                  <span>{expandedTiers[tier.name] ? "▲" : "▼"}</span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {expandedTiers[tier.name] && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                      style={{ overflow: "hidden" }}
+                    >
+                      <ul className="tier-list" style={{ marginTop: "12px", paddingTop: "8px", borderTop: "1px dashed var(--rule)" }}>
+                        {tier.features.map((feat, idx) => (
+                          <li key={idx}>
+                            {feat.includes(" or ") ? (
+                              <>
+                                {feat.split(" or ")[0]} <strong>or</strong> {feat.split(" or ")[1]}
+                              </>
+                            ) : (
+                              feat
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
         {/* Section 2: Scoped One-Time Development & AI Projects */}
@@ -177,7 +192,7 @@ export default function Pricing() {
               <motion.div
                 key={proj.id}
                 variants={cardVariants}
-                whileHover={{ y: -3, borderColor: "var(--card-border-hover)" }}
+                whileHover={{ y: -3, borderColor: "var(--waste)" }}
                 transition={{ duration: 0.2 }}
                 className="dev-project-card"
                 style={{

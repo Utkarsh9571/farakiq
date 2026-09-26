@@ -87,10 +87,12 @@ export default function Services() {
           viewport={{ once: true, amount: 0.15 }}
         >
           {SERVICES_DATA.map((vertical: ServiceCategory) => {
+            const isFeatured = vertical.id === "tech-dev";
+
             return (
               <motion.div
                 key={vertical.id}
-                className="vertical-card"
+                className={`vertical-card ${isFeatured ? "vertical-card-featured" : ""}`}
                 variants={cardVariants}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 style={
@@ -135,7 +137,6 @@ export default function Services() {
                           style={{
                             border: isExpanded ? `1px solid ${vertical.accentColor}` : "1px solid var(--card-border)",
                             borderRadius: "var(--radius-md)",
-                            marginBottom: "8px",
                             background: isExpanded ? "var(--card-bg-elevated)" : "rgba(255, 255, 255, 0.02)",
                             boxShadow: isExpanded ? "var(--shadow-sm), var(--card-inner-highlight)" : "var(--card-inner-highlight)",
                             transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -301,15 +302,17 @@ export default function Services() {
 
                 {/* Vertical Card Footer */}
                 <div className="vertical-footer">
-                  <span className="vertical-items-heading" style={{ marginBottom: "8px" }}>
-                    Supporting Technologies
-                  </span>
-                  <div className="vertical-tech-pills">
-                    {vertical.supportingTech.map((tech) => (
-                      <span key={tech} className="vertical-tech-pill">
-                        {tech}
-                      </span>
-                    ))}
+                  <div className={isFeatured ? "vertical-footer-tech" : ""}>
+                    <span className="vertical-items-heading" style={{ marginBottom: "8px" }}>
+                      Supporting Technologies
+                    </span>
+                    <div className="vertical-tech-pills" style={isFeatured ? { marginBottom: 0 } : { marginBottom: "16px" }}>
+                      {vertical.supportingTech.map((tech) => (
+                        <span key={tech} className="vertical-tech-pill">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   <Link
