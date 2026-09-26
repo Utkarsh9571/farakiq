@@ -259,11 +259,14 @@ export default function QuoteModal({
                 <form onSubmit={handleSubmit} noValidate>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "14px" }} className="form-row-2">
                     <div>
-                      <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                      <label htmlFor="modal-name" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
                         Your Name *
                       </label>
                       <input
+                        id="modal-name"
+                        name="name"
                         type="text"
+                        autoComplete="name"
                         className="mono"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -284,11 +287,14 @@ export default function QuoteModal({
                     </div>
 
                     <div>
-                      <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                      <label htmlFor="modal-email" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
                         Email Address *
                       </label>
                       <input
+                        id="modal-email"
+                        name="email"
                         type="email"
+                        autoComplete="email"
                         className="mono"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -311,11 +317,14 @@ export default function QuoteModal({
 
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "14px" }} className="form-row-2">
                     <div>
-                      <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                      <label htmlFor="modal-company" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
                         Company / Organization
                       </label>
                       <input
+                        id="modal-company"
+                        name="company"
                         type="text"
+                        autoComplete="organization"
                         className="mono"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -335,10 +344,12 @@ export default function QuoteModal({
                     </div>
 
                     <div>
-                      <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                      <label htmlFor="modal-project-type" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
                         Project Category
                       </label>
                       <select
+                        id="modal-project-type"
+                        name="projectType"
                         className="mono"
                         value={formData.projectType}
                         onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
@@ -367,10 +378,12 @@ export default function QuoteModal({
                   </div>
 
                   <div style={{ marginBottom: "18px" }}>
-                    <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                    <label htmlFor="modal-message" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
                       Project Requirements &amp; Goals *
                     </label>
                     <textarea
+                      id="modal-message"
+                      name="message"
                       className="mono"
                       rows={4}
                       value={formData.message}

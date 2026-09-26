@@ -172,6 +172,7 @@ export default function Services() {
                             tabIndex={0}
                             onClick={() => toggleExpand(item.id)}
                             onKeyDown={(e) => {
+                              if (e.target !== e.currentTarget) return;
                               if (e.key === "Enter" || e.key === " ") {
                                 e.preventDefault();
                                 toggleExpand(item.id);

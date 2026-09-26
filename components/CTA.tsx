@@ -229,11 +229,14 @@ export default function CTA() {
                     {/* Row 1: Name & Email */}
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "14px" }} className="form-row-2">
                       <div>
-                        <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                        <label htmlFor="cta-name" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
                           Your Name *
                         </label>
                         <input
+                          id="cta-name"
+                          name="name"
                           type="text"
+                          autoComplete="name"
                           className="mono"
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -254,11 +257,14 @@ export default function CTA() {
                       </div>
 
                       <div>
-                        <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                        <label htmlFor="cta-email" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
                           Email Address *
                         </label>
                         <input
+                          id="cta-email"
+                          name="email"
                           type="email"
+                          autoComplete="email"
                           className="mono"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -282,11 +288,14 @@ export default function CTA() {
                     {/* Row 2: Company & Category */}
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "14px" }} className="form-row-2">
                       <div>
-                        <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                        <label htmlFor="cta-company" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
                           Company / Organization
                         </label>
                         <input
+                          id="cta-company"
+                          name="company"
                           type="text"
+                          autoComplete="organization"
                           className="mono"
                           value={formData.company}
                           onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -306,10 +315,12 @@ export default function CTA() {
                       </div>
 
                       <div>
-                        <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                        <label htmlFor="cta-project-type" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
                           What do you need help with?
                         </label>
                         <select
+                          id="cta-project-type"
+                          name="projectType"
                           className="mono"
                           value={formData.projectType}
                           onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
@@ -339,10 +350,12 @@ export default function CTA() {
 
                     {/* Row 3: Project Requirements */}
                     <div style={{ marginBottom: "16px" }}>
-                      <label className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                      <label htmlFor="cta-message" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
                         Project Requirements *
                       </label>
                       <textarea
+                        id="cta-message"
+                        name="message"
                         className="mono"
                         rows={4}
                         value={formData.message}
