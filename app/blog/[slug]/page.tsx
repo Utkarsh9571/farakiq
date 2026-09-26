@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
-import { BLOG_POSTS, BlogPost } from "@/data/blogData";
+import { BLOG_POSTS } from "@/data/blogData";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farakiq.com";
 

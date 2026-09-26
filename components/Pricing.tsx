@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "motion/react";
-import { PRICING_TIERS, DEV_PROJECT_PRICING, COMPARISON_DATA } from "@/data/siteData";
+import { PRICING_TIERS, COMPARISON_DATA } from "@/data/siteData";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -24,16 +24,8 @@ const cardVariants: Variants = {
 };
 
 export default function Pricing() {
-  const [expandedDevProjects, setExpandedDevProjects] = useState<Record<string, boolean>>({});
   const [expandedTiers, setExpandedTiers] = useState<Record<string, boolean>>({});
   const [hoveredTier, setHoveredTier] = useState<string | null>(null);
-
-  const toggleDevProject = (id: string) => {
-    setExpandedDevProjects((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
 
   const toggleTier = (name: string) => {
     setExpandedTiers((prev) => ({

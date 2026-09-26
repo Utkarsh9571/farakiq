@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, Variants } from "motion/react";
-import { section } from "motion/react-client";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -16,15 +15,6 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 35 },
   visible: {
     opacity: 1,
     y: 0,
