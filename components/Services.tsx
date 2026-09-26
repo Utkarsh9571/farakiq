@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { SERVICES_DATA, ServiceItem, ServiceCategory } from "@/data/siteData";
+import QuoteModal from "@/components/QuoteModal";
 
 const SERVICE_ROUTE_MAP: Record<string, { href: string; label: string }> = {
   "landing-pages": { href: "/services/web-development", label: "Landing Pages" },
@@ -42,12 +43,34 @@ const cardVariants = {
 
 export default function Services() {
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({});
+  const [quoteModalState, setQuoteModalState] = useState<{
+    isOpen: boolean;
+    serviceName: string;
+    category: string;
+  }>({
+    isOpen: false,
+    serviceName: "",
+    category: "Integrated Engineering + Growth",
+  });
 
   const toggleExpand = (id: string) => {
     setExpandedItems((prev) => ({
       ...prev,
       [id]: !prev[id],
     }));
+  };
+
+  const openQuoteModal = (serviceName: string, categoryTitle: string) => {
+    let mappedCategory = "Integrated Engineering + Growth";
+    if (categoryTitle.toLowerCase().includes("development")) mappedCategory = "Web Application / Custom Platform";
+    if (categoryTitle.toLowerCase().includes("paid")) mappedCategory = "Paid Ads (Google, Meta, LinkedIn)";
+    if (categoryTitle.toLowerCase().includes("organic")) mappedCategory = "Organic Search & Discovery (SEO/AEO)";
+
+    setQuoteModalState({
+      isOpen: true,
+      serviceName,
+      category: mappedCategory,
+    });
   };
 
   return (
@@ -143,10 +166,17 @@ export default function Services() {
                             overflow: "hidden",
                           }}
                         >
-                          {/* Accordion Header / Trigger Button */}
-                          <button
-                            type="button"
+                          {/* Accordion Header / Trigger Container */}
+                          <div
+                            role="button"
+                            tabIndex={0}
                             onClick={() => toggleExpand(item.id)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter" || e.key === " ") {
+                                e.preventDefault();
+                                toggleExpand(item.id);
+                              }
+                            }}
                             aria-expanded={isExpanded}
                             className="service-accordion-btn"
                             style={{
@@ -189,17 +219,37 @@ export default function Services() {
                             </div>
 
                             <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
-                              <span
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  openQuoteModal(item.name, vertical.title);
+                                }}
                                 className="mono"
                                 style={{
-                                  fontSize: "0.78rem",
-                                  color: vertical.accentColor,
+                                  fontSize: "0.72rem",
                                   fontWeight: 600,
+                                  color: vertical.accentColor,
+                                  background: "rgba(255, 255, 255, 0.04)",
+                                  border: `1px solid ${vertical.accentColor}`,
+                                  padding: "4px 10px",
+                                  borderRadius: "var(--radius-full)",
+                                  cursor: "pointer",
                                   whiteSpace: "nowrap",
+                                  transition: "all 0.15s ease",
+                                  boxShadow: "var(--card-inner-highlight)",
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.background = vertical.accentColor;
+                                  e.currentTarget.style.color = "#000000";
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.04)";
+                                  e.currentTarget.style.color = vertical.accentColor;
                                 }}
                               >
-                                {item.priceDisplay}
-                              </span>
+                                Get Quote →
+                              </button>
                               <span
                                 className="mono"
                                 style={{
@@ -217,7 +267,7 @@ export default function Services() {
                                 ▾
                               </span>
                             </div>
-                          </button>
+                          </div>
 
                           {/* Expandable Content Area */}
                           <AnimatePresence initial={false}>
@@ -257,20 +307,41 @@ export default function Services() {
                                       paddingTop: "2px",
                                     }}
                                   >
-                                    <span
-                                      className="mono"
-                                      style={{
-                                        fontSize: "0.7rem",
-                                        color: item.billingType === "project" ? "var(--value)" : "var(--accent-cyan)",
-                                        background: item.billingType === "project" ? "rgba(31, 111, 84, 0.15)" : "rgba(0, 229, 255, 0.1)",
-                                        border: `1px solid ${item.billingType === "project" ? "var(--value)" : "var(--accent-cyan)"}`,
-                                        padding: "3px 8px",
-                                        borderRadius: "var(--radius-full)",
-                                        boxShadow: "var(--card-inner-highlight)",
-                                      }}
-                                    >
-                                      {item.billingType === "project" ? "One-time deliverable" : "Monthly retainer"}
-                                    </span>
+                                    <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                                      <span
+                                        className="mono"
+                                        style={{
+                                          fontSize: "0.7rem",
+                                          color: item.billingType === "project" ? "var(--value)" : "var(--accent-cyan)",
+                                          background: item.billingType === "project" ? "rgba(31, 111, 84, 0.15)" : "rgba(0, 229, 255, 0.1)",
+                                          border: `1px solid ${item.billingType === "project" ? "var(--value)" : "var(--accent-cyan)"}`,
+                                          padding: "3px 8px",
+                                          borderRadius: "var(--radius-full)",
+                                          boxShadow: "var(--card-inner-highlight)",
+                                        }}
+                                      >
+                                        {item.billingType === "project" ? "One-time deliverable" : "Monthly retainer"}
+                                      </span>
+
+                                      <button
+                                        type="button"
+                                        onClick={() => openQuoteModal(item.name, vertical.title)}
+                                        className="mono"
+                                        style={{
+                                          fontSize: "0.72rem",
+                                          fontWeight: 600,
+                                          color: "#FFFFFF",
+                                          background: "var(--waste)",
+                                          border: "none",
+                                          padding: "4px 10px",
+                                          borderRadius: "var(--radius-sm)",
+                                          cursor: "pointer",
+                                          boxShadow: "var(--shadow-sm)",
+                                        }}
+                                      >
+                                        Get Quote →
+                                      </button>
+                                    </div>
 
                                     {routeInfo && (
                                       <Link
@@ -328,6 +399,15 @@ export default function Services() {
           })}
         </motion.div>
       </div>
+
+      {/* Quote Request Modal */}
+      <QuoteModal
+        isOpen={quoteModalState.isOpen}
+        onClose={() => setQuoteModalState((prev) => ({ ...prev, isOpen: false }))}
+        initialCategory={quoteModalState.category}
+        initialService={quoteModalState.serviceName}
+      />
     </section>
   );
 }
+

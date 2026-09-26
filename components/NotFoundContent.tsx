@@ -133,7 +133,7 @@ export default function NotFoundContent() {
             textTransform: "uppercase",
           }}
         >
-          // VERIFIED SYSTEM ROUTES
+          {"// VERIFIED SYSTEM ROUTES"}
         </div>
 
         <div

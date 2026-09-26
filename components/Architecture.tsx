@@ -112,7 +112,7 @@ export default function Architecture() {
             {/* Left Column: Stage Overview & Key Pillars */}
             <div>
               <div className="mono" style={{ fontSize: "0.78rem", color: "var(--waste)", marginBottom: "8px", letterSpacing: "0.05em", fontWeight: 600 }}>
-                STAGE {activeStage.number} // PROCESS OVERVIEW
+                STAGE {activeStage.number} {"//"} PROCESS OVERVIEW
               </div>
               <h3 style={{ fontSize: "clamp(1.3rem, 3.5vw, 1.75rem)", fontWeight: 700, margin: "0 0 16px", color: "var(--text-light)", letterSpacing: "-0.01em" }}>
                 {activeStage.title}

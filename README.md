@@ -19,7 +19,7 @@ Most agencies either write code without understanding customer acquisition or ru
 - **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
 - **Core Library**: React 19 & TypeScript 5
 - **Animations**: Motion (`motion/react`)
-- **Styling**: Modern Vanilla CSS with CSS Custom Properties / Design Tokens & Responsive Grid/Flexbox
+- **Styling**: Tailwind CSS v4 & PostCSS with custom theme tokens & responsive CSS Grid/Flexbox
 - **Linting & Quality**: ESLint 9 & TypeScript Compiler
 
 ---
