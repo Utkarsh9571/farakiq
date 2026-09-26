@@ -107,7 +107,6 @@ export default function RoiCalculator() {
               <div className="calc-field">
                 <div className="field-label-row">
                   <span>Monthly Ad Spend</span>
-                  <span className="mono field-val">{formatINR(spend)}</span>
                 </div>
                 <div className="input-with-symbol">
                   <span className="symbol">₹</span>
@@ -125,8 +124,7 @@ export default function RoiCalculator() {
 
               <div className="calc-field">
                 <div className="field-label-row">
-                  <span>Leads Generated / Month</span>
-                  <span className="mono field-val">{safeLeads.toFixed(0)}</span>
+                  <span>Leads Generated per Month</span>
                 </div>
                 <input
                   type="number"
@@ -157,7 +155,6 @@ export default function RoiCalculator() {
               <div className="calc-field">
                 <div className="field-label-row">
                   <span>Average Deal Value</span>
-                  <span className="mono field-val">{formatINR(dealValue)}</span>
                 </div>
                 <div className="input-with-symbol">
                   <span className="symbol">₹</span>
@@ -191,7 +188,7 @@ export default function RoiCalculator() {
             </div>
 
             <p className="calc-disclaimer">
-              <strong style={{ color: "var(--text-light-dim)" }}>Note:</strong> Projected results are estimates based on your entered parameters and do not constitute a performance guarantee.
+              <strong style={{ color: "var(--text-light)" }}>Note:</strong> Projected results are estimates based on your entered parameters and do not constitute a performance guarantee.
             </p>
           </div>
 

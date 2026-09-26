@@ -8,6 +8,16 @@ import BrandLogo from "@/components/BrandLogo";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (window.location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (window.location.hash) {
+        window.history.pushState("", document.title, window.location.pathname);
+      }
+    }
+  };
+
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
@@ -15,7 +25,7 @@ export default function Navbar() {
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <nav className="wrap" id="mainNav">
-        <Link href="/" className="brand" aria-label="FARAKIQ Homepage">
+        <Link href="/" className="brand" aria-label="FARAKIQ Homepage" onClick={handleLogoClick}>
           <BrandLogo size="sm" asLink={false} />
         </Link>
 

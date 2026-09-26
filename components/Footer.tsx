@@ -5,6 +5,16 @@ import { motion } from "motion/react";
 import BrandLogo from "@/components/BrandLogo";
 
 export default function Footer() {
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (window.location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (window.location.hash) {
+        window.history.pushState("", document.title, window.location.pathname);
+      }
+    }
+  };
+
   return (
     <footer style={{ borderTop: "1px solid var(--rule)", padding: "48px 0 36px" }}>
       <div className="wrap">
@@ -23,7 +33,7 @@ export default function Footer() {
         >
           {/* Column 1: Brand & Official Tagline */}
           <div>
-            <Link href="/" className="brand" aria-label="FARAKIQ Homepage" style={{ marginBottom: "16px", display: "inline-block" }}>
+            <Link href="/" className="brand" aria-label="FARAKIQ Homepage" onClick={handleLogoClick} style={{ marginBottom: "16px", display: "inline-block" }}>
               <BrandLogo size="md" showTagline={true} asLink={false} />
             </Link>
             <p style={{ color: "var(--text-light-dim)", fontSize: "0.92rem", lineHeight: 1.5, margin: "0 0 16px", maxWidth: "38ch" }}>
