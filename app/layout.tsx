@@ -16,7 +16,7 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farakiq.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.farakiq.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -24,33 +24,14 @@ export const metadata: Metadata = {
     default: "FARAKIQ — Web Development, Full-Stack & AI Systems",
     template: "%s | FARAKIQ",
   },
-  description: "FARAKIQ provides website development, AI automation, and performance marketing services for founders who want one accountable partner instead of five vendors.",
+  description:
+    "FARAKIQ builds websites, AI automation, and performance marketing systems for founders who want one accountable partner instead of five vendors.",
   keywords: [
-    "FARAKIQ",
     "Website Development",
-    "Full-Stack Web Development",
-    "Web Applications",
-    "Business Websites",
-    "E-Commerce Development",
-    "AI Integrations",
-    "n8n Workflow Automation",
-    "Custom Software Engineering",
-    "Google Ads Management",
-    "Meta Ads Agency",
-    "LinkedIn Ads for B2B",
-    "PPC Management",
-    "SEO Services",
-    "Answer Engine Optimization",
-    "Generative Engine Optimization",
-    "AI Search Optimization",
-    "AI Chatbot Development",
-    "WhatsApp Automation",
-    "Business Process Automation",
-    "REST API Integration",
-    "Custom Web App Development",
-    "Freelance Full-Stack Developer",
-    "Hire AI Automation Expert",
-    "Next.js Development Agency",
+    "AI Automation",
+    "SEO",
+    "Google Ads",
+    "Meta Ads",
   ],
   authors: [
     { name: "FARAKIQ", url: siteUrl },
@@ -78,7 +59,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "FARAKIQ — Web Development, Full-Stack & AI Systems",
-    description: "FARAKIQ provides website development, AI automation, and performance marketing services for founders who want one accountable partner instead of five vendors.",
+    description:
+      "FARAKIQ builds websites, AI automation, and performance marketing systems for founders who want one accountable partner instead of five vendors.",
     url: siteUrl,
     siteName: "FARAKIQ",
     images: [
@@ -95,7 +77,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "FARAKIQ — Web Development, Full-Stack & AI Systems",
-    description: "FARAKIQ provides website development, AI automation, and performance marketing services for founders who want one accountable partner instead of five vendors.",
+    description:
+      "FARAKIQ builds websites, AI automation, and performance marketing systems for founders who want one accountable partner instead of five vendors.",
     images: ["/og-image.svg"],
   },
 };
@@ -112,7 +95,7 @@ const jsonLdOrganization = {
       image: `${siteUrl}/og-image.svg`,
       email: "hello@farakiq.com",
       description:
-        "FARAKIQ provides website development, AI automation, and performance marketing services for founders who want one accountable partner instead of five vendors.",
+        "FARAKIQ builds websites, AI automation, and performance marketing systems for founders who want one accountable partner instead of five vendors.",
       slogan: "We make the difference",
       priceRange: "₹₹₹",
       areaServed: "Worldwide",
@@ -152,7 +135,7 @@ const jsonLdOrganization = {
       url: siteUrl,
       name: "FARAKIQ",
       description:
-        "FARAKIQ provides website development, AI automation, and performance marketing services for founders who want one accountable partner instead of five vendors.",
+        "FARAKIQ builds websites, AI automation, and performance marketing systems for founders who want one accountable partner instead of five vendors.",
       publisher: {
         "@id": `${siteUrl}/#organization`,
       },
