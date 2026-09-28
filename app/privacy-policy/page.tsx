@@ -9,7 +9,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farakiq.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.farakiq.com";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | FARAKIQ",

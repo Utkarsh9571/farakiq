@@ -33,7 +33,7 @@ export default function Portfolio() {
           "@type": "Organization",
           name: "FARAKIQ",
         },
-        url: project.liveUrl || `https://farakiq.com/portfolio/${project.id}`,
+        url: project.liveUrl || `https://www.farakiq.com/portfolio/${project.id}`,
       },
     })),
   };

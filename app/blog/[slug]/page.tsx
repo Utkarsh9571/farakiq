@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
 import { BLOG_POSTS } from "@/data/blogData";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farakiq.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.farakiq.com";
 
 export async function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({

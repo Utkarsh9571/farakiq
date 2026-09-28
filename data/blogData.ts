@@ -41,7 +41,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: {
       name: "FARAKIQ Editorial",
       role: "Engineering & Growth Team",
-      url: "https://farakiq.com",
+      url: "https://www.farakiq.com",
     },
     category: "Paid Advertising",
     tags: ["Google Ads", "PPC Pricing", "Marketing ROI", "India Business"],
@@ -186,7 +186,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: {
       name: "FARAKIQ Editorial",
       role: "Engineering & Growth Team",
-      url: "https://farakiq.com",
+      url: "https://www.farakiq.com",
     },
     category: "Workflow Automation",
     tags: ["n8n", "Zapier", "Workflow Automation", "Engineering", "Cost Optimization"],
@@ -314,7 +314,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: {
       name: "FARAKIQ Editorial",
       role: "Engineering & Growth Team",
-      url: "https://farakiq.com",
+      url: "https://www.farakiq.com",
     },
     category: "Web Engineering",
     tags: ["Next.js", "WordPress", "Technical SEO", "Web Performance", "Full-Stack"],

@@ -4,7 +4,7 @@ import { PORTFOLIO_PROJECTS } from "@/data/portfolioData";
 import { BLOG_POSTS } from "@/data/blogData";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://farakiq.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.farakiq.com";
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
