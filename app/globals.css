@@ -451,18 +451,21 @@ nav.wrap {
   line-height: 1.1;
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin: 0 0 26px;
-  max-width: 17ch;
+  margin: 0 0 24px;
 }
 
 .h1-keywords {
   display: block;
-  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  font-size: clamp(0.82rem, 1.35vw, 1.02rem);
   font-weight: 500;
   color: var(--text-light-dim);
-  margin-top: 14px;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
+  margin-top: 10px;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  opacity: 0.85;
+  font-family: var(--font-ibm-plex-mono), monospace;
+  text-transform: uppercase;
+  max-width: 48ch;
 }
 
 .hero p.sub {

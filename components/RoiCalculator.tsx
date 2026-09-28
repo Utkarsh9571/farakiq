@@ -9,11 +9,11 @@ function formatINR(num: number): string {
 }
 
 export default function RoiCalculator() {
-  const [spend, setSpend] = useState<number>(150000);
-  const [leads, setLeads] = useState<number>(40);
-  const [closeRate, setCloseRate] = useState<number>(15);
-  const [dealValue, setDealValue] = useState<number>(20000);
-  const [expectedLift, setExpectedLift] = useState<number>(25);
+  const [spend, setSpend] = useState<number>(100000);
+  const [leads, setLeads] = useState<number>(50);
+  const [closeRate, setCloseRate] = useState<number>(20);
+  const [dealValue, setDealValue] = useState<number>(25000);
+  const [expectedLift, setExpectedLift] = useState<number>(30);
 
   const [quoteModalState, setQuoteModalState] = useState<{
     isOpen: boolean;
