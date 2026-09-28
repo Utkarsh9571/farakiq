@@ -103,6 +103,26 @@ export default function RoiCalculator() {
               <h3 className="panel-title">Your Current Numbers</h3>
             </div>
 
+            {/* Mobile Top Live Quick Result Card (Updates in real-time as user types/slides) */}
+            <div className="md:hidden mb-6 p-4 mt-4 rounded-xl bg-gradient-to-r from-[rgba(31,111,84,0.2)] to-[rgba(255,74,52,0.15)] border border-[var(--color-rule-glow,rgba(0,229,255,0.2))] flex flex-col gap-2">
+              <div className="flex justify-between items-center">
+                <span className="mono text-[10px] font-bold text-[var(--color-text-light-dim)] tracking-wider uppercase">
+                  LIVE PROJECTED REVENUE
+                </span>
+                <span className={`mono text-xs font-bold px-2 py-0.5 rounded-md ${roiAfter >= 0 ? "bg-[rgba(16,185,129,0.2)] text-[var(--color-accent-emerald)]" : "bg-red-500/20 text-red-400"}`}>
+                  {roiAfter.toFixed(0)}% ROI
+                </span>
+              </div>
+              <div className="flex items-baseline justify-between gap-2">
+                <div className="mono text-2xl font-extrabold text-[var(--color-text-light)]">
+                  {formatINR(revAfter)}
+                </div>
+                <div className="mono text-xs font-bold text-[var(--color-accent-emerald)]">
+                  {revDiff >= 0 ? `+${formatINR(revDiff)}` : formatINR(revDiff)} /mo lift
+                </div>
+              </div>
+            </div>
+
             <div className="inputs-grid">
               <div className="calc-field">
                 <div className="field-label-row">
@@ -192,8 +212,8 @@ export default function RoiCalculator() {
             </p>
           </div>
 
-          {/* Right Panel: Output & Opportunity */}
-          <div className="growth-calc-panel outputs-panel">
+          {/* Right Panel: Output & Opportunity (Hidden on mobile, shown on desktop) */}
+          <div id="roi-breakdown" className="growth-calc-panel outputs-panel hidden md:flex">
             <div className="panel-header">
               <span className="mono panel-badge highlight">OUTCOME</span>
               <h3 className="panel-title">Projected Opportunity</h3>
@@ -272,6 +292,31 @@ export default function RoiCalculator() {
             </div>
           </div>
         </motion.div>
+      </div>
+
+      {/* Sticky Mobile Live Summary Bar (Fixed to bottom on mobile so user never loses sight of results) */}
+      <div className="md:hidden fixed bottom-3 left-3 right-3 z-40 bg-[var(--color-ink-card,#14181F)] border-2 border-[var(--color-waste,#FF4A34)] rounded-2xl p-3 shadow-2xl shadow-black/90 flex items-center justify-between gap-2 backdrop-blur-md bg-opacity-95">
+        <div className="flex flex-col">
+          <span className="mono text-[9px] text-[var(--color-text-light-dim)] font-bold uppercase tracking-wider">
+            PROJECTED REVENUE
+          </span>
+          <div className="flex items-baseline gap-1.5">
+            <span className="mono text-base font-extrabold text-[var(--color-text-light)]">
+              {formatINR(revAfter)}
+            </span>
+            <span className="mono text-[11px] font-bold text-[var(--color-accent-emerald,#10B981)]">
+              ({revDiff >= 0 ? `+${formatINR(revDiff)}` : formatINR(revDiff)})
+            </span>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          className="btn btn-primary text-xs py-2 px-3 flex-shrink-0"
+          onClick={handleOpenQuote}
+        >
+          Get Strategy →
+        </button>
       </div>
 
       <QuoteModal

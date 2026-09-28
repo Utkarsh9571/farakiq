@@ -60,7 +60,7 @@ export function HeroRocketStage({ children, className = "" }: HeroRocketStagePro
 
   return (
     <div
-      className={`relative overflow-hidden w-full h-full min-h-[400px] lg:min-h-[460px] aspect-[16/11] rounded-2xl border border-[var(--color-rule-light,rgba(255,255,255,0.08))] hidden md:block bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:24px_24px] ${className}`}
+      className={`relative overflow-hidden w-full h-full min-h-[300px] sm:min-h-[380px] lg:min-h-[460px] aspect-[4/3] sm:aspect-[16/11] rounded-2xl border border-[var(--color-rule-light,rgba(255,255,255,0.08))] block bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:24px_24px] ${className}`}
     >
       {/* Soft radial glow top-right in brand orange */}
       <div

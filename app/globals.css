@@ -858,6 +858,9 @@ nav.wrap {
     grid-template-columns: 1fr;
     gap: 24px;
   }
+  .growth-calc-panel.outputs-panel {
+    display: none !important;
+  }
 }
 
 @media (max-width: 520px) {

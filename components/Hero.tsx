@@ -33,7 +33,7 @@ export default function Hero() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-col justify-center"
+            className="order-2 md:order-1 flex flex-col justify-center"
           >
             <motion.div variants={itemVariants} className="badge-tech">
               <span className="dot" />
@@ -78,7 +78,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden md:flex items-center justify-center w-full h-full"
+            className="order-1 md:order-2 flex items-center justify-center w-full h-full mb-4 md:mb-0"
           >
             <HeroRocket />
           </motion.div>
