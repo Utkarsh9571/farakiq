@@ -81,6 +81,11 @@ export const metadata: Metadata = {
       "FARAKIQ builds websites, AI automation, and performance marketing systems for founders who want one accountable partner instead of five vendors.",
     images: ["/og-image.svg"],
   },
+  verification: {
+    other: {
+      "msvalidate.01": "FB47F5FB331C8C0209A9B76F63D5CB25",
+    },
+  },
 };
 
 const jsonLdOrganization = {
