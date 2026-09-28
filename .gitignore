@@ -1,7 +1,6 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Dependencies
 /node_modules
+node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -10,49 +9,48 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
+# Testing & Coverage
 /coverage
 
-# next.js
+# Next.js Build Outputs & Cache
 /.next/
 /out/
+/build/
+*.tsbuildinfo
+next-env.d.ts
 
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-*.log
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# environment variables
+# Environment Variables & Secrets
 .env
+.env.local
 .env*.local
 .env.development
 .env.test
 .env.production
 
-# vercel
+# Vercel & Deployment
 .vercel
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Logs & Debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
-# IDEs and OS files
+# AI Assistants, Agent Runs & Scratch Workspaces
+scratch/
+.system_generated/
+.gemini/
+.agents/
+.claude/
+.cursor/
+
+# Editor Directories & OS Metadata
 .vscode/
 .idea/
 *.swp
 *.swo
+.DS_Store
 Thumbs.db
-
-# Scratch and temporary artifact logs
-scratch/
-.system_generated/
-node_modules
+Desktop.ini
+*.pem
