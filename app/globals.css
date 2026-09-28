@@ -456,16 +456,13 @@ nav.wrap {
 
 .h1-keywords {
   display: block;
-  font-size: clamp(0.82rem, 1.35vw, 1.02rem);
-  font-weight: 500;
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  font-weight: 400;
   color: var(--text-light-dim);
   margin-top: 10px;
   line-height: 1.45;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.01em;
   opacity: 0.85;
-  font-family: var(--font-ibm-plex-mono), monospace;
-  text-transform: uppercase;
-  max-width: 48ch;
 }
 
 .hero p.sub {
