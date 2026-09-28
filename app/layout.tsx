@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { Space_Grotesk, IBM_Plex_Mono, Caveat } from "next/font/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -14,6 +14,12 @@ const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-ibm-plex-mono",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-caveat",
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.farakiq.com";
@@ -154,7 +160,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} ${caveat.variable}`}>
       <head>
         <StructuredData data={jsonLdOrganization} id="farakiq-organization-schema" />
       </head>

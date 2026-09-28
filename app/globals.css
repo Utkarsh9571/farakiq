@@ -13,6 +13,15 @@
   --color-value-hover: #268565;
   --color-accent-cyan: #00E5FF;
   --color-accent-emerald: #10B981;
+  --color-rk-ink: #141a3a;
+  --color-rk-lime: #c6f21a;
+  --color-rk-blue: #2f5fe0;
+  --color-rk-pink: #e83e8c;
+  --color-rk-grey: #9aa6bd;
+  --color-rk-flame: #f39233;
+  --color-rk-flame-2: #ffd84a;
+  --color-rk-smoke: #cfd4e0;
+  --font-caveat: var(--font-caveat), cursive;
   --color-text-light: #F0EDE6;
   --color-text-light-dim: #9FA4A8;
   --color-text-dark: #121417;
