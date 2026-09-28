@@ -120,19 +120,27 @@ export default function QuoteModal({
 
     const endpoint = process.env.NEXT_PUBLIC_APPS_SCRIPT_URL;
 
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      company: formData.company,
+      budget: formData.budgetRange,
+      budgetRange: formData.budgetRange,
+      service: formData.projectType,
+      projectType: formData.projectType,
+      message: formData.message,
+    };
+
     try {
       if (endpoint) {
-        const res = await fetch(endpoint, {
+        await fetch(endpoint, {
           method: "POST",
+          mode: "no-cors",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "text/plain;charset=utf-8",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(payload),
         });
-
-        if (!res.ok) {
-          throw new Error(`Server returned status ${res.status}`);
-        }
       } else {
         await new Promise((resolve) => setTimeout(resolve, 1000));
       }
@@ -141,7 +149,7 @@ export default function QuoteModal({
     } catch (err: unknown) {
       console.error("Submission error:", err);
       setStatus("error");
-      setErrorMessage("Unable to send message automatically. Please email hello@farakiq.com directly.");
+      setErrorMessage("Unable to send message automatically. Please email sales@farakiq.com directly.");
     }
   };
 

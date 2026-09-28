@@ -195,8 +195,8 @@ export default function PrivacyPolicyPage() {
               </p>
               <p style={{ margin: 0 }}>
                 To exercise any data rights or submit inquiries regarding this Privacy Policy, please contact us at{" "}
-                <a href="mailto:hello@farakiq.com" className="mono" style={{ color: "var(--waste)", textDecoration: "none", fontWeight: 600 }}>
-                  hello@farakiq.com
+                <a href="mailto:sales@farakiq.com" className="mono" style={{ color: "var(--waste)", textDecoration: "none", fontWeight: 600 }}>
+                  sales@farakiq.com
                 </a>.
               </p>
             </section>
@@ -217,7 +217,7 @@ export default function PrivacyPolicyPage() {
             <Link href="/" className="btn btn-ghost" style={{ fontSize: "0.88rem" }}>
               ← Return to Homepage
             </Link>
-            <a href="mailto:hello@farakiq.com" className="btn btn-primary" style={{ fontSize: "0.88rem" }}>
+            <a href="mailto:sales@farakiq.com" className="btn btn-primary" style={{ fontSize: "0.88rem" }}>
               Contact Privacy Team
             </a>
           </div>

@@ -124,8 +124,8 @@ export default function Footer() {
             </div>
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "6px" }}>
               <li>
-                <a href="mailto:hello@farakiq.com" className="mono" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem", wordBreak: "break-all", minHeight: "36px", display: "inline-flex", alignItems: "center" }}>
-                  hello@farakiq.com
+                <a href="mailto:sales@farakiq.com" className="mono" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem", wordBreak: "break-all", minHeight: "36px", display: "inline-flex", alignItems: "center" }}>
+                  sales@farakiq.com
                 </a>
               </li>
               <li>

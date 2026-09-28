@@ -58,19 +58,27 @@ export default function CTA() {
 
     const endpoint = process.env.NEXT_PUBLIC_APPS_SCRIPT_URL;
 
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      company: formData.company,
+      budget: formData.budgetRange,
+      budgetRange: formData.budgetRange,
+      service: formData.projectType,
+      projectType: formData.projectType,
+      message: formData.message,
+    };
+
     try {
       if (endpoint) {
-        const res = await fetch(endpoint, {
+        await fetch(endpoint, {
           method: "POST",
+          mode: "no-cors",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "text/plain;charset=utf-8",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(payload),
         });
-
-        if (!res.ok) {
-          throw new Error(`Server returned status ${res.status}`);
-        }
       } else {
         // Fallback simulation when endpoint URL is unconfigured
         await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -80,7 +88,7 @@ export default function CTA() {
     } catch (err: unknown) {
       console.error("Submission error:", err);
       setStatus("error");
-      setErrorMessage("Unable to send message automatically. Please email hello@farakiq.com directly.");
+      setErrorMessage("Unable to send message automatically. Please email sales@farakiq.com directly.");
     }
   };
 
@@ -152,8 +160,8 @@ export default function CTA() {
                 <div className="mono" style={{ fontSize: "0.72rem", color: "var(--text-light-dim)", letterSpacing: "0.04em", fontWeight: 600, marginBottom: "2px" }}>
                   DIRECT EMAIL ENQUIRY
                 </div>
-                <a href="mailto:hello@farakiq.com" className="mono" style={{ fontSize: "1.05rem", color: "var(--waste)", textDecoration: "none", fontWeight: 600, wordBreak: "break-all" }}>
-                  hello@farakiq.com
+                <a href="mailto:sales@farakiq.com" className="mono" style={{ fontSize: "1.05rem", color: "var(--waste)", textDecoration: "none", fontWeight: 600, wordBreak: "break-all" }}>
+                  sales@farakiq.com
                 </a>
               </div>
               <span className="mono" style={{ fontSize: "0.72rem", color: "var(--text-light-dim)", background: "rgba(255, 255, 255, 0.03)", padding: "4px 10px", borderRadius: "var(--radius-full)", border: "1px solid var(--card-border)" }}>

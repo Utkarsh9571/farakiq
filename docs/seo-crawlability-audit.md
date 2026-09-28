@@ -34,7 +34,7 @@ The root layout structured data in [app/layout.tsx](file:///c:/Users/lenovo/Desk
   - `@type`: `ProfessionalService`
   - `name`: `FARAKIQ`
   - `url`: `https://farakiq.com`
-  - `email`: `hello@farakiq.com`
+  - `email`: `sales@farakiq.com`
   - `areaServed`: `Worldwide`
   - `address`: `PostalAddress` (`addressCountry: "IN"`)
   - `priceRange`: `₹₹₹`

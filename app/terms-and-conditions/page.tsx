@@ -209,8 +209,8 @@ export default function TermsAndConditionsPage() {
               </h2>
               <p style={{ margin: 0 }}>
                 For inquiries regarding these Terms &amp; Conditions or to discuss an engagement, please reach out directly to{" "}
-                <a href="mailto:hello@farakiq.com" className="mono" style={{ color: "var(--waste)", textDecoration: "none", fontWeight: 600 }}>
-                  hello@farakiq.com
+                <a href="mailto:sales@farakiq.com" className="mono" style={{ color: "var(--waste)", textDecoration: "none", fontWeight: 600 }}>
+                  sales@farakiq.com
                 </a>.
               </p>
             </section>
@@ -221,7 +221,7 @@ export default function TermsAndConditionsPage() {
             <Link href="/" className="btn btn-ghost" style={{ fontSize: "0.88rem" }}>
               ← Return to Homepage
             </Link>
-            <a href="mailto:hello@farakiq.com" className="btn btn-primary" style={{ fontSize: "0.88rem" }}>
+            <a href="mailto:sales@farakiq.com" className="btn btn-primary" style={{ fontSize: "0.88rem" }}>
               Contact Legal Team
             </a>
           </div>

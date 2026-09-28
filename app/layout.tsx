@@ -105,7 +105,7 @@ const jsonLdOrganization = {
       url: siteUrl,
       logo: `${siteUrl}/farakiq-logo.svg`,
       image: `${siteUrl}/og-image.svg`,
-      email: "hello@farakiq.com",
+      email: "sales@farakiq.com",
       description:
         "FARAKIQ builds websites, AI automation, and performance marketing systems for founders who want one accountable partner instead of five vendors.",
       slogan: "We make the difference",
@@ -135,7 +135,7 @@ const jsonLdOrganization = {
       ],
       contactPoint: {
         "@type": "ContactPoint",
-        email: "hello@farakiq.com",
+        email: "sales@farakiq.com",
         contactType: "customer service",
         areaServed: "Worldwide",
         availableLanguage: ["English", "Hindi"],

@@ -96,7 +96,7 @@ The homepage (`app/page.tsx`) renders components in the following order:
 7. **`Pricing` (`components/Pricing.tsx`)**: Fixed fee tiers (`Starter ₹20,000/mo`, `Growth ₹35,000/mo`, `Partner ₹50,000/mo`) and 5-point comparison table against traditional agencies and typical freelancers.
 8. **`Approach` (`components/Approach.tsx`)**: 3-step execution methodology (`01 Audit`, `02 Strategy`, `03 Execution`).
 9. **`About` (`components/About.tsx`)**: Ethos, partnership advantages, and interactive technical skills tag cloud.
-10. **`CTA` (`components/CTA.tsx`)**: Direct email (`hello@farakiq.com`) and interactive project enquiry form with client-side validation.
+10. **`CTA` (`components/CTA.tsx`)**: Direct email (`sales@farakiq.com`) and interactive project enquiry form with client-side validation.
 11. **`Footer` (`components/Footer.tsx`)**: 4-column footer containing brand statement, navigation links, dedicated service page links, and contact channels.
 
 ---
@@ -147,7 +147,7 @@ Content is decoupled from UI presentation and maintained in type-safe datasets u
 
 The SEO architecture is built for Googlebot crawlability and modern AI search engines:
 
-- **Root Structured Data (`app/layout.tsx`):** Consolidated Schema.org `ProfessionalService` JSON-LD including official email (`hello@farakiq.com`), global service scope (`Worldwide`), price range, and service competencies.
+- **Root Structured Data (`app/layout.tsx`):** Consolidated Schema.org `ProfessionalService` JSON-LD including official email (`sales@farakiq.com`), global service scope (`Worldwide`), price range, and service competencies.
 - **Service Pages Structured Data:** Schema.org `Service`, `BreadcrumbList`, and `FAQPage` JSON-LD on all 5 service routes.
 - **Portfolio Structured Data:** Schema.org `CreativeWork` JSON-LD dynamically generated for every project, plus an `ItemList` on the homepage portfolio section.
 - **Blog Structured Data:** Schema.org `Blog` on `/blog` and `BlogPosting` on each individual article.

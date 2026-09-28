@@ -39,6 +39,14 @@
   --radius-fk-xl: 20px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+section[id], main[id] {
+  scroll-margin-top: 84px;
+}
+
 :root {
   --ink: #0A0C0F;
   --ink-soft: #13171D;
@@ -1608,11 +1616,20 @@ footer {
   }
   .mobile-panel {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
     flex-direction: column;
     gap: 2px;
     padding: 12px clamp(16px, 4vw, 28px) 24px;
     border-top: 1px solid var(--rule);
-    background: var(--ink);
+    border-bottom: 1px solid var(--rule);
+    background: rgba(10, 12, 15, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
   }
   .mobile-panel a {
     padding: 14px 4px;

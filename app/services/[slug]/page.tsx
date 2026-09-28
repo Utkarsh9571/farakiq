@@ -74,7 +74,7 @@ export default async function ServicePage({
       "@type": "ProfessionalService",
       name: "FARAKIQ",
       url: siteUrl,
-      email: "hello@farakiq.com",
+      email: "sales@farakiq.com",
       address: {
         "@type": "PostalAddress",
         addressCountry: "IN",
@@ -513,11 +513,11 @@ export default async function ServicePage({
                 Book a Free Audit
               </Link>
               <a
-                href="mailto:hello@farakiq.com"
+                href="mailto:sales@farakiq.com"
                 className="btn btn-ghost"
                 style={{ padding: "12px 20px" }}
               >
-                Email hello@farakiq.com
+                Email sales@farakiq.com
               </a>
             </div>
           </div>
