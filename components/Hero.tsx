@@ -35,11 +35,6 @@ export default function Hero() {
             animate="visible"
             className="order-2 md:order-1 flex flex-col justify-center"
           >
-            <motion.div variants={itemVariants} className="badge-tech">
-              <span className="dot" />
-              <span>SOFTWARE ENGINEERING • AI AUTOMATION • GROWTH &amp; PERFORMANCE</span>
-            </motion.div>
-
             <motion.h1 variants={itemVariants}>
               Are you ready to stop wasting your money?
               <span className="h1-keywords">
