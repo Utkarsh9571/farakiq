@@ -455,6 +455,16 @@ nav.wrap {
   max-width: 17ch;
 }
 
+.h1-keywords {
+  display: block;
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  font-weight: 500;
+  color: var(--text-light-dim);
+  margin-top: 14px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
 .hero p.sub {
   font-size: clamp(1.02rem, 1.5vw, 1.16rem);
   line-height: 1.6;

@@ -42,6 +42,9 @@ export default function Hero() {
 
             <motion.h1 variants={itemVariants}>
               Are you ready to stop wasting your money?
+              <span className="h1-keywords">
+                Web development, AI automation &amp; performance marketing — built as one system.
+              </span>
             </motion.h1>
 
             <motion.p variants={itemVariants} className="sub">
