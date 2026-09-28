@@ -1522,7 +1522,8 @@ section {
 /* ---------- FINAL CTA ---------- */
 .final-cta {
   text-align: left;
-  padding: 100px 0;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .final-cta h2 {
@@ -1644,7 +1645,8 @@ footer {
     padding: 22px clamp(14px, 3.5vw, 24px);
   }
   .final-cta {
-    padding: clamp(48px, 8vw, 72px) 0;
+    padding-top: clamp(48px, 8vw, 72px);
+    padding-bottom: clamp(48px, 8vw, 72px);
   }
 }
 
