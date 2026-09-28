@@ -17,8 +17,8 @@ export function StatusCard({
   progress,
   struck,
   promoted,
-  beforeTitle = "Average Website 😩",
-  afterTitle = "High-Performance Website 🚀",
+  beforeTitle = "Without FARAKIQ 😩",
+  afterTitle = "With FARAKIQ 🚀",
   caption = "PERFORMANCE",
   className = "",
 }: StatusCardProps) {
