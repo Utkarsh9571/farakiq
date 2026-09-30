@@ -154,14 +154,17 @@ export default function Footer() {
             gap: "16px",
           }}
         >
-          <p className="mono" style={{ margin: 0, color: "var(--text-light-dim)", fontSize: "0.8rem" }}>
-            &copy; 2026 FARAKIQ. All rights reserved.
-          </p>
+          <div className="flex items-center space-x-2">
+            <span className="w-2 h-2 rounded-full bg-[#00E699] animate-pulse" />
+            <p className="mono" style={{ margin: 0, color: "var(--text-light-dim)", fontSize: "0.8rem" }}>
+              &copy; 2026 FARAKIQ. All rights reserved. <span className="text-[10px] text-[var(--color-primary-coral)] ml-2">[SYS_STATUS: 99.99% ONLINE]</span>
+            </p>
+          </div>
 
           <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap" }}>
             <Link
               href="/privacy-policy"
-              className="mono"
+              className="mono hover:text-[var(--color-primary-coral)] transition-colors duration-200"
               style={{ color: "var(--text-light-dim)", fontSize: "0.78rem", textDecoration: "none" }}
             >
               Privacy Policy
@@ -169,7 +172,7 @@ export default function Footer() {
             <span style={{ color: "var(--rule)", fontSize: "0.8rem" }}>•</span>
             <Link
               href="/terms-and-conditions"
-              className="mono"
+              className="mono hover:text-[var(--color-primary-coral)] transition-colors duration-200"
               style={{ color: "var(--text-light-dim)", fontSize: "0.78rem", textDecoration: "none" }}
             >
               Terms of Service
@@ -177,7 +180,7 @@ export default function Footer() {
           </div>
 
           <p className="mono" style={{ margin: 0, color: "var(--text-light-dim)", fontSize: "0.8rem" }}>
-            Built with Next.js &amp; Motion
+            Engineered with Next.js 15 &amp; Motion
           </p>
         </div>
       </div>

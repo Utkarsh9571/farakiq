@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "motion/react";
-import { PRICING_TIERS, COMPARISON_DATA } from "@/data/siteData";
+import { PRICING_TIERS } from "@/data/siteData";
+import SystemCore, { SystemObjectType } from "@/components/visuals/SystemCore";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -32,6 +33,12 @@ export default function Pricing() {
       ...prev,
       [name]: !prev[name],
     }));
+  };
+
+  const getTierSystemCore = (tierIndex: number): SystemObjectType => {
+    if (tierIndex === 0) return "pricing-starter";
+    if (tierIndex === 1) return "pricing-growth";
+    return "pricing-scale";
   };
 
   return (
@@ -72,7 +79,7 @@ export default function Pricing() {
           viewport={{ once: true, amount: 0.2 }}
           onMouseLeave={() => setHoveredTier(null)}
         >
-          {PRICING_TIERS.map((tier) => {
+          {PRICING_TIERS.map((tier, idx) => {
             const isHighlighted = hoveredTier ? hoveredTier === tier.name : tier.featured;
 
             return (
@@ -88,11 +95,25 @@ export default function Pricing() {
                   backgroundColor: isHighlighted ? "rgba(255, 74, 52, 0.04)" : "var(--card-bg)",
                   boxShadow: isHighlighted ? "var(--shadow-glow-waste), var(--card-inner-highlight)" : "var(--shadow-sm), var(--card-inner-highlight)",
                   transition: "border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease",
+                  position: "relative",
+                  overflow: "hidden",
                 }}
               >
-                <div className="tier-name" style={{ color: isHighlighted ? "var(--waste)" : "var(--text-light-dim)", transition: "color 0.25s ease" }}>
-                  {tier.name}
+                {/* Subtle Tier Emblem Visual */}
+                <div className="flex items-center justify-between mb-2">
+                  <div className="tier-name" style={{ color: isHighlighted ? "var(--waste)" : "var(--text-light-dim)", transition: "color 0.25s ease", margin: 0 }}>
+                    {tier.name}
+                  </div>
+                  <div className="w-12 h-12 shrink-0">
+                    <SystemCore
+                      type={getTierSystemCore(idx)}
+                      size={48}
+                      floatAnimation={isHighlighted}
+                      alt={`FARAKIQ ${tier.name} Tier Emblem`}
+                    />
+                  </div>
                 </div>
+
                 <div className="tier-price mono">
                   {tier.price}
                   <span>{tier.period}</span>
@@ -136,8 +157,8 @@ export default function Pricing() {
                       style={{ overflow: "hidden" }}
                     >
                       <ul className="tier-list" style={{ marginTop: "12px", paddingTop: "8px", borderTop: "1px dashed var(--rule)" }}>
-                        {tier.features.map((feat, idx) => (
-                          <li key={idx}>
+                        {tier.features.map((feat, i) => (
+                          <li key={i}>
                             {feat.includes(" or ") ? (
                               <>
                                 {feat.split(" or ")[0]} <strong>or</strong> {feat.split(" or ")[1]}
@@ -151,63 +172,18 @@ export default function Pricing() {
                     </motion.div>
                   )}
                 </AnimatePresence>
+
+                {/* CTA Button */}
+                <a
+                  href="#contact"
+                  className={`btn ${tier.featured ? "btn-primary" : "btn-ghost"}`}
+                  style={{ marginTop: "16px", width: "100%", justifyContent: "center" }}
+                >
+                  Book this retainer →
+                </a>
               </motion.div>
             );
           })}
-        </motion.div>
-
-        
-
-        {/* Scoping Transparency Note */}
-        <div className="dev-pricing-note">
-          <p style={{ margin: 0, fontSize: "0.85rem", color: "var(--text-light-dim)", lineHeight: 1.5 }}>
-            <strong style={{ color: "var(--text-light)" }}>Transparent Scope Estimation:</strong> Pricing anchors above reflect baseline production configurations. Final investment is scoped transparently based on functional complexity, integrations, database schemas, authentication, and custom design — with zero surprise change orders.
-          </p>
-        </div>
-
-        {/* Section 3: Value Comparison Table */}
-        <motion.div
-          className="compare"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5 }}
-          style={{ marginTop: "48px" }}
-        >
-          <div style={{ marginBottom: "20px" }}>
-            <span className="mono" style={{ fontSize: "0.74rem", color: "var(--waste)", letterSpacing: "0.04em", fontWeight: 600 }}>
-              COMMERCIAL COMPARISON
-            </span>
-            <h3 style={{ fontSize: "1.25rem", margin: "6px 0 0", fontWeight: 600 }}>
-              Agency vs. Freelancer vs. FARAKIQ
-            </h3>
-          </div>
-
-          <div className="compare-head">
-            <span></span>
-            <span>Agency</span>
-            <span>Typical freelancer</span>
-            <span className="highlight">FARAKIQ</span>
-          </div>
-          {COMPARISON_DATA.map((row, idx) => (
-            <div key={idx} className="compare-row">
-              <span className="compare-label" data-label="">
-                {row.label}
-              </span>
-              <span className={row.label.includes("fee") ? "mono" : ""} data-label="Agency">
-                {row.agency}
-              </span>
-              <span className={row.label.includes("fee") ? "mono" : ""} data-label="Typical freelancer">
-                {row.freelancer}
-              </span>
-              <span
-                className={`${row.label.includes("fee") ? "mono" : ""} highlight`}
-                data-label="FARAKIQ"
-              >
-                {row.farakiq}
-              </span>
-            </div>
-          ))}
         </motion.div>
       </div>
     </section>

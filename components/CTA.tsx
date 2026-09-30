@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import CtaConvergenceVisual from "@/components/visuals/CtaConvergenceVisual";
 
 interface FormData {
   name: string;
@@ -95,30 +96,38 @@ export default function CTA() {
   return (
     <section id="contact" style={{ borderBottom: "1px solid var(--rule)" }}>
       <div className="wrap final-cta">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.15fr", gap: "48px", alignItems: "stretch" }} className="contact-grid">
-          {/* Left Column: Heading & Process Positioning */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.15fr", gap: "40px", alignItems: "stretch" }} className="contact-grid">
+          {/* Left Column: Heading, Process Positioning & Direct Contact */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              height: "100%",
+            }}
           >
             <div>
-              <div className="badge-tech" style={{ marginBottom: "16px" }}>
+              <div className="badge-tech" style={{ marginBottom: "14px" }}>
                 <span className="dot" />
                 <span>PROJECT ENQUIRY // START HERE</span>
               </div>
-              <h2 style={{ fontSize: "clamp(1.8rem, 2.6vw, 2.4rem)", lineHeight: 1.18, letterSpacing: "-0.02em", margin: "0 0 16px" }}>
+              <h2 style={{ fontSize: "clamp(1.8rem, 2.6vw, 2.4rem)", lineHeight: 1.18, letterSpacing: "-0.02em", margin: "0 0 14px" }}>
                 Let&apos;s build what your business needs next.
               </h2>
-              <p style={{ color: "var(--text-light-dim)", fontSize: "1.02rem", lineHeight: 1.6, margin: "0 0 24px" }}>
+              <p style={{ color: "var(--text-light-dim)", fontSize: "1rem", lineHeight: 1.55, margin: "0 0 16px" }}>
                 Whether you need a new digital system, an AI-powered workflow, more qualified leads, or stronger search visibility — tell us what you&apos;re working on and we&apos;ll figure out the right next step.
               </p>
 
+              {/* Converging System Core Visual Banner (Scattered Systems → One Connected System) */}
+              <CtaConvergenceVisual />
+
               {/* What Happens Next Process Block */}
-              <div className="contact-process" style={{ margin: "24px 0 28px" }}>
-                <span className="mono" style={{ fontSize: "0.72rem", color: "var(--text-light-dim)", letterSpacing: "0.05em", fontWeight: 600, display: "block", marginBottom: "12px", textTransform: "uppercase" }}>
+              <div className="contact-process" style={{ margin: "20px 0 18px" }}>
+                <span className="mono" style={{ fontSize: "0.72rem", color: "var(--text-light-dim)", letterSpacing: "0.05em", fontWeight: 600, display: "block", marginBottom: "10px", textTransform: "uppercase" }}>
                   WHAT HAPPENS NEXT
                 </span>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px" }} className="process-steps">
@@ -138,7 +147,7 @@ export default function CTA() {
               </div>
             </div>
 
-            {/* Direct Email Card */}
+            {/* Direct Email Card (Locked to Bottom) */}
             <motion.div
               whileHover={{ y: -2, borderColor: "var(--waste)" }}
               transition={{ duration: 0.2 }}
@@ -148,7 +157,7 @@ export default function CTA() {
                 padding: "16px 20px",
                 borderRadius: "var(--radius-md)",
                 boxShadow: "var(--shadow-sm), var(--card-inner-highlight)",
-                marginTop: "16px",
+                marginTop: "auto",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
@@ -175,11 +184,12 @@ export default function CTA() {
             style={{
               background: "var(--card-bg)",
               border: "1px solid var(--card-border)",
-              padding: "clamp(18px, 3.5vw, 32px)",
+              padding: "clamp(20px, 3.5vw, 32px)",
               borderRadius: "var(--radius-lg)",
               boxShadow: "var(--shadow-md), var(--card-inner-highlight)",
               display: "flex",
               flexDirection: "column",
+              height: "100%",
               justifyContent: "space-between",
             }}
             initial={{ opacity: 0, y: 20 }}
@@ -191,7 +201,7 @@ export default function CTA() {
               <span className="mono" style={{ fontSize: "0.72rem", color: "var(--waste)", letterSpacing: "0.05em", fontWeight: 600, textTransform: "uppercase" }}>
                 START A PROJECT
               </span>
-              <h3 style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--text-light)", margin: "4px 0 0", letterSpacing: "-0.01em" }}>
+              <h3 style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--text-light)", margin: "4px 0 0", letterSpacing: "-0.01em" }}>
                 Tell us what you&apos;re building.
               </h3>
             </div>
@@ -232,8 +242,17 @@ export default function CTA() {
                   </button>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", flex: 1, justifyContent: "space-between" }}>
-                  <div>
+                <form
+                  onSubmit={handleSubmit}
+                  noValidate
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    flex: 1,
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
                     {/* Row 1: Name & Email */}
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "14px" }} className="form-row-2">
                       <div>
@@ -356,8 +375,8 @@ export default function CTA() {
                       </div>
                     </div>
 
-                    {/* Row 3: Project Requirements */}
-                    <div style={{ marginBottom: "16px" }}>
+                    {/* Row 3: Project Requirements (Flex-1 to absorb vertical space) */}
+                    <div style={{ display: "flex", flexDirection: "column", flex: 1, marginBottom: "16px", minHeight: "140px" }}>
                       <label htmlFor="cta-message" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
                         Project Requirements *
                       </label>
@@ -365,20 +384,21 @@ export default function CTA() {
                         id="cta-message"
                         name="message"
                         className="mono"
-                        rows={4}
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         style={{
                           width: "100%",
+                          flex: 1,
+                          minHeight: "120px",
                           background: "rgba(10, 12, 15, 0.85)",
                           border: errors.message ? "1px solid var(--waste)" : "1px solid var(--card-border)",
                           color: "var(--text-light)",
-                          padding: "10px 12px",
+                          padding: "12px 14px",
                           fontSize: "0.88rem",
+                          lineHeight: 1.5,
                           borderRadius: "var(--radius-md)",
                           boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
-                          resize: "vertical",
-                          minHeight: "100px",
+                          resize: "none",
                         }}
                         placeholder="Tell us what you're trying to build or solve..."
                       />
@@ -386,7 +406,7 @@ export default function CTA() {
                     </div>
                   </div>
 
-                  <div>
+                  <div style={{ marginTop: "auto" }}>
                     {status === "error" && (
                       <div style={{ color: "var(--waste)", fontSize: "0.82rem", marginBottom: "14px" }} className="mono">
                         {errorMessage}
@@ -397,7 +417,15 @@ export default function CTA() {
                       type="submit"
                       className="btn btn-primary"
                       disabled={status === "submitting"}
-                      style={{ width: "100%", justifyContent: "center", padding: "12px 20px" }}
+                      style={{
+                        width: "100%",
+                        justifyContent: "center",
+                        padding: "14px 20px",
+                        minHeight: "48px",
+                        fontSize: "0.95rem",
+                        fontWeight: 700,
+                        borderRadius: "var(--radius-md)",
+                      }}
                     >
                       {status === "submitting" ? "Sending Project Enquiry..." : "Send Project Enquiry →"}
                     </button>

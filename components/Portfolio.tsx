@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { PORTFOLIO_PROJECTS, ProjectCategory, PortfolioProject } from "@/data/portfolioData";
 import StructuredData from "@/components/StructuredData";
+import ProductVisual from "@/components/visuals/ProductVisual";
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
@@ -123,6 +124,19 @@ export default function Portfolio() {
                   }}
                 >
                   <div>
+                    {project.visualUrl && (
+                      <div className="mb-4">
+                        <ProductVisual
+                          id={project.id}
+                          src={project.visualUrl}
+                          alt={`${project.title} Product Presentation`}
+                          title={project.title}
+                          categoryLabel={project.categoryLabel}
+                          sysId={`SYS_${project.id.toUpperCase()}`}
+                        />
+                      </div>
+                    )}
+
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
                       <span className="mono" style={{ fontSize: "0.72rem", color: "var(--waste)", letterSpacing: "0.05em", fontWeight: 600 }}>
                         {project.categoryLabel.toUpperCase()}
