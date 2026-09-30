@@ -42,7 +42,7 @@ export default function Hero() {
               </span>
             </motion.h1>
 
-            <motion.p variants={itemVariants} className="sub">
+            <motion.p variants={itemVariants} className="sub hidden md:block">
               FARAKIQ is a specialized technical and growth partnership. We engineer high-performance web applications, AI automation systems, and ROI-driven marketing campaigns — uniting deep software engineering with precision search and paid acquisition.
             </motion.p>
 

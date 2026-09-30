@@ -378,12 +378,28 @@ export default function Services() {
                     <span className="vertical-items-heading" style={{ marginBottom: "8px" }}>
                       Supporting Technologies
                     </span>
-                    <div className="vertical-tech-pills" style={isFeatured ? { marginBottom: 0 } : { marginBottom: "16px" }}>
+
+                    {/* Desktop full pills */}
+                    <div className="hidden sm:flex vertical-tech-pills" style={isFeatured ? { marginBottom: 0 } : { marginBottom: "16px" }}>
                       {vertical.supportingTech.map((tech) => (
                         <span key={tech} className="vertical-tech-pill">
                           {tech}
                         </span>
                       ))}
+                    </div>
+
+                    {/* Mobile concise pills */}
+                    <div className="flex sm:hidden vertical-tech-pills" style={isFeatured ? { marginBottom: 0 } : { marginBottom: "16px" }}>
+                      {vertical.supportingTech.slice(0, 3).map((tech) => (
+                        <span key={tech} className="vertical-tech-pill">
+                          {tech}
+                        </span>
+                      ))}
+                      {vertical.supportingTech.length > 3 && (
+                        <span className="vertical-tech-pill" style={{ color: "var(--waste)", borderColor: "rgba(255, 74, 52, 0.3)" }}>
+                          +{vertical.supportingTech.length - 3} more
+                        </span>
+                      )}
                     </div>
                   </div>
 

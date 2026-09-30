@@ -175,7 +175,7 @@ export default function CTA() {
             style={{
               background: "var(--card-bg)",
               border: "1px solid var(--card-border)",
-              padding: "clamp(24px, 3.5vw, 32px)",
+              padding: "clamp(18px, 3.5vw, 32px)",
               borderRadius: "var(--radius-lg)",
               boxShadow: "var(--shadow-md), var(--card-inner-highlight)",
               display: "flex",
@@ -187,11 +187,11 @@ export default function CTA() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
-            <div style={{ marginBottom: "20px" }}>
+            <div style={{ marginBottom: "16px" }}>
               <span className="mono" style={{ fontSize: "0.72rem", color: "var(--waste)", letterSpacing: "0.05em", fontWeight: 600, textTransform: "uppercase" }}>
                 START A PROJECT
               </span>
-              <h3 style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--text-light)", margin: "4px 0 0", letterSpacing: "-0.01em" }}>
+              <h3 style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--text-light)", margin: "4px 0 0", letterSpacing: "-0.01em" }}>
                 Tell us what you&apos;re building.
               </h3>
             </div>

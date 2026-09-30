@@ -103,22 +103,39 @@ export default function RoiCalculator() {
               <h3 className="panel-title">Your Current Numbers</h3>
             </div>
 
-            {/* Mobile Top Live Quick Result Card (Updates in real-time as user types/slides) */}
-            <div className="md:hidden mb-6 p-4 mt-4 rounded-xl bg-gradient-to-r from-[rgba(31,111,84,0.2)] to-[rgba(255,74,52,0.15)] border border-[var(--color-rule-glow,rgba(0,229,255,0.2))] flex flex-col gap-2">
+            {/* Mobile Primary Result Display (Updates in real-time) */}
+            <div className="md:hidden mb-6 p-4 rounded-xl bg-gradient-to-r from-[rgba(31,111,84,0.25)] via-[rgba(14,18,24,0.9)] to-[rgba(255,74,52,0.15)] border border-[var(--color-rule-glow,rgba(0,229,255,0.2))] flex flex-col gap-3 shadow-lg">
               <div className="flex justify-between items-center">
                 <span className="mono text-[10px] font-bold text-[var(--color-text-light-dim)] tracking-wider uppercase">
-                  LIVE PROJECTED REVENUE
+                  PROJECTED MONTHLY REVENUE
                 </span>
-                <span className={`mono text-xs font-bold px-2 py-0.5 rounded-md ${roiAfter >= 0 ? "bg-[rgba(16,185,129,0.2)] text-[var(--color-accent-emerald)]" : "bg-red-500/20 text-red-400"}`}>
+                <span className={`mono text-xs font-bold px-2.5 py-0.5 rounded-md ${roiAfter >= 0 ? "bg-[rgba(16,185,129,0.2)] text-[var(--color-accent-emerald)]" : "bg-red-500/20 text-red-400"}`}>
                   {roiAfter.toFixed(0)}% ROI
                 </span>
               </div>
-              <div className="flex items-baseline justify-between gap-2">
+
+              <div className="flex items-baseline justify-between gap-2 border-b border-white/10 pb-3">
                 <div className="mono text-2xl font-extrabold text-[var(--color-text-light)]">
                   {formatINR(revAfter)}
                 </div>
                 <div className="mono text-xs font-bold text-[var(--color-accent-emerald)]">
                   {revDiff >= 0 ? `+${formatINR(revDiff)}` : formatINR(revDiff)} /mo lift
+                </div>
+              </div>
+
+              {/* Compact Key Metric Chips */}
+              <div className="grid grid-cols-3 gap-2 text-center pt-1">
+                <div className="bg-black/20 p-1.5 rounded-lg border border-white/5">
+                  <span className="block mono text-[9px] text-[var(--color-text-light-dim)]">LEADS</span>
+                  <span className="mono text-xs font-bold text-[var(--color-text-light)]">{leadsAfter.toFixed(0)}/mo</span>
+                </div>
+                <div className="bg-black/20 p-1.5 rounded-lg border border-white/5">
+                  <span className="block mono text-[9px] text-[var(--color-text-light-dim)]">CPL</span>
+                  <span className="mono text-xs font-bold text-[var(--color-text-light)]">{formatINR(cplAfter)}</span>
+                </div>
+                <div className="bg-black/20 p-1.5 rounded-lg border border-white/5">
+                  <span className="block mono text-[9px] text-[var(--color-text-light-dim)]">DEALS</span>
+                  <span className="mono text-xs font-bold text-[var(--color-text-light)]">{dealsAfter.toFixed(1)}</span>
                 </div>
               </div>
             </div>
