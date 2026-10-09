@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
+import SystemCore from "@/components/visuals/SystemCore";
 import { SERVICES_CATALOG } from "@/data/servicesData";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.farakiq.com";
@@ -233,9 +234,26 @@ export default async function ServicePage({
                 <div className="mono" style={{ fontSize: "0.78rem", color: "var(--waste)", marginBottom: "8px" }}>
                   01 — OVERVIEW
                 </div>
-                <h2 style={{ fontSize: "1.6rem", fontWeight: 700, margin: 0, color: "var(--text-light)" }}>
+                <h2 style={{ fontSize: "1.6rem", fontWeight: 700, margin: "0 0 16px", color: "var(--text-light)" }}>
                   The Engineering Approach
                 </h2>
+
+                <div className="my-6">
+                  <SystemCore
+                    type={
+                      slug === "google-ads" || slug === "seo"
+                        ? "search-prism"
+                        : slug === "meta-ads"
+                        ? "growth-geometry"
+                        : slug === "web-development"
+                        ? "dev-stack"
+                        : "dev-stack"
+                    }
+                    size={220}
+                    alt={`FARAKIQ ${service.name} 3D System Object`}
+                    floatAnimation={true}
+                  />
+                </div>
               </div>
               <div>
                 <p style={{ fontSize: "1.05rem", lineHeight: 1.7, color: "var(--text-light-dim)", margin: 0 }}>

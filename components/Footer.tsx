@@ -46,37 +46,37 @@ export default function Footer() {
 
           {/* Column 2: Navigation Links */}
           <div>
-            <div className="mono" style={{ fontSize: "0.8rem", color: "var(--waste)", marginBottom: "14px", letterSpacing: "0.04em" }}>
+            <div className="mono" style={{ fontSize: "0.78rem", color: "var(--waste)", marginBottom: "10px", letterSpacing: "0.04em" }}>
               NAVIGATION
             </div>
-            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
               <li>
-                <Link href="/#services" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem" }}>
+                <Link href="/#services" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem" }}>
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/#portfolio" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem" }}>
+                <Link href="/#portfolio" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem" }}>
                   Featured Projects
                 </Link>
               </li>
               <li>
-                <Link href="/#architecture" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem" }}>
+                <Link href="/#architecture" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem" }}>
                   System Architecture
                 </Link>
               </li>
               <li>
-                <Link href="/#pricing" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem" }}>
+                <Link href="/#pricing" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem" }}>
                   Pricing Models
                 </Link>
               </li>
               <li>
-                <Link href="/blog" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem" }}>
+                <Link href="/blog" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem" }}>
                   Blog &amp; Insights
                 </Link>
               </li>
               <li>
-                <Link href="/#about" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem" }}>
+                <Link href="/#about" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem" }}>
                   About
                 </Link>
               </li>
@@ -85,32 +85,32 @@ export default function Footer() {
 
           {/* Column 3: Dedicated Services */}
           <div>
-            <div className="mono" style={{ fontSize: "0.8rem", color: "var(--waste)", marginBottom: "14px", letterSpacing: "0.04em" }}>
+            <div className="mono" style={{ fontSize: "0.78rem", color: "var(--waste)", marginBottom: "10px", letterSpacing: "0.04em" }}>
               SERVICES
             </div>
-            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
               <li>
-                <Link href="/services/meta-ads" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem" }}>
+                <Link href="/services/meta-ads" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem" }}>
                   Meta Ads
                 </Link>
               </li>
               <li>
-                <Link href="/services/google-ads" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem" }}>
+                <Link href="/services/google-ads" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem" }}>
                   Google Ads (PPC)
                 </Link>
               </li>
               <li>
-                <Link href="/services/seo" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem" }}>
+                <Link href="/services/seo" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem" }}>
                   SEO &amp; AI Search
                 </Link>
               </li>
               <li>
-                <Link href="/services/web-development" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem" }}>
+                <Link href="/services/web-development" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem" }}>
                   Website Development
                 </Link>
               </li>
               <li>
-                <Link href="/services/n8n-automation" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem" }}>
+                <Link href="/services/n8n-automation" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem" }}>
                   n8n Automation
                 </Link>
               </li>
@@ -119,22 +119,22 @@ export default function Footer() {
 
           {/* Column 4: Contact & Channels */}
           <div>
-            <div className="mono" style={{ fontSize: "0.8rem", color: "var(--waste)", marginBottom: "14px", letterSpacing: "0.04em" }}>
+            <div className="mono" style={{ fontSize: "0.78rem", color: "var(--waste)", marginBottom: "10px", letterSpacing: "0.04em" }}>
               CONNECT
             </div>
-            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "6px" }}>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "4px" }}>
               <li>
-                <a href="mailto:sales@farakiq.com" className="mono" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem", wordBreak: "break-all", minHeight: "36px", display: "inline-flex", alignItems: "center" }}>
+                <a href="mailto:sales@farakiq.com" className="mono" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.85rem", wordBreak: "break-all", minHeight: "36px", display: "inline-flex", alignItems: "center" }}>
                   sales@farakiq.com
                 </a>
               </li>
               <li>
-                <Link href="/#contact" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem", minHeight: "36px", display: "inline-flex", alignItems: "center" }}>
+                <Link href="/#contact" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem", minHeight: "36px", display: "inline-flex", alignItems: "center" }}>
                   Project Enquiry
                 </Link>
               </li>
               <li>
-                <Link href="/#top" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.9rem", minHeight: "36px", display: "inline-flex", alignItems: "center" }}>
+                <Link href="/#top" style={{ textDecoration: "none", color: "var(--text-light-dim)", fontSize: "0.88rem", minHeight: "36px", display: "inline-flex", alignItems: "center" }}>
                   Back to top ↑
                 </Link>
               </li>
@@ -154,14 +154,17 @@ export default function Footer() {
             gap: "16px",
           }}
         >
-          <p className="mono" style={{ margin: 0, color: "var(--text-light-dim)", fontSize: "0.8rem" }}>
-            &copy; 2026 FARAKIQ. All rights reserved.
-          </p>
+          <div className="flex items-center space-x-2">
+            <span className="w-2 h-2 rounded-full bg-[#00E699] animate-pulse" />
+            <p className="mono" style={{ margin: 0, color: "var(--text-light-dim)", fontSize: "0.8rem" }}>
+              &copy; 2026 FARAKIQ. All rights reserved. <span className="text-[10px] text-[var(--color-primary-coral)] ml-2">[SYS_STATUS: 99.99% ONLINE]</span>
+            </p>
+          </div>
 
           <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap" }}>
             <Link
               href="/privacy-policy"
-              className="mono"
+              className="mono hover:text-[var(--color-primary-coral)] transition-colors duration-200"
               style={{ color: "var(--text-light-dim)", fontSize: "0.78rem", textDecoration: "none" }}
             >
               Privacy Policy
@@ -169,7 +172,7 @@ export default function Footer() {
             <span style={{ color: "var(--rule)", fontSize: "0.8rem" }}>•</span>
             <Link
               href="/terms-and-conditions"
-              className="mono"
+              className="mono hover:text-[var(--color-primary-coral)] transition-colors duration-200"
               style={{ color: "var(--text-light-dim)", fontSize: "0.78rem", textDecoration: "none" }}
             >
               Terms of Service
@@ -177,7 +180,7 @@ export default function Footer() {
           </div>
 
           <p className="mono" style={{ margin: 0, color: "var(--text-light-dim)", fontSize: "0.8rem" }}>
-            Built with Next.js &amp; Motion
+            Engineered with Next.js 15 &amp; Motion
           </p>
         </div>
       </div>

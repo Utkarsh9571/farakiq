@@ -8,6 +8,7 @@ export interface PortfolioProject {
   cardSummary: string;
   techStack: string[];
   liveUrl?: string;
+  visualUrl?: string;
   isPrimaryWeb: boolean;
   
   // Case Study Details (01 to 06)
@@ -28,6 +29,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     categoryLabel: "Full-Stack Web App / Real Estate Platform",
     cardSummary: "Interactive real-estate platform combining spatial visualization, property inventory, and modern digital sales experiences.",
     techStack: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    visualUrl: "/visuals/portfolio/brickbytes-visual.jpg",
     isPrimaryWeb: true,
     caseStudy: {
       whatItIs: "An interactive real-estate digitization platform designed to replace flat paper plans, static blueprints, and spreadsheets with interactive digital sales experiences.",
@@ -48,6 +50,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     categoryLabel: "E-Commerce / Full-Stack Web Application",
     cardSummary: "Full-stack luxury e-commerce platform with product configuration, authentication, orders, wishlist, multi-currency support, and transactional email.",
     techStack: ["Next.js 15", "React", "MongoDB", "Mongoose", "NextAuth.js", "Tailwind CSS"],
+    visualUrl: "/visuals/portfolio/zonirza-visual.jpg",
     isPrimaryWeb: true,
     caseStudy: {
       whatItIs: "A premier light luxury e-commerce platform engineered for an editorial-grade shopping experience and complete order lifecycle management.",
@@ -69,6 +72,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     categoryLabel: "Business Website / Healthcare Website",
     cardSummary: "Professional healthcare business website designed to present services, information, and the brand through a modern responsive experience.",
     techStack: ["Next.js", "React", "TypeScript", "Responsive Web Design"],
+    visualUrl: "/visuals/portfolio/bliniq-visual.jpg",
     isPrimaryWeb: true,
     caseStudy: {
       whatItIs: "A clean, modern business website built to establish strong online presence and present healthcare services clearly to prospective clients.",
@@ -89,6 +93,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     categoryLabel: "AI / Full-Stack Application",
     cardSummary: "AI-assisted Gmail client combining natural-language commands with real UI actions, Gmail APIs, and human-in-the-loop controls.",
     techStack: ["Next.js", "TypeScript", "CopilotKit", "Google Gemini", "Zustand", "Gmail API"],
+    visualUrl: "/visuals/portfolio/mailpilot-visual.jpg",
     isPrimaryWeb: true,
     caseStudy: {
       whatItIs: "An AI-controlled Gmail client where natural language commands directly drive state-driven UI actions and email workflows.",
@@ -109,6 +114,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     categoryLabel: "AI Integration / Conversational Automation",
     cardSummary: "AI sales chatbot prototype demonstrating deterministic lead qualification, scoring, and AI-assisted conversational responses.",
     techStack: ["Node.js", "Express", "MongoDB", "Google Gemini", "Vercel", "Render"],
+    visualUrl: "/visuals/portfolio/meera-visual.jpg",
     liveUrl: "https://meera-chatbot-h2x8.vercel.app/",
     isPrimaryWeb: true,
     caseStudy: {

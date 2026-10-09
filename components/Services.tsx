@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { SERVICES_DATA, ServiceItem, ServiceCategory } from "@/data/siteData";
 import QuoteModal from "@/components/QuoteModal";
+import SystemCore from "@/components/visuals/SystemCore";
 
 const SERVICE_ROUTE_MAP: Record<string, { href: string; label: string }> = {
   "landing-pages": { href: "/services/web-development", label: "Landing Pages" },
@@ -127,11 +128,28 @@ export default function Services() {
               >
                 {/* Vertical Card Header */}
                 <div className="vertical-card-header">
-                  <div
-                    className="vertical-badge"
-                    style={{ color: vertical.accentColor, borderColor: vertical.accentColor }}
-                  >
-                    <span>{vertical.badge}</span>
+                  <div className="flex justify-between items-start mb-3">
+                    <div
+                      className="vertical-badge"
+                      style={{ color: vertical.accentColor, borderColor: vertical.accentColor }}
+                    >
+                      <span>{vertical.badge}</span>
+                    </div>
+
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 -mt-2 -mr-2">
+                      <SystemCore
+                        type={
+                          vertical.id === "tech-dev"
+                            ? "dev-stack"
+                            : vertical.id === "paid-growth"
+                            ? "growth-geometry"
+                            : "search-prism"
+                        }
+                        size={96}
+                        floatAnimation={true}
+                        alt={`FARAKIQ ${vertical.title} 3D System Object`}
+                      />
+                    </div>
                   </div>
 
                   <h3 className="vertical-title">{vertical.title}</h3>
@@ -378,12 +396,28 @@ export default function Services() {
                     <span className="vertical-items-heading" style={{ marginBottom: "8px" }}>
                       Supporting Technologies
                     </span>
-                    <div className="vertical-tech-pills" style={isFeatured ? { marginBottom: 0 } : { marginBottom: "16px" }}>
+
+                    {/* Desktop full pills */}
+                    <div className="hidden sm:flex vertical-tech-pills" style={isFeatured ? { marginBottom: 0 } : { marginBottom: "16px" }}>
                       {vertical.supportingTech.map((tech) => (
                         <span key={tech} className="vertical-tech-pill">
                           {tech}
                         </span>
                       ))}
+                    </div>
+
+                    {/* Mobile concise pills */}
+                    <div className="flex sm:hidden vertical-tech-pills" style={isFeatured ? { marginBottom: 0 } : { marginBottom: "16px" }}>
+                      {vertical.supportingTech.slice(0, 3).map((tech) => (
+                        <span key={tech} className="vertical-tech-pill">
+                          {tech}
+                        </span>
+                      ))}
+                      {vertical.supportingTech.length > 3 && (
+                        <span className="vertical-tech-pill" style={{ color: "var(--waste)", borderColor: "rgba(255, 74, 52, 0.3)" }}>
+                          +{vertical.supportingTech.length - 3} more
+                        </span>
+                      )}
                     </div>
                   </div>
 

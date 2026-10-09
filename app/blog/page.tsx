@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
+import ProductVisual from "@/components/visuals/ProductVisual";
 import { BLOG_POSTS } from "@/data/blogData";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.farakiq.com";
@@ -159,6 +160,21 @@ export default function BlogIndexPage() {
                 }}
               >
                 <div>
+                  {post.visualUrl && (
+                    <div className="mb-4">
+                      <Link href={`/blog/${post.slug}`} className="block">
+                        <ProductVisual
+                          id={post.slug}
+                          src={post.visualUrl}
+                          alt={`${post.title} Editorial Cover Visualization`}
+                          title={post.title}
+                          categoryLabel={post.category}
+                          sysId={`ARTICLE: ${post.slug.substring(0, 8).toUpperCase()}`}
+                        />
+                      </Link>
+                    </div>
+                  )}
+
                   <div
                     style={{
                       display: "flex",

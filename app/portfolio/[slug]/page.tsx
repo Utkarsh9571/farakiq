@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
+import ProductVisual from "@/components/visuals/ProductVisual";
+import SystemCore from "@/components/visuals/SystemCore";
 import { PORTFOLIO_PROJECTS } from "@/data/portfolioData";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.farakiq.com";
@@ -169,6 +171,21 @@ export default async function PortfolioProjectPage({
               {project.cardSummary}
             </p>
 
+            {/* Project Hero Visual Viewport */}
+            {project.visualUrl && (
+              <div className="mb-8">
+                <ProductVisual
+                  id={project.id}
+                  src={project.visualUrl}
+                  alt={`${project.title} Product Presentation`}
+                  title={project.title}
+                  categoryLabel={project.categoryLabel}
+                  sysId={`SYS_ID: ${project.id.toUpperCase()}-01`}
+                  priority={true}
+                />
+              </div>
+            )}
+
             {/* Action Buttons */}
             <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "28px" }}>
               {project.liveUrl && (
@@ -234,9 +251,27 @@ export default async function PortfolioProjectPage({
               <h2 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "0 0 16px", color: "var(--text-light)" }}>
                 Engineering &amp; System Architecture
               </h2>
-              <p style={{ color: "var(--text-light-dim)", fontSize: "1.05rem", lineHeight: 1.7, margin: 0 }}>
+              <p style={{ color: "var(--text-light-dim)", fontSize: "1.05rem", lineHeight: 1.7, margin: "0 0 24px" }}>
                 {project.caseStudy.whatWeBuilt}
               </p>
+
+              {/* Supporting 3D System Core Object */}
+              <div className="flex justify-center my-6">
+                <SystemCore
+                  type={
+                    project.id === "brickbytes"
+                      ? "system-nodes"
+                      : project.id === "zonirza"
+                      ? "growth-geometry"
+                      : project.id === "bliniq"
+                      ? "dev-stack"
+                      : "dev-stack"
+                  }
+                  size={260}
+                  alt={`FARAKIQ ${project.title} 3D System Architecture Object`}
+                  floatAnimation={true}
+                />
+              </div>
             </section>
 
             {/* 03 Key Functionality */}

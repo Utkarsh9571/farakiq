@@ -5,6 +5,7 @@ export interface BlogPost {
   publishedAt: string;
   updatedAt?: string;
   readTime: string;
+  visualUrl?: string;
   author: {
     name: string;
     role: string;
@@ -38,6 +39,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "A realistic breakdown of Google Ads management fees in India. Understand flat fees vs percentage of spend, agency markups, and how to evaluate true campaign ROI.",
     publishedAt: "2026-03-01",
     readTime: "6 min read",
+    visualUrl: "/visuals/blog/google-ads-visual.jpg",
     author: {
       name: "FARAKIQ Editorial",
       role: "Engineering & Growth Team",
@@ -183,6 +185,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "A technical yet practical comparison between n8n and Zapier. Compare execution costs, self-hosting options, data privacy, and workflow complexity for businesses.",
     publishedAt: "2026-03-05",
     readTime: "7 min read",
+    visualUrl: "/visuals/system3d/system-nodes.jpg",
     author: {
       name: "FARAKIQ Editorial",
       role: "Engineering & Growth Team",
@@ -311,6 +314,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "A pragmatic comparison between custom Next.js web applications and WordPress. Analyze Core Web Vitals, security vulnerabilities, plugin bloat, and total cost of ownership.",
     publishedAt: "2026-03-10",
     readTime: "8 min read",
+    visualUrl: "/visuals/system3d/data-cube.jpg",
     author: {
       name: "FARAKIQ Editorial",
       role: "Engineering & Growth Team",

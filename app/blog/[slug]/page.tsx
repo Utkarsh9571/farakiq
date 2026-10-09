@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
+import ProductVisual from "@/components/visuals/ProductVisual";
 import { BLOG_POSTS } from "@/data/blogData";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.farakiq.com";
@@ -212,6 +213,21 @@ export default async function BlogPostPage({
                 </div>
               </div>
             </header>
+
+            {/* Article Hero Cover Visual */}
+            {post.visualUrl && (
+              <div className="mb-8">
+                <ProductVisual
+                  id={post.slug}
+                  src={post.visualUrl}
+                  alt={`${post.title} Editorial Cover Visualization`}
+                  title={post.title}
+                  categoryLabel={post.category}
+                  sysId={`DISPATCH: ${post.slug.substring(0, 8).toUpperCase()}`}
+                  priority={true}
+                />
+              </div>
+            )}
 
             {/* Table of Contents */}
             <aside

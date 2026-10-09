@@ -65,7 +65,7 @@ export function useRocketLoop(containerRef: React.RefObject<HTMLElement | null>)
     }
 
     let isCancelled = false;
-    let currentAbortController: AbortController | null = new AbortController();
+    const currentAbortController: AbortController | null = new AbortController();
 
     const sleep = (ms: number, signal: AbortSignal) =>
       new Promise<void>((resolve) => {

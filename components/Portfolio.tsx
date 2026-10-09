@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { PORTFOLIO_PROJECTS, ProjectCategory, PortfolioProject } from "@/data/portfolioData";
 import StructuredData from "@/components/StructuredData";
+import ProductVisual from "@/components/visuals/ProductVisual";
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
@@ -60,24 +61,26 @@ export default function Portfolio() {
         </motion.div>
 
         {/* Category Filters */}
-        <div className="portfolio-filters" style={{ display: "flex", gap: "10px", marginBottom: "36px", flexWrap: "wrap" }}>
-          {[
-            { id: "all", label: `All Work (${PORTFOLIO_PROJECTS.length})` },
-            { id: "websites", label: "Websites" },
-            { id: "web-apps", label: "Web Apps" },
-            { id: "ai-automation", label: "AI & Automation" },
-          ].map((tab) => (
-            <motion.button
-              key={tab.id}
-              className={`btn btn-sm ${activeCategory === tab.id ? "btn-primary" : "btn-ghost"}`}
-              style={{ borderRadius: "var(--radius-sm)" }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => setActiveCategory(tab.id as ProjectCategory)}
-            >
-              {tab.label}
-            </motion.button>
-          ))}
+        <div className="portfolio-filters-wrap" style={{ marginBottom: "36px" }}>
+          <div className="portfolio-filters">
+            {[
+              { id: "all", label: `All Work (${PORTFOLIO_PROJECTS.length})` },
+              { id: "websites", label: "Websites" },
+              { id: "web-apps", label: "Web Apps" },
+              { id: "ai-automation", label: "AI & Automation" },
+            ].map((tab) => (
+              <motion.button
+                key={tab.id}
+                className={`btn btn-sm ${activeCategory === tab.id ? "btn-primary" : "btn-ghost"}`}
+                style={{ borderRadius: "var(--radius-sm)", whiteSpace: "nowrap", flexShrink: 0 }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => setActiveCategory(tab.id as ProjectCategory)}
+              >
+                {tab.label}
+              </motion.button>
+            ))}
+          </div>
         </div>
 
         {/* Project Cards Grid */}
@@ -91,101 +94,159 @@ export default function Portfolio() {
           }}
         >
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project: PortfolioProject, idx: number) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, y: 28, scale: 0.98 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.15 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                whileHover={{ y: -6, borderColor: "var(--waste)" }}
-                transition={{ duration: 0.35, delay: idx * 0.08 }}
-                style={{
-                  background: "var(--card-bg)",
-                  border: project.isPrimaryWeb ? "1px solid rgba(255, 74, 52, 0.45)" : "1px solid var(--card-border)",
-                  padding: "clamp(22px, 3vw, 28px)",
-                  borderRadius: "var(--radius-lg)",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  position: "relative",
-                  boxShadow: project.isPrimaryWeb
-                    ? "var(--shadow-glow-waste), var(--card-inner-highlight)"
-                    : "var(--shadow-sm), var(--card-inner-highlight)",
-                }}
-              >
-                <div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px" }}>
-                    <span className="mono" style={{ fontSize: "0.72rem", color: "var(--waste)", letterSpacing: "0.05em", fontWeight: 600 }}>
-                      {project.categoryLabel.toUpperCase()}
-                    </span>
-                  </div>
+            {filteredProjects.map((project: PortfolioProject, idx: number) => {
+              const maxPills = 3;
+              const mainPills = project.techStack.slice(0, maxPills);
+              const extraPillsCount = project.techStack.length - maxPills;
 
-                  <h3 style={{ fontSize: "1.3rem", fontWeight: 700, margin: "0 0 10px", color: "var(--text-light)", letterSpacing: "-0.01em" }}>
-                    {project.title}
-                  </h3>
+              return (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 28, scale: 0.98 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  whileHover={{ y: -6, borderColor: "var(--waste)" }}
+                  transition={{ duration: 0.35, delay: idx * 0.08 }}
+                  style={{
+                    background: "var(--card-bg)",
+                    border: project.isPrimaryWeb ? "1px solid rgba(255, 74, 52, 0.45)" : "1px solid var(--card-border)",
+                    padding: "clamp(18px, 3vw, 28px)",
+                    borderRadius: "var(--radius-lg)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    position: "relative",
+                    boxShadow: project.isPrimaryWeb
+                      ? "var(--shadow-glow-waste), var(--card-inner-highlight)"
+                      : "var(--shadow-sm), var(--card-inner-highlight)",
+                  }}
+                >
+                  <div>
+                    {project.visualUrl && (
+                      <div className="mb-4">
+                        <ProductVisual
+                          id={project.id}
+                          src={project.visualUrl}
+                          alt={`${project.title} Product Presentation`}
+                          title={project.title}
+                          categoryLabel={project.categoryLabel}
+                          sysId={`SYS_${project.id.toUpperCase()}`}
+                        />
+                      </div>
+                    )}
 
-                  <p style={{ color: "var(--text-light-dim)", fontSize: "0.9rem", margin: "0 0 18px", lineHeight: 1.55 }}>
-                    {project.cardSummary}
-                  </p>
-
-                  {/* Tech Stack Pills */}
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "22px" }}>
-                    {project.techStack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="mono"
-                        style={{
-                          fontSize: "0.72rem",
-                          background: "rgba(255, 255, 255, 0.03)",
-                          border: "1px solid var(--card-border)",
-                          borderRadius: "var(--radius-sm)",
-                          color: "var(--text-light-dim)",
-                          padding: "3px 9px",
-                          boxShadow: "var(--card-inner-highlight)",
-                        }}
-                      >
-                        {tech}
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
+                      <span className="mono" style={{ fontSize: "0.72rem", color: "var(--waste)", letterSpacing: "0.05em", fontWeight: 600 }}>
+                        {project.categoryLabel.toUpperCase()}
                       </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  {project.liveUrl && (
-                    <div style={{ marginBottom: "10px" }}>
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-primary"
-                        style={{ fontSize: "0.84rem", padding: "10px 14px", minHeight: "40px", width: "100%", justifyContent: "center", borderRadius: "var(--radius-md)" }}
-                      >
-                        View Live Platform ↗
-                      </a>
                     </div>
-                  )}
 
-                  <div style={{ display: "flex", gap: "8px" }}>
-                    <button
-                      className="btn btn-ghost"
-                      style={{ flex: "1", justifyContent: "center", fontSize: "0.8rem", padding: "8px 10px", minHeight: "38px", borderRadius: "var(--radius-md)" }}
-                      onClick={() => setSelectedProject(project)}
-                    >
-                      <span className="mono">Quick View ↓</span>
-                    </button>
-                    <Link
-                      href={`/portfolio/${project.id}`}
-                      className="btn btn-ghost"
-                      style={{ flex: "1", justifyContent: "center", fontSize: "0.8rem", padding: "8px 10px", minHeight: "38px", borderRadius: "var(--radius-md)", textDecoration: "none" }}
-                    >
-                      <span className="mono" style={{ color: "var(--waste)" }}>Case Study →</span>
-                    </Link>
+                    <h3 style={{ fontSize: "1.25rem", fontWeight: 700, margin: "0 0 10px", color: "var(--text-light)", letterSpacing: "-0.01em" }}>
+                      {project.title}
+                    </h3>
+
+                    <p style={{ color: "var(--text-light-dim)", fontSize: "0.88rem", margin: "0 0 16px", lineHeight: 1.5 }}>
+                      {project.cardSummary}
+                    </p>
+
+                    {/* Tech Stack Pills */}
+                    <div className="portfolio-pills-container" style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "20px" }}>
+                      {/* Desktop rendered pills */}
+                      <div className="hidden sm:flex flex-wrap gap-1.5">
+                        {project.techStack.map((tech) => (
+                          <span
+                            key={tech}
+                            className="mono"
+                            style={{
+                              fontSize: "0.72rem",
+                              background: "rgba(255, 255, 255, 0.03)",
+                              border: "1px solid var(--card-border)",
+                              borderRadius: "var(--radius-sm)",
+                              color: "var(--text-light-dim)",
+                              padding: "3px 9px",
+                              boxShadow: "var(--card-inner-highlight)",
+                            }}
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Mobile concise pills */}
+                      <div className="flex sm:hidden flex-wrap gap-1.5">
+                        {mainPills.map((tech) => (
+                          <span
+                            key={tech}
+                            className="mono"
+                            style={{
+                              fontSize: "0.7rem",
+                              background: "rgba(255, 255, 255, 0.03)",
+                              border: "1px solid var(--card-border)",
+                              borderRadius: "var(--radius-sm)",
+                              color: "var(--text-light-dim)",
+                              padding: "2px 7px",
+                            }}
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {extraPillsCount > 0 && (
+                          <span
+                            className="mono"
+                            style={{
+                              fontSize: "0.7rem",
+                              background: "rgba(255, 74, 52, 0.08)",
+                              border: "1px solid rgba(255, 74, 52, 0.2)",
+                              borderRadius: "var(--radius-sm)",
+                              color: "var(--waste)",
+                              padding: "2px 7px",
+                              fontWeight: 600,
+                            }}
+                          >
+                            +{extraPillsCount} more
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+
+                  <div>
+                    {project.liveUrl && (
+                      <div style={{ marginBottom: "10px" }}>
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-primary"
+                          style={{ fontSize: "0.84rem", padding: "10px 14px", minHeight: "42px", width: "100%", justifyContent: "center", borderRadius: "var(--radius-md)" }}
+                        >
+                          View Live Platform ↗
+                        </a>
+                      </div>
+                    )}
+
+                    <div style={{ display: "flex", gap: "8px" }}>
+                      <button
+                        className="btn btn-ghost"
+                        style={{ flex: "1", justifyContent: "center", fontSize: "0.8rem", padding: "8px 10px", minHeight: "40px", borderRadius: "var(--radius-md)" }}
+                        onClick={() => setSelectedProject(project)}
+                      >
+                        <span className="mono">Quick View ↓</span>
+                      </button>
+                      <Link
+                        href={`/portfolio/${project.id}`}
+                        className="btn btn-ghost"
+                        style={{ flex: "1", justifyContent: "center", fontSize: "0.8rem", padding: "8px 10px", minHeight: "40px", borderRadius: "var(--radius-md)", textDecoration: "none" }}
+                      >
+                        <span className="mono" style={{ color: "var(--waste)" }}>Case Study →</span>
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </motion.div>
 
@@ -206,7 +267,7 @@ export default function Portfolio() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: "clamp(12px, 3vw, 24px)",
+                padding: "clamp(8px, 3vw, 24px)",
               }}
               onClick={() => setSelectedProject(null)}
             >
@@ -215,26 +276,27 @@ export default function Portfolio() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.96, y: 16 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
+                className="portfolio-modal-box"
                 style={{
                   background: "var(--card-bg-elevated)",
                   border: "1px solid var(--card-border-hover)",
-                  padding: "clamp(22px, 4vw, 36px)",
+                  padding: "clamp(16px, 4vw, 36px)",
                   borderRadius: "var(--radius-lg)",
                   maxWidth: "680px",
                   width: "100%",
-                  maxHeight: "90vh",
+                  maxHeight: "92vh",
                   overflowY: "auto",
                   position: "relative",
                   boxShadow: "var(--shadow-lg), var(--card-inner-highlight)",
                 }}
                 onClick={(e) => e.stopPropagation()}
               >
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "12px", marginBottom: "20px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "12px", marginBottom: "16px" }}>
                   <div>
-                    <span className="mono" style={{ fontSize: "0.75rem", color: "var(--waste)", fontWeight: 600, letterSpacing: "0.04em" }}>
+                    <span className="mono" style={{ fontSize: "0.72rem", color: "var(--waste)", fontWeight: 600, letterSpacing: "0.04em" }}>
                       {selectedProject.categoryLabel.toUpperCase()}
                     </span>
-                    <h3 style={{ fontSize: "clamp(1.3rem, 4vw, 1.8rem)", fontWeight: 700, margin: "4px 0 0", color: "var(--text-light)", letterSpacing: "-0.01em" }}>
+                    <h3 style={{ fontSize: "clamp(1.2rem, 4vw, 1.8rem)", fontWeight: 700, margin: "4px 0 0", color: "var(--text-light)", letterSpacing: "-0.01em" }}>
                       {selectedProject.title}
                     </h3>
                   </div>
@@ -242,9 +304,9 @@ export default function Portfolio() {
                     onClick={() => setSelectedProject(null)}
                     className="btn btn-ghost"
                     aria-label="Close case study modal"
-                    style={{ padding: "8px 14px", minHeight: "40px", minWidth: "40px", fontSize: "0.85rem", flexShrink: 0, borderRadius: "var(--radius-md)" }}
+                    style={{ padding: "6px 12px", minHeight: "36px", minWidth: "36px", fontSize: "0.8rem", flexShrink: 0, borderRadius: "var(--radius-md)" }}
                   >
-                    ✕ Close
+                    ✕
                   </button>
                 </div>
 
@@ -343,6 +405,37 @@ export default function Portfolio() {
           )}
         </AnimatePresence>
       </div>
+
+      <style jsx global>{`
+        .portfolio-filters {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+        @media (max-width: 480px) {
+          .portfolio-filters-wrap {
+            overflow-x: auto;
+            margin-left: -16px;
+            margin-right: -16px;
+            padding-left: 16px;
+            padding-right: 16px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+          }
+          .portfolio-filters-wrap::-webkit-scrollbar {
+            display: none;
+          }
+          .portfolio-filters {
+            flex-wrap: nowrap !important;
+            width: max-content;
+            padding-bottom: 4px;
+          }
+          .portfolio-modal-box {
+            padding: 16px !important;
+            width: 96vw !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
