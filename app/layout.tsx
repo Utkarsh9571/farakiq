@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
 import ScrollToTop from "@/components/ScrollToTop";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -190,6 +191,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         {/* End Google Tag Manager (noscript) */}
         {children}
+        <WhatsAppButton />
         <ScrollToTop />
       </body>
     </html>
