@@ -351,7 +351,7 @@ export default function CTA() {
                             borderRadius: "var(--radius-md)",
                             boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
                           }}
-                          placeholder="+91 79820 79125"
+                          placeholder="+91 99999 99999"
                         />
                         {errors.phone && <span style={{ color: "var(--waste)", fontSize: "0.74rem", marginTop: "4px", display: "block" }}>{errors.phone}</span>}
                       </div>
