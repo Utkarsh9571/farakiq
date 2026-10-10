@@ -7,6 +7,7 @@ import CtaConvergenceVisual from "@/components/visuals/CtaConvergenceVisual";
 interface FormData {
   name: string;
   email: string;
+  phone: string;
   company: string;
   projectType: string;
   budgetRange: string;
@@ -16,6 +17,7 @@ interface FormData {
 interface FormErrors {
   name?: string;
   email?: string;
+  phone?: string;
   message?: string;
 }
 
@@ -23,6 +25,7 @@ export default function CTA() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
+    phone: "",
     company: "",
     projectType: "Integrated Engineering + Growth",
     budgetRange: "₹25,000 – ₹50,000",
@@ -43,6 +46,14 @@ export default function CTA() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       errs.email = "Please enter a valid email address.";
     }
+    if (!formData.phone.trim()) {
+      errs.phone = "Mobile number is required.";
+    } else {
+      const digits = formData.phone.replace(/\D/g, "");
+      if (digits.length < 10 || digits.length > 15) {
+        errs.phone = "Please enter a valid mobile number (min. 10 digits).";
+      }
+    }
     if (!formData.message.trim()) {
       errs.message = "Project description is required.";
     }
@@ -62,6 +73,8 @@ export default function CTA() {
     const payload = {
       name: formData.name,
       email: formData.email,
+      phone: formData.phone,
+      mobile: formData.phone,
       company: formData.company,
       budget: formData.budgetRange,
       budgetRange: formData.budgetRange,
@@ -231,6 +244,7 @@ export default function CTA() {
                       setFormData({
                         name: "",
                         email: "",
+                        phone: "",
                         company: "",
                         projectType: "Integrated Engineering + Growth",
                         budgetRange: "₹25,000 – ₹50,000",
@@ -312,8 +326,36 @@ export default function CTA() {
                       </div>
                     </div>
 
-                    {/* Row 2: Company & Category */}
+                    {/* Row 2: Mobile Number & Company */}
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "14px" }} className="form-row-2">
+                      <div>
+                        <label htmlFor="cta-phone" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                          Mobile Number *
+                        </label>
+                        <input
+                          id="cta-phone"
+                          name="phone"
+                          type="tel"
+                          autoComplete="tel"
+                          className="mono"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          style={{
+                            width: "100%",
+                            background: "rgba(10, 12, 15, 0.85)",
+                            border: errors.phone ? "1px solid var(--waste)" : "1px solid var(--card-border)",
+                            color: "var(--text-light)",
+                            padding: "10px 12px",
+                            fontSize: "0.9rem",
+                            minHeight: "42px",
+                            borderRadius: "var(--radius-md)",
+                            boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
+                          }}
+                          placeholder="+91 79820 79125"
+                        />
+                        {errors.phone && <span style={{ color: "var(--waste)", fontSize: "0.74rem", marginTop: "4px", display: "block" }}>{errors.phone}</span>}
+                      </div>
+
                       <div>
                         <label htmlFor="cta-company" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
                           Company / Organization
@@ -340,39 +382,40 @@ export default function CTA() {
                           placeholder="Optional"
                         />
                       </div>
+                    </div>
 
-                      <div>
-                        <label htmlFor="cta-project-type" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
-                          What do you need help with?
-                        </label>
-                        <select
-                          id="cta-project-type"
-                          name="projectType"
-                          className="mono"
-                          value={formData.projectType}
-                          onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                          style={{
-                            width: "100%",
-                            background: "rgba(10, 12, 15, 0.85)",
-                            border: "1px solid var(--card-border)",
-                            color: "var(--text-light)",
-                            padding: "10px 12px",
-                            fontSize: "0.86rem",
-                            minHeight: "42px",
-                            borderRadius: "var(--radius-md)",
-                            boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
-                          }}
-                        >
-                          <option value="Integrated Engineering + Growth">Integrated Engineering &amp; Growth</option>
-                          <option value="Website / Landing Page">Website / Landing Page</option>
-                          <option value="Web Application / Custom Platform">Web Application / Custom Platform</option>
-                          <option value="AI Agent / Chatbot">AI Agent / Chatbot</option>
-                          <option value="Business Automation & Integrations">Business Automation &amp; Integrations</option>
-                          <option value="Paid Ads (Google, Meta, LinkedIn)">Paid Ads (Google, Meta, LinkedIn)</option>
-                          <option value="Organic Search & Discovery (SEO/AEO)">Organic Search &amp; Discovery (SEO/AEO)</option>
-                          <option value="Not sure — I'd like to discuss it">Not sure — I&apos;d like to discuss options</option>
-                        </select>
-                      </div>
+                    {/* Row 3: Category / Service */}
+                    <div style={{ marginBottom: "14px" }}>
+                      <label htmlFor="cta-project-type" className="mono" style={{ display: "block", fontSize: "0.78rem", color: "var(--text-light-dim)", marginBottom: "6px" }}>
+                        What do you need help with?
+                      </label>
+                      <select
+                        id="cta-project-type"
+                        name="projectType"
+                        className="mono"
+                        value={formData.projectType}
+                        onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                        style={{
+                          width: "100%",
+                          background: "rgba(10, 12, 15, 0.85)",
+                          border: "1px solid var(--card-border)",
+                          color: "var(--text-light)",
+                          padding: "10px 12px",
+                          fontSize: "0.86rem",
+                          minHeight: "42px",
+                          borderRadius: "var(--radius-md)",
+                          boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
+                        }}
+                      >
+                        <option value="Integrated Engineering + Growth">Integrated Engineering &amp; Growth</option>
+                        <option value="Website / Landing Page">Website / Landing Page</option>
+                        <option value="Web Application / Custom Platform">Web Application / Custom Platform</option>
+                        <option value="AI Agent / Chatbot">AI Agent / Chatbot</option>
+                        <option value="Business Automation & Integrations">Business Automation &amp; Integrations</option>
+                        <option value="Paid Ads (Google, Meta, LinkedIn)">Paid Ads (Google, Meta, LinkedIn)</option>
+                        <option value="Organic Search & Discovery (SEO/AEO)">Organic Search &amp; Discovery (SEO/AEO)</option>
+                        <option value="Not sure — I'd like to discuss it">Not sure — I&apos;d like to discuss options</option>
+                      </select>
                     </div>
 
                     {/* Row 3: Project Requirements (Flex-1 to absorb vertical space) */}
